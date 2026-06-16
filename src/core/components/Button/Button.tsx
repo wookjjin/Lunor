@@ -1,25 +1,26 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react'
-
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode
-  variant?: 'primary' | 'secondary' | 'danger'
-  size?: 'sm' | 'md' | 'lg'
-}
+import type { ButtonProps } from '@/core/components/Button/Button.types'
 
 export function Button({
-  children,
-  variant = 'primary',
+  className,
+  variant = 'solid',
   size = 'md',
+  fullWidth = false,
+  type = 'button',
   ...props
 }: ButtonProps) {
   return (
     <button
-      type={props.type ?? 'button'}
-      data-variant={variant}
-      data-size={size}
+      type={type}
+      className={[
+        'button',
+        `button--${variant}`,
+        `button--${size}`,
+        fullWidth && 'button--full-width',
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
       {...props}
-    >
-      {children}
-    </button>
+    />
   )
 }

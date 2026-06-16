@@ -1,0 +1,124 @@
+/* =============================================================================
+  Shadow Tokens
+  - Elevation Scale (고도 기반)
+  - Semantic Aliases
+  - Inner Shadow (inset)
+  - Focus Ring (접근성)
+  ============================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------------------
+    Primitive — Elevation Scale
+    낮을수록 미세한 그림자, 높을수록 떠 있는 느낌
+    --------------------------------------------------------------------------- */
+  --shadow-none: none;
+
+  /* elevation-1 : 카드, 드롭다운 기본 상태 */
+  --shadow-xs:
+    0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+  /* elevation-2 : 호버된 카드, 패널 */
+  --shadow-sm:
+    0 1px 3px 0 rgba(0, 0, 0, 0.10),
+    0 1px 2px -1px rgba(0, 0, 0, 0.10);
+
+  /* elevation-3 : 드롭다운, 팝오버 */
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.10),
+    0 2px 4px -2px rgba(0, 0, 0, 0.10);
+
+  /* elevation-4 : 모달, 다이얼로그 */
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.10),
+    0 4px 6px -4px rgba(0, 0, 0, 0.10);
+
+  /* elevation-5 : 사이드 패널, 드로어 */
+  --shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.10),
+    0 8px 10px -6px rgba(0, 0, 0, 0.10);
+
+  /* elevation-6 : 풀스크린 오버레이 위에 뜨는 요소 */
+  --shadow-2xl:
+    0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* ---------------------------------------------------------------------------
+    Inner Shadow (Inset)
+    --------------------------------------------------------------------------- */
+  --shadow-inner-sm:
+    inset 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+  --shadow-inner-md:
+    inset 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+
+  --shadow-inner-lg:
+    inset 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+
+  /* ---------------------------------------------------------------------------
+    Focus Ring — 접근성 필수
+    --------------------------------------------------------------------------- */
+  --shadow-focus-primary:
+    0 0 0 3px rgba(26, 86, 219, 0.40);     /* primary-500 @ 40% */
+
+  --shadow-focus-danger:
+    0 0 0 3px rgba(240, 62, 62, 0.40);     /* danger-500  @ 40% */
+
+  --shadow-focus-success:
+    0 0 0 3px rgba(43, 138, 62, 0.40);     /* success-500 @ 40% */
+
+  --shadow-focus-neutral:
+    0 0 0 3px rgba(134, 142, 150, 0.40);   /* gray-600    @ 40% */
+
+  /* ---------------------------------------------------------------------------
+    Colored / Tinted Shadows (강조 컴포넌트용)
+    --------------------------------------------------------------------------- */
+  --shadow-primary-sm:
+    0 1px 3px 0  rgba(26, 86, 219, 0.20),
+    0 1px 2px -1px rgba(26, 86, 219, 0.20);
+
+  --shadow-primary-md:
+    0 4px 6px -1px rgba(26, 86, 219, 0.20),
+    0 2px 4px -2px rgba(26, 86, 219, 0.20);
+
+  /* ===========================================================================
+    Semantic — Component Aliases
+    =========================================================================== */
+  --shadow-card:      var(--shadow-sm);
+  --shadow-card-hover:var(--shadow-md);
+  --shadow-dropdown:  var(--shadow-md);
+  --shadow-popover:   var(--shadow-lg);
+  --shadow-modal:     var(--shadow-xl);
+  --shadow-drawer:    var(--shadow-2xl);
+  --shadow-toast:     var(--shadow-lg);
+  --shadow-button:    var(--shadow-xs);
+  --shadow-input:     var(--shadow-inner-sm);
+}
+
+/* =============================================================================
+  Dark Mode — 그림자 불투명도 조정
+  (어두운 배경에서는 opacity를 높여야 그림자가 보임)
+   ============================================================================= */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-xs:
+      0 1px 2px 0 rgba(0, 0, 0, 0.30);
+
+    --shadow-sm:
+      0 1px 3px 0 rgba(0, 0, 0, 0.40),
+      0 1px 2px -1px rgba(0, 0, 0, 0.40);
+
+    --shadow-md:
+      0 4px 6px -1px rgba(0, 0, 0, 0.40),
+      0 2px 4px -2px rgba(0, 0, 0, 0.40);
+
+    --shadow-lg:
+      0 10px 15px -3px rgba(0, 0, 0, 0.50),
+      0 4px 6px -4px rgba(0, 0, 0, 0.40);
+
+    --shadow-xl:
+      0 20px 25px -5px rgba(0, 0, 0, 0.55),
+      0 8px 10px -6px rgba(0, 0, 0, 0.40);
+
+    --shadow-2xl:
+      0 25px 50px -12px rgba(0, 0, 0, 0.70);
+  }
+}

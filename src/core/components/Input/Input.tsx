@@ -1,16 +1,28 @@
-import type { InputHTMLAttributes } from 'react'
+import type { InputProps } from '@/core/components/Input/Input.types'
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: string
-  error?: string
-}
-
-export function Input({ label, error, ...props }: InputProps) {
+export function Input({
+  ref,
+  className,
+  variant = 'outline',
+  size = 'md',
+  invalid = false,
+  fullWidth = true,
+  ...props
+}: InputProps) {
   return (
-    <div>
-      {label && <label htmlFor={props.id}>{label}</label>}
-      <input {...props} />
-      {error && <span>{error}</span>}
-    </div>
+    <input
+      ref={ref}
+      className={[
+        'input',
+        `input--${variant}`,
+        `input--${size}`,
+        invalid && 'input--invalid',
+        fullWidth && 'input--full-width',
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      {...props}
+    />
   )
 }

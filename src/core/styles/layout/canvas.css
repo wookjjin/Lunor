@@ -1,0 +1,9 @@
+/* =============================================================================
+   Layout — Workspace Dot Canvas Background
+   메인 작업 공간 도트 캔버스 백그라운드
+   ============================================================================= */
+
+.canvas-dots {
+  background-image: radial-gradient(rgba(125, 211, 252, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

@@ -1,0 +1,157 @@
+/* =============================================================================
+  Typography Tokens
+  - Font Family
+  - Font Size (Type Scale)
+  - Font Weight
+  - Line Height
+  - Letter Spacing
+  - Semantic Text Styles (composite)
+  ============================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------------------
+    Font Family
+    --------------------------------------------------------------------------- */
+  --font-family-sans:
+    'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans KR', sans-serif;
+
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace;
+
+  --font-family-base: var(--font-family-sans);
+
+  /* ---------------------------------------------------------------------------
+    Font Size — Primitive Scale (rem 기반, 1rem = 16px)
+    --------------------------------------------------------------------------- */
+  --font-size-2xs: 0.625rem; /*  10px */
+  --font-size-xs: 0.75rem; /*  12px */
+  --font-size-sm: 0.875rem; /*  14px */
+  --font-size-md: 1rem; /*  16px */
+  --font-size-lg: 1.125rem; /*  18px */
+  --font-size-xl: 1.25rem; /*  20px */
+  --font-size-2xl: 1.5rem; /*  24px */
+  --font-size-3xl: 1.875rem; /*  30px */
+  --font-size-4xl: 2.25rem; /*  36px */
+  --font-size-5xl: 3rem; /*  48px */
+  --font-size-6xl: 3.75rem; /*  60px */
+
+  /* ---------------------------------------------------------------------------
+    Font Weight
+    --------------------------------------------------------------------------- */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* ---------------------------------------------------------------------------
+    Line Height
+    --------------------------------------------------------------------------- */
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* ---------------------------------------------------------------------------
+    Letter Spacing
+    --------------------------------------------------------------------------- */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+
+  /* ===========================================================================
+    Semantic Text Styles — Display
+    =========================================================================== */
+  --text-display-2xl-size: var(--font-size-6xl);
+  --text-display-2xl-weight: var(--font-weight-bold);
+  --text-display-2xl-leading: var(--line-height-tight);
+  --text-display-2xl-tracking: var(--letter-spacing-tight);
+
+  --text-display-xl-size: var(--font-size-5xl);
+  --text-display-xl-weight: var(--font-weight-bold);
+  --text-display-xl-leading: var(--line-height-tight);
+  --text-display-xl-tracking: var(--letter-spacing-tight);
+
+  --text-display-lg-size: var(--font-size-4xl);
+  --text-display-lg-weight: var(--font-weight-bold);
+  --text-display-lg-leading: var(--line-height-tight);
+  --text-display-lg-tracking: var(--letter-spacing-tight);
+
+  /* ===========================================================================
+    Semantic Text Styles — Heading
+    =========================================================================== */
+  --text-heading-xl-size: var(--font-size-3xl);
+  --text-heading-xl-weight: var(--font-weight-semibold);
+  --text-heading-xl-leading: var(--line-height-snug);
+
+  --text-heading-lg-size: var(--font-size-2xl);
+  --text-heading-lg-weight: var(--font-weight-semibold);
+  --text-heading-lg-leading: var(--line-height-snug);
+
+  --text-heading-md-size: var(--font-size-xl);
+  --text-heading-md-weight: var(--font-weight-semibold);
+  --text-heading-md-leading: var(--line-height-snug);
+
+  --text-heading-sm-size: var(--font-size-lg);
+  --text-heading-sm-weight: var(--font-weight-semibold);
+  --text-heading-sm-leading: var(--line-height-snug);
+
+  --text-heading-xs-size: var(--font-size-md);
+  --text-heading-xs-weight: var(--font-weight-semibold);
+  --text-heading-xs-leading: var(--line-height-snug);
+
+  /* ===========================================================================
+    Semantic Text Styles — Body
+    =========================================================================== */
+  --text-body-xl-size: var(--font-size-lg);
+  --text-body-xl-weight: var(--font-weight-regular);
+  --text-body-xl-leading: var(--line-height-relaxed);
+
+  --text-body-lg-size: var(--font-size-md);
+  --text-body-lg-weight: var(--font-weight-regular);
+  --text-body-lg-leading: var(--line-height-relaxed);
+
+  --text-body-md-size: var(--font-size-sm);
+  --text-body-md-weight: var(--font-weight-regular);
+  --text-body-md-leading: var(--line-height-normal);
+
+  --text-body-sm-size: var(--font-size-xs);
+  --text-body-sm-weight: var(--font-weight-regular);
+  --text-body-sm-leading: var(--line-height-normal);
+
+  /* ===========================================================================
+    Semantic Text Styles — Label (UI 레이블, 버튼, 태그)
+    =========================================================================== */
+  --text-label-lg-size: var(--font-size-md);
+  --text-label-lg-weight: var(--font-weight-medium);
+  --text-label-lg-leading: var(--line-height-none);
+
+  --text-label-md-size: var(--font-size-sm);
+  --text-label-md-weight: var(--font-weight-medium);
+  --text-label-md-leading: var(--line-height-none);
+
+  --text-label-sm-size: var(--font-size-xs);
+  --text-label-sm-weight: var(--font-weight-medium);
+  --text-label-sm-leading: var(--line-height-none);
+
+  /* ===========================================================================
+    Semantic Text Styles — Code
+    =========================================================================== */
+  --text-code-lg-size: var(--font-size-md);
+  --text-code-lg-family: var(--font-family-mono);
+  --text-code-lg-weight: var(--font-weight-regular);
+
+  --text-code-md-size: var(--font-size-sm);
+  --text-code-md-family: var(--font-family-mono);
+  --text-code-md-weight: var(--font-weight-regular);
+
+  --text-code-sm-size: var(--font-size-xs);
+  --text-code-sm-family: var(--font-family-mono);
+  --text-code-sm-weight: var(--font-weight-regular);
+}

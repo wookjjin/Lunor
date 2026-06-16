@@ -1,0 +1,211 @@
+/* =============================================================================
+   Color Tokens
+   - Primitive (raw palette based on new design specs)
+   - Semantic (role-based aliases with Dark Mode support)
+   ============================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------------------
+     Primitive — Neutral (Cool Gray)
+     --------------------------------------------------------------------------- */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f4f6f8;
+  --color-neutral-100: #e2e7ed;
+  --color-neutral-200: #c0cad6;
+  --color-neutral-300: #8b9bb0;
+  --color-neutral-400: #5a6d84;
+  --color-neutral-600: #324156;
+  --color-neutral-900: #141c28;
+  --color-neutral-950: #0a0e14;
+  /* 다크모드 배경용 딥다크 추가 */
+
+  /* ---------------------------------------------------------------------------
+     Primitive — Primary (Sky Blue)
+     --------------------------------------------------------------------------- */
+  --color-primary-50: #ebf9ff;
+  --color-primary-100: #ccf2ff;
+  --color-primary-200: #99e3ff;
+  --color-primary-300: #5bcfff;
+  --color-primary-400: #1db4e8;
+  --color-primary-600: #0d7ea5;
+  --color-primary-900: #073d52;
+
+  /* ---------------------------------------------------------------------------
+     Primitive — Secondary (Lavender)
+     --------------------------------------------------------------------------- */
+  --color-secondary-50: #f3eeff;
+  --color-secondary-100: #e0d4ff;
+  --color-secondary-200: #bfa6ff;
+  --color-secondary-300: #9b7af5;
+  --color-secondary-400: #7452dc;
+  --color-secondary-600: #4e30a8;
+  --color-secondary-900: #291568;
+
+  /* ---------------------------------------------------------------------------
+     Primitive — Success (Emerald)
+     --------------------------------------------------------------------------- */
+  --color-success-50: #edfaf4;
+  --color-success-100: #c5f0da;
+  --color-success-200: #7ddcab;
+  --color-success-300: #3fc787;
+  --color-success-400: #1fa865;
+  --color-success-600: #0e7043;
+  --color-success-900: #063822;
+
+  /* ---------------------------------------------------------------------------
+     Primitive — Warning (Amber)
+     --------------------------------------------------------------------------- */
+  --color-warning-50: #fff8ec;
+  --color-warning-100: #ffecbf;
+  --color-warning-200: #ffd43b;
+  --color-warning-300: #f5b731;
+  --color-warning-400: #d4940a;
+  --color-warning-600: #916300;
+  --color-warning-900: #4a3100;
+
+  /* ---------------------------------------------------------------------------
+     Primitive — Danger (Rose Red)
+     --------------------------------------------------------------------------- */
+  --color-danger-50: #fff0f0;
+  --color-danger-100: #ffd44d;
+  --color-danger-200: #ffa0a0;
+  --color-danger-300: #f56868;
+  --color-danger-400: #d83838;
+  --color-danger-600: #9c1f1f;
+  --color-danger-900: #4e0d0d;
+
+  /* ---------------------------------------------------------------------------
+     Primitive — Info (Indigo)
+     --------------------------------------------------------------------------- */
+  --color-info-50: #eef2ff;
+  --color-info-100: #d5dfff;
+  --color-info-200: #a8bdff;
+  --color-info-300: #7094ff;
+  --color-info-400: #3d64f0;
+  --color-info-600: #1e3eb5;
+  --color-info-900: #0d1f66;
+
+  /* ===========================================================================
+     Semantic — Background (Light Mode)
+     =========================================================================== */
+  --color-bg-base: var(--color-neutral-0);
+  --color-bg-subtle: var(--color-neutral-50);
+  --color-bg-muted: var(--color-neutral-100);
+  --color-bg-emphasis: var(--color-neutral-200);
+  --color-bg-inverse: var(--color-neutral-900);
+  --color-bg-overlay: rgba(20, 28, 40, 0.48);
+  /* Neutral-900 기반 알파 */
+
+  /* Semantic — Surface */
+  --color-surface-default: var(--color-neutral-0);
+  --color-surface-raised: var(--color-neutral-0);
+  --color-surface-overlay: var(--color-neutral-0);
+  --color-surface-sunken: var(--color-neutral-50);
+
+  /* ===========================================================================
+     Semantic — Text (Light Mode)
+     =========================================================================== */
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-600);
+  --color-text-tertiary: var(--color-neutral-400);
+  --color-text-disabled: var(--color-neutral-300);
+  --color-text-inverse: var(--color-neutral-0);
+  --color-text-link: var(--color-primary-400);
+  --color-text-link-hover: var(--color-primary-600);
+
+  /* ===========================================================================
+     Semantic — Border (Light Mode)
+     =========================================================================== */
+  --color-border-default: var(--color-neutral-100);
+  --color-border-subtle: var(--color-neutral-50);
+  --color-border-strong: var(--color-neutral-300);
+  --color-border-focus: var(--color-primary-400);
+  --color-border-inverse: var(--color-neutral-600);
+
+  /* ===========================================================================
+     Semantic — Interactive / Brand (Light Mode)
+     =========================================================================== */
+  --color-interactive-default: var(--color-primary-400);
+  --color-interactive-hover: var(--color-primary-300);
+  --color-interactive-active: var(--color-primary-600);
+  --color-interactive-disabled: var(--color-neutral-200);
+
+  /* ===========================================================================
+     Semantic — Status (Light Mode 공식 칩 스펙 연동)
+     =========================================================================== */
+  /* Success */
+  --color-success-bg: var(--color-success-100);
+  /* 배경 강조용 */
+  --color-success-border: var(--color-success-200);
+  --color-success-text: var(--color-success-900);
+  --color-success-icon: var(--color-success-400);
+  /* 활성 인디케이터용 */
+
+  /* Warning */
+  --color-warning-bg: var(--color-warning-100);
+  --color-warning-border: var(--color-warning-200);
+  --color-warning-text: var(--color-warning-900);
+  --color-warning-icon: var(--color-warning-400);
+
+  /* Danger */
+  --color-danger-bg: var(--color-danger-100);
+  --color-danger-border: var(--color-danger-200);
+  --color-danger-text: var(--color-danger-900);
+  --color-danger-icon: var(--color-danger-400);
+
+  /* Info */
+  --color-info-bg: var(--color-info-100);
+  --color-info-border: var(--color-info-200);
+  --color-info-text: var(--color-info-900);
+  --color-info-icon: var(--color-info-400);
+}
+
+/* =============================================================================
+   Dark Mode Context
+   ============================================================================= */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Background */
+    --color-bg-base: var(--color-neutral-950);
+    --color-bg-subtle: var(--color-neutral-900);
+    --color-bg-muted: var(--color-neutral-600);
+    --color-bg-emphasis: var(--color-neutral-400);
+    --color-bg-inverse: var(--color-neutral-0);
+
+    /* Surface */
+    --color-surface-default: var(--color-neutral-900);
+    --color-surface-raised: var(--color-neutral-600);
+    --color-surface-overlay: var(--color-neutral-600);
+    --color-surface-sunken: var(--color-neutral-950);
+
+    /* Text */
+    --color-text-primary: var(--color-neutral-50);
+    --color-text-secondary: var(--color-neutral-200);
+    --color-text-tertiary: var(--color-neutral-300);
+    --color-text-disabled: var(--color-neutral-400);
+    --color-text-inverse: var(--color-neutral-900);
+
+    /* Border */
+    --color-border-default: var(--color-neutral-600);
+    --color-border-subtle: var(--color-neutral-900);
+    --color-border-strong: var(--color-neutral-300);
+
+    /* Interactive */
+    --color-interactive-default: var(--color-primary-300);
+    --color-interactive-hover: var(--color-primary-200);
+    --color-interactive-active: var(--color-primary-400);
+
+    /* Status (Dark Mode 대응 역전 처리) */
+    --color-success-bg: var(--color-success-900);
+    --color-success-text: var(--color-success-100);
+
+    --color-warning-bg: var(--color-warning-900);
+    --color-warning-text: var(--color-warning-100);
+
+    --color-danger-bg: var(--color-danger-900);
+    --color-danger-text: var(--color-danger-100);
+
+    --color-info-bg: var(--color-info-900);
+    --color-info-text: var(--color-info-100);
+  }
+}

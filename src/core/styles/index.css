@@ -1,0 +1,29 @@
+/* =============================================================================
+  Styles — Root Index
+  로드 순서가 CSS 우선순위에 직접 영향을 미침
+  반드시 아래 순서를 유지할 것
+  ============================================================================= */
+
+/* 1. Design Tokens (CSS Custom Properties)
+      모든 레이어에서 var() 참조 가능해야 하므로 가장 먼저 로드 */
+@import './tokens/index.css';
+
+/* 2. Foundation
+      Reset → Normalize → Base → Accessibility 순서 엄수 */
+@import './foundation/reset.css';
+@import './foundation/normalize.css';
+@import './foundation/base.css';
+@import './foundation/accessibility.css';
+
+/* 3. Components */
+@import '../components/index.css';
+
+/* 4. Layouts */
+@import './layout/index.css';
+
+/* ─────────────────────────────────────────────────────────────────────────────
+  다음 레이어는 apps/business 또는 각 앱의 styles/index.css 에서 추가
+  ─────────────────────────────────────────────────────────────────────────────
+  5. Utilities   → @import "../../utils/index.css"
+  6. Themes      → @import "../../themes/index.css"  (다크모드 class-based 전환 등)
+  ───────────────────────────────────────────────────────────────────────────── */

@@ -1,0 +1,142 @@
+/* =============================================================================
+  Motion Tokens
+  - Duration
+  - Easing (Cubic Bezier)
+  - Semantic Transitions
+  - prefers-reduced-motion 지원
+  ============================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------------------
+    Duration — Primitive
+    --------------------------------------------------------------------------- */
+  --duration-instant:    0ms;
+  --duration-75:        75ms;
+  --duration-100:      100ms;
+  --duration-150:      150ms;
+  --duration-200:      200ms;
+  --duration-300:      300ms;
+  --duration-400:      400ms;
+  --duration-500:      500ms;
+  --duration-700:      700ms;
+  --duration-1000:    1000ms;
+
+  /* ---------------------------------------------------------------------------
+    Easing — Primitive (cubic-bezier)
+    --------------------------------------------------------------------------- */
+
+  /* Linear */
+  --ease-linear: linear;
+
+  /* Standard — 자연스러운 가속/감속 (대부분의 UI 전환) */
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Emphasized — Material You 스타일, 강조된 움직임 */
+  --ease-emphasized:         cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized-decel:   cubic-bezier(0.05, 0.7, 0.1, 1);
+  --ease-emphasized-accel:   cubic-bezier(0.3, 0, 0.8, 0.15);
+
+  /* Spring-like — 약간의 탄성 */
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-bounce:   cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* ===========================================================================
+    Semantic — Transition Presets
+    용도별로 조합된 shorthand (property duration easing)
+    =========================================================================== */
+
+  /* 즉각 반응이 필요한 인터랙션 (버튼 색상, 아이콘 변경) */
+  --transition-instant:
+    all var(--duration-100) var(--ease-out);
+
+  /* 색상·배경 전환 (호버, 포커스, 활성화) */
+  --transition-color:
+    color          var(--duration-150) var(--ease-out),
+    background-color var(--duration-150) var(--ease-out),
+    border-color   var(--duration-150) var(--ease-out),
+    fill           var(--duration-150) var(--ease-out),
+    stroke         var(--duration-150) var(--ease-out);
+
+  /* 불투명도 전환 (페이드 인/아웃) */
+  --transition-opacity:
+    opacity var(--duration-200) var(--ease-in-out);
+
+  /* 크기·위치 전환 (확장, 축소, 슬라이드) */
+  --transition-transform:
+    transform var(--duration-200) var(--ease-out);
+
+  /* 그림자 전환 (카드 호버) */
+  --transition-shadow:
+    box-shadow var(--duration-200) var(--ease-out);
+
+  /* 범용 — 색상 + 그림자 묶음 */
+  --transition-base:
+    color            var(--duration-150) var(--ease-out),
+    background-color var(--duration-150) var(--ease-out),
+    border-color     var(--duration-150) var(--ease-out),
+    box-shadow       var(--duration-150) var(--ease-out),
+    opacity          var(--duration-150) var(--ease-out);
+
+  /* 모달·시트 오버레이 (진입/퇴장) */
+  --transition-overlay:
+    opacity   var(--duration-300) var(--ease-in-out),
+    transform var(--duration-300) var(--ease-emphasized-decel);
+
+  /* 드로어·사이드패널 슬라이드 */
+  --transition-slide:
+    transform var(--duration-400) var(--ease-emphasized);
+
+  /* 아코디언·확장 패널 높이 변화 */
+  --transition-expand:
+    max-height var(--duration-300) var(--ease-out),
+    opacity    var(--duration-200) var(--ease-out);
+
+  /* 툴팁·팝오버 나타남 */
+  --transition-tooltip:
+    opacity   var(--duration-150) var(--ease-out),
+    transform var(--duration-150) var(--ease-out);
+
+  /* ===========================================================================
+    Semantic — Duration Aliases
+    =========================================================================== */
+  --duration-fast:    var(--duration-150);
+  --duration-normal:  var(--duration-200);
+  --duration-slow:    var(--duration-300);
+  --duration-slower:  var(--duration-500);
+}
+
+/* =============================================================================
+  prefers-reduced-motion
+  모든 애니메이션·전환을 즉시 적용으로 오버라이드
+  ============================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-75:     0ms;
+    --duration-100:    0ms;
+    --duration-150:    0ms;
+    --duration-200:    0ms;
+    --duration-300:    0ms;
+    --duration-400:    0ms;
+    --duration-500:    0ms;
+    --duration-700:    0ms;
+    --duration-1000:   0ms;
+
+    --duration-fast:   0ms;
+    --duration-normal: 0ms;
+    --duration-slow:   0ms;
+    --duration-slower: 0ms;
+
+    --transition-instant:  none;
+    --transition-color:    none;
+    --transition-opacity:  none;
+    --transition-transform:none;
+    --transition-shadow:   none;
+    --transition-base:     none;
+    --transition-overlay:  none;
+    --transition-slide:    none;
+    --transition-expand:   none;
+    --transition-tooltip:  none;
+  }
+}

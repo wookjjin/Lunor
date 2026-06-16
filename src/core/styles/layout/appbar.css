@@ -1,0 +1,17 @@
+/* =============================================================================
+   Layout — Top App Bar
+   메인 뷰포트 상단 앱 바 레이아웃 구역
+   ============================================================================= */
+
+.layout-top-appbar {
+  height: 4rem; /* 64px */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  flex-shrink: 0;
+  background-color: rgba(15, 21, 36, 0.6);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(125, 211, 252, 0.1);
+}

@@ -1,0 +1,22 @@
+/* =============================================================================
+   Layout — Custom Scrollbar Design
+   스크롤바 디자인 매핑 및 숨김 유틸
+   ============================================================================= */
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(125, 211, 252, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* 스크롤은 지원하되 인터페이스 감춤 전용 클래스 */
+}

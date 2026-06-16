@@ -1,0 +1,15 @@
+/* =============================================================================
+   Layout — Icon Font Binding Optimization
+   Material Symbols 아이콘 폰트 바인딩 최적화
+   ============================================================================= */
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+  font-size: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}

@@ -1,0 +1,24 @@
+/* =============================================================================
+   Layout — Global Reset & Typography Defaults
+   html/body 글로벌 레이아웃 리셋 및 타이포그래피 기본값
+   ============================================================================= */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg-base, #0a0e1a);
+  color: var(--color-text-primary, #e0e8f0);
+  overflow: hidden;
+  display: flex;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}

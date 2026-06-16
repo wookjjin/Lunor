@@ -1,0 +1,134 @@
+/* =============================================================================
+  Reset
+  Modern CSS Reset — 브라우저 기본 스타일 초기화
+  Ref: Josh W. Comeau's reset + Andy Bell's reset 조합
+  ============================================================================= */
+
+/* 1. Box-sizing 전역 설정 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. 기본 여백 제거 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. HTML & Body 기본 설정 */
+html {
+  /* 텍스트 크기 자동 조정 방지 (iOS Safari) */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  /* 스크롤 동작 */
+  scroll-behavior: smooth;
+
+  /* 탭 크기 (코드 블록) */
+  tab-size: 4;
+}
+
+body {
+  /* 최소 높이 */
+  min-height: 100dvh;
+
+  /* 텍스트 렌더링 최적화 */
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* 기본 서체는 base.css 토큰에서 설정 */
+}
+
+/* 4. 미디어 요소 — 블록 레벨 + 반응형 기본값 */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 5. 폼 요소 서체 상속 */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 6. p, h1–h6 — 줄 바꿈 처리 */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 7. 리스트 스타일 제거 (role="list" 사용 시 접근성 유지) */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* 8. 앵커 — 색상 초기화 (컴포넌트 레이어에서 재정의) */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 9. HR */
+hr {
+  border: none;
+  border-top: 1px solid;
+  color: inherit;
+}
+
+/* 10. 테이블 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 11. 버튼 초기화 */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  appearance: none;
+}
+
+/* 12. 숨겨진 요소 */
+[hidden] {
+  display: none !important;
+}
+
+/* 13. 줄임표 유틸 (선택적) */
+[data-truncate] {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 14. prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
