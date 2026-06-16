@@ -1,17 +1,167 @@
 import type { ReactNode } from 'react'
+import { useState } from 'react'
 
 /* =============================================================================
-   PropertiesPanel — 확장 가능한 속성 패널 컴포넌트
-   - children을 통해 외부에서 콘텐츠 주입 가능
-   - 기본 상태: 플레이스홀더 메시지 표시
-   - 추후: Context API 또는 URL 파라미터로 선택된 컴포넌트의 props 문서 렌더링
+   PropertiesPanel — 속성 패널 컴포넌트
+   Props / Tokens / Code 탭 + Properties 컨트롤 + Design Tokens 카드 + Pro Tip
    ============================================================================= */
+
+type PanelTab = 'props' | 'tokens' | 'code'
+
+function TabIcon({ tab }: { tab: PanelTab }) {
+  switch (tab) {
+    case 'props':
+      return <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>settings_input_component</span>
+    case 'tokens':
+      return <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>currency_exchange</span>
+    case 'code':
+      return <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>code</span>
+  }
+}
+
+function ToggleGroup({ options, activeIndex }: { options: string[], activeIndex: number }) {
+  return (
+    <div className="props-toggle-group">
+      {options.map((opt, i) => (
+        <button
+          key={opt}
+          type="button"
+          className={`props-toggle-btn${i === activeIndex ? ' props-toggle-btn--active' : ''}`}
+        >
+          {opt}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function TokenCard({ color, name, value, isRadius }: {
+  color?: string
+  name: string
+  value: string
+  isRadius?: boolean
+}) {
+  return (
+    <div className="props-token-card">
+      <div className="props-token-swatch-wrapper">
+        {isRadius
+          ? (
+              <div className="props-token-swatch--radius">
+                <div className="props-token-swatch--radius-inner" />
+              </div>
+            )
+          : (
+              <div
+                className="props-token-swatch"
+                style={{ backgroundColor: color }}
+              />
+            )}
+      </div>
+      <div className="props-token-info">
+        <span className="props-token-name">{name}</span>
+        <span className="props-token-value">{value}</span>
+      </div>
+    </div>
+  )
+}
+
+function PropsContent() {
+  return (
+    <>
+      {/* Properties */}
+      <div className="props-section">
+        <h3 className="props-section-heading">Properties</h3>
+        <div className="props-section-body">
+          <div className="props-row">
+            <label className="props-label">variant</label>
+            <ToggleGroup options={['primary', 'secondary', 'ghost']} activeIndex={0} />
+          </div>
+          <div className="props-row">
+            <label className="props-label">size</label>
+            <ToggleGroup options={['sm', 'md', 'lg']} activeIndex={1} />
+          </div>
+          <div className="props-row">
+            <label className="props-label">disabled</label>
+            <ToggleGroup options={['false', 'true']} activeIndex={0} />
+          </div>
+        </div>
+      </div>
+
+      {/* Design Tokens */}
+      <div className="props-section">
+        <h3 className="props-section-heading">Design Tokens</h3>
+        <div className="props-section-body">
+          <TokenCard color="#7dd3fc" name="--color-interactive-default" value="#7dd3fc" />
+          <TokenCard color="rgba(14,77,110,0.4)" name="--color-interactive-hover" value="#0e4d6e" />
+          <TokenCard name="--radius-button-md" value="0.5rem (8px)" isRadius />
+        </div>
+      </div>
+
+      {/* Pro Tip */}
+      <div className="props-protip glacier-glass-elevated">
+        <h4 className="props-protip-heading">Pro Tip</h4>
+        <p className="props-protip-text">
+          Use
+          {' '}
+          <code className="props-protip-code">cmd + shift + c</code>
+          {' '}
+          to copy the current button state's JSX code directly to your clipboard.
+        </p>
+      </div>
+    </>
+  )
+}
 
 export interface PropertiesPanelProps {
   children?: ReactNode
 }
 
-function DefaultPlaceholder() {
+export default function PropertiesPanel({ children }: PropertiesPanelProps) {
+  const [activeTab, setActiveTab] = useState<PanelTab>('props')
+
+  const tabs: { key: PanelTab, label: string }[] = [
+    { key: 'props', label: 'Props' },
+    { key: 'tokens', label: 'Tokens' },
+    { key: 'code', label: 'Code' },
+  ]
+
+  return (
+    <aside className="layout-properties-panel glacier-glass scrollbar-hide">
+      {/* Panel Tabs */}
+      <div className="props-tabs">
+        {tabs.map(tab => (
+          <button
+            key={tab.key}
+            type="button"
+            className={`props-tab${activeTab === tab.key ? ' props-tab--active' : ''}`}
+            onClick={() => setActiveTab(tab.key)}
+          >
+            <TabIcon tab={tab.key} />
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Panel Content */}
+      <div className="props-content">
+        {children ?? (
+          activeTab === 'props'
+            ? <PropsContent />
+            : (
+                <DefaultPlaceholder tab={activeTab} />
+              )
+        )}
+      </div>
+    </aside>
+  )
+}
+
+function DefaultPlaceholder({ tab }: { tab: PanelTab }) {
+  const labels: Record<PanelTab, string> = {
+    props: 'Properties',
+    tokens: 'Tokens',
+    code: 'Code',
+  }
   return (
     <div style={{
       display: 'flex',
@@ -24,22 +174,11 @@ function DefaultPlaceholder() {
       padding: '2rem',
     }}
     >
-      <span className="material-symbols-outlined" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>
-        tune
-      </span>
       <p style={{ fontSize: '0.875rem', lineHeight: 1.5 }}>
-        컴포넌트를 선택하면
-        <br />
-        속성이 여기에 표시됩니다
+        {labels[tab]}
+        {' '}
+        content coming soon.
       </p>
     </div>
-  )
-}
-
-export default function PropertiesPanel({ children }: PropertiesPanelProps) {
-  return (
-    <aside className="layout-properties-panel glacier-glass scrollbar-hide">
-      {children ?? <DefaultPlaceholder />}
-    </aside>
   )
 }

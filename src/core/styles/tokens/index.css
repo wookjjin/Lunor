@@ -3,23 +3,26 @@
   로드 순서: 의존성 없는 것부터 → 의존하는 것 순
   ============================================================================= */
 
+/* 0. Font Face (가장 먼저 로드되어야 폰트 사용 가능) */
+@import './font-face.css';
+
 /* 1. Primitive + Semantic Color */
-@import "./color.css";
+@import './color.css';
 
 /* 2. Typography (font-size, weight, line-height, letter-spacing) */
-@import "./typography.css";
+@import './typography.css';
 
 /* 3. Spacing (4px grid scale + semantic layout) */
-@import "./spacing.css";
+@import './spacing.css';
 
 /* 4. Border Radius */
-@import "./radius.css";
+@import './radius.css';
 
 /* 5. Shadow / Elevation */
-@import "./shadow.css";
+@import './shadow.css';
 
 /* 6. Motion / Animation */
-@import "./motion.css";
+@import './motion.css';
 
 /* 7. Z-Index */
-@import "./z-index.css";
+@import './z-index.css';

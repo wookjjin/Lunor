@@ -1,6 +1,7 @@
 /* =============================================================================
    Layout — Top App Bar
    메인 뷰포트 상단 앱 바 레이아웃 구역
+   Breadcrumb + Nav Tabs + Action Icons
    ============================================================================= */
 
 .layout-top-appbar {
@@ -13,5 +14,103 @@
   flex-shrink: 0;
   background-color: rgba(15, 21, 36, 0.6);
   backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(125, 211, 252, 0.1);
+}
+
+/* ── Breadcrumb ── */
+.appbar-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.appbar-breadcrumb-segment {
+  color: var(--color-text-tertiary, #8b9bb0);
+}
+
+.appbar-breadcrumb-separator {
+  color: rgba(160, 180, 196, 0.3);
+}
+
+.appbar-breadcrumb-current {
+  color: var(--color-interactive-default, #7dd3fc);
+  font-weight: 600;
+}
+
+/* ── Nav Tabs ── */
+.appbar-tabs {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.appbar-tab {
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-tertiary, #8b9bb0);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s;
+  cursor: pointer;
+}
+
+.appbar-tab:hover {
+  color: var(--color-text-primary, #e0e8f0);
+}
+
+.appbar-tab--active {
+  color: var(--color-interactive-default, #7dd3fc);
+  border-bottom-color: var(--color-interactive-default, #7dd3fc);
+  font-weight: 500;
+}
+
+/* ── Actions ── */
+.appbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.appbar-action-btn {
+  padding: 0.5rem;
+  color: var(--color-text-tertiary, #8b9bb0);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    opacity 0.15s;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.appbar-action-btn:hover {
+  color: var(--color-interactive-default, #7dd3fc);
+  opacity: 1;
+}
+
+.appbar-action-btn .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.appbar-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 1px solid rgba(74, 96, 112, 0.3);
+  margin-left: 0.5rem;
+}
+
+.appbar-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

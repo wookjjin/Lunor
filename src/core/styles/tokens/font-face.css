@@ -1,0 +1,95 @@
+/* =============================================================================
+   Font Face — Pretendard Static Weights
+   로컬 프리텐다드 폰트 woff2/woff 선언 (100~900)
+   woff2를 우선 로드하고 woff를 fallback으로 제공
+   ============================================================================= */
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/src/core/shared/assets/fonts/pretendard/100.woff2') format('woff2'),
+    url('/src/core/shared/assets/fonts/pretendard/100.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/src/core/shared/assets/fonts/pretendard/200.woff2') format('woff2'),
+    url('/src/core/shared/assets/fonts/pretendard/200.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/src/core/shared/assets/fonts/pretendard/300.woff2') format('woff2'),
+    url('/src/core/shared/assets/fonts/pretendard/300.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/src/core/shared/assets/fonts/pretendard/400.woff2') format('woff2'),
+    url('/src/core/shared/assets/fonts/pretendard/400.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/src/core/shared/assets/fonts/pretendard/500.woff2') format('woff2'),
+    url('/src/core/shared/assets/fonts/pretendard/500.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/src/core/shared/assets/fonts/pretendard/600.woff2') format('woff2'),
+    url('/src/core/shared/assets/fonts/pretendard/600.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/src/core/shared/assets/fonts/pretendard/700.woff2') format('woff2'),
+    url('/src/core/shared/assets/fonts/pretendard/700.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/src/core/shared/assets/fonts/pretendard/800.woff2') format('woff2'),
+    url('/src/core/shared/assets/fonts/pretendard/800.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('/src/core/shared/assets/fonts/pretendard/900.woff2') format('woff2'),
+    url('/src/core/shared/assets/fonts/pretendard/900.woff') format('woff');
+}
