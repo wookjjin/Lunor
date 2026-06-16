@@ -1,5 +1,9 @@
+import type { PlaygroundOutletContext } from './ComponentPlaygroundContext'
+import { useCallback, useRef, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router'
+import { defaultPropsMap, getComponentType } from './ComponentPlaygroundContext'
 import PropertiesPanel from './PropertiesPanel'
+import PropsControls from './PropsControls'
 import { sidebarNavGroups } from './sidebarNav'
 
 /* =============================================================================
@@ -19,6 +23,30 @@ function getBreadcrumbLabel(pathname: string): string {
 export default function ComponentsShell() {
   const location = useLocation()
   const currentLabel = getBreadcrumbLabel(location.pathname)
+  const componentType = getComponentType(location.pathname)
+
+  // 컴포넌트별 Playground Props 상태 관리
+  const [propsState, setPropsState] = useState<Record<string, unknown>>(
+    () => defaultPropsMap[componentType] ?? {},
+  )
+
+  // 경로 변경 시 기본값으로 리셋
+  const prevTypeRef = useRef(componentType)
+  if (componentType !== prevTypeRef.current) {
+    prevTypeRef.current = componentType
+    setPropsState(defaultPropsMap[componentType] ?? {})
+  }
+
+  const setProp = useCallback((key: string, value: unknown) => {
+    setPropsState(prev => ({ ...prev, [key]: value }))
+  }, [])
+
+  // Outlet Context로 Canvas 페이지에 props 전달
+  const outletContext: PlaygroundOutletContext = {
+    props: propsState,
+    setProp,
+    componentType,
+  }
 
   return (
     <div className="layout-shell">
@@ -128,7 +156,7 @@ export default function ComponentsShell() {
         {/* ── Workspace: Canvas + Properties Panel ── */}
         <div className="layout-workspace">
           <div className="layout-canvas-area canvas-dots">
-            <Outlet />
+            <Outlet context={outletContext} />
             {/* Floating Control Hint */}
             <div className="canvas-floating-hint">
               <div className="canvas-floating-hint-item">
@@ -142,7 +170,9 @@ export default function ComponentsShell() {
               </div>
             </div>
           </div>
-          <PropertiesPanel />
+          <PropertiesPanel>
+            <PropsControls props={propsState} setProp={setProp} componentType={componentType} />
+          </PropertiesPanel>
         </div>
       </main>
     </div>

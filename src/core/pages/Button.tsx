@@ -1,17 +1,24 @@
 import { Button } from '@/core/components/Button/Button'
+import { usePlaygroundContext } from '@/core/layout/ComponentPlaygroundContext'
 
 export default function ButtonPage() {
+  const { props } = usePlaygroundContext()
+  const variant = (props.variant ?? 'solid') as 'solid' | 'outline' | 'ghost' | 'danger'
+  const size = (props.size ?? 'md') as 'sm' | 'md' | 'lg'
+  const fullWidth = Boolean(props.fullWidth)
+  const disabled = Boolean(props.disabled)
+  const children = (props.children ?? 'Button') as string
+
   return (
-    <div>
-      <h1>Button Examples</h1>
-      <Button>저장</Button>
-      <Button variant="outline">취소</Button>
-      <Button variant="ghost">더보기</Button>
-      <Button variant="danger">삭제</Button>
-      <Button size="sm">이전</Button>
-      <Button size="lg">회원가입</Button>
-      <Button fullWidth>로그인</Button>
-      <Button disabled>처리중...</Button>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
+      <Button
+        variant={variant}
+        size={size}
+        fullWidth={fullWidth}
+        disabled={disabled}
+      >
+        {children}
+      </Button>
     </div>
   )
 }

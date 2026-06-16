@@ -65,53 +65,6 @@ function TokenCard({ color, name, value, isRadius }: {
   )
 }
 
-function PropsContent() {
-  return (
-    <>
-      {/* Properties */}
-      <div className="props-section">
-        <h3 className="props-section-heading">Properties</h3>
-        <div className="props-section-body">
-          <div className="props-row">
-            <label className="props-label">variant</label>
-            <ToggleGroup options={['primary', 'secondary', 'ghost']} activeIndex={0} />
-          </div>
-          <div className="props-row">
-            <label className="props-label">size</label>
-            <ToggleGroup options={['sm', 'md', 'lg']} activeIndex={1} />
-          </div>
-          <div className="props-row">
-            <label className="props-label">disabled</label>
-            <ToggleGroup options={['false', 'true']} activeIndex={0} />
-          </div>
-        </div>
-      </div>
-
-      {/* Design Tokens */}
-      <div className="props-section">
-        <h3 className="props-section-heading">Design Tokens</h3>
-        <div className="props-section-body">
-          <TokenCard color="#7dd3fc" name="--color-interactive-default" value="#7dd3fc" />
-          <TokenCard color="rgba(14,77,110,0.4)" name="--color-interactive-hover" value="#0e4d6e" />
-          <TokenCard name="--radius-button-md" value="0.5rem (8px)" isRadius />
-        </div>
-      </div>
-
-      {/* Pro Tip */}
-      <div className="props-protip glacier-glass-elevated">
-        <h4 className="props-protip-heading">Pro Tip</h4>
-        <p className="props-protip-text">
-          Use
-          {' '}
-          <code className="props-protip-code">cmd + shift + c</code>
-          {' '}
-          to copy the current button state's JSX code directly to your clipboard.
-        </p>
-      </div>
-    </>
-  )
-}
-
 export interface PropertiesPanelProps {
   children?: ReactNode
 }
@@ -124,6 +77,17 @@ export default function PropertiesPanel({ children }: PropertiesPanelProps) {
     { key: 'tokens', label: 'Tokens' },
     { key: 'code', label: 'Code' },
   ]
+
+  function renderContent() {
+    switch (activeTab) {
+      case 'props':
+        return children ?? <DefaultPlaceholder tab="props" />
+      case 'tokens':
+        return <TokensContent />
+      case 'code':
+        return <DefaultPlaceholder tab="code" />
+    }
+  }
 
   return (
     <aside className="layout-properties-panel glacier-glass scrollbar-hide">
@@ -144,15 +108,25 @@ export default function PropertiesPanel({ children }: PropertiesPanelProps) {
 
       {/* Panel Content */}
       <div className="props-content">
-        {children ?? (
-          activeTab === 'props'
-            ? <PropsContent />
-            : (
-                <DefaultPlaceholder tab={activeTab} />
-              )
-        )}
+        {renderContent()}
       </div>
     </aside>
+  )
+}
+
+function TokensContent() {
+  return (
+    <>
+      {/* Design Tokens */}
+      <div className="props-section">
+        <h3 className="props-section-heading">Design Tokens</h3>
+        <div className="props-section-body">
+          <TokenCard color="#7dd3fc" name="--color-interactive-default" value="#7dd3fc" />
+          <TokenCard color="rgba(14,77,110,0.4)" name="--color-interactive-hover" value="#0e4d6e" />
+          <TokenCard name="--radius-button-md" value="0.5rem (8px)" isRadius />
+        </div>
+      </div>
+    </>
   )
 }
 
