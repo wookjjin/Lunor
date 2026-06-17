@@ -67,6 +67,11 @@ export const sidebarNavGroups: NavGroup[] = [
         path: '/components/table',
         icon: 'table',
       },
+      {
+        label: 'Dropdown',
+        path: '/components/dropdown',
+        icon: 'arrow_drop_down',
+      },
     ],
   },
   {
@@ -81,6 +86,11 @@ export const sidebarNavGroups: NavGroup[] = [
         label: 'Alert',
         path: '/components/alert',
         icon: 'warning',
+      },
+      {
+        label: 'Dialog',
+        path: '/components/dialog',
+        icon: 'chat_bubble',
       },
     ],
   },

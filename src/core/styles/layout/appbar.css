@@ -12,10 +12,10 @@
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   flex-shrink: 0;
-  background-color: rgba(15, 21, 36, 0.6);
+  background-color: var(--color-bg-glass-default);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(125, 211, 252, 0.1);
+  border-bottom: 1px solid var(--color-primary-glow-subtle);
 }
 
 /* ── Breadcrumb ── */
@@ -27,15 +27,15 @@
 }
 
 .appbar-breadcrumb-segment {
-  color: var(--color-text-tertiary, #8b9bb0);
+  color: var(--color-text-tertiary);
 }
 
 .appbar-breadcrumb-separator {
-  color: rgba(160, 180, 196, 0.3);
+  color: var(--color-text-tertiary-alpha);
 }
 
 .appbar-breadcrumb-current {
-  color: var(--color-interactive-default, #7dd3fc);
+  color: var(--color-interactive-default);
   font-weight: 600;
 }
 
@@ -52,7 +52,7 @@
   margin-top: 1rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-text-tertiary, #8b9bb0);
+  color: var(--color-text-tertiary);
   text-decoration: none;
   border-bottom: 2px solid transparent;
   transition: color 0.15s;
@@ -60,12 +60,12 @@
 }
 
 .appbar-tab:hover {
-  color: var(--color-text-primary, #e0e8f0);
+  color: var(--color-text-primary);
 }
 
 .appbar-tab--active {
-  color: var(--color-interactive-default, #7dd3fc);
-  border-bottom-color: var(--color-interactive-default, #7dd3fc);
+  color: var(--color-interactive-default);
+  border-bottom-color: var(--color-interactive-default);
   font-weight: 500;
 }
 
@@ -78,7 +78,7 @@
 
 .appbar-action-btn {
   padding: 0.5rem;
-  color: var(--color-text-tertiary, #8b9bb0);
+  color: var(--color-text-tertiary);
   background: none;
   border: none;
   cursor: pointer;
@@ -92,7 +92,7 @@
 }
 
 .appbar-action-btn:hover {
-  color: var(--color-interactive-default, #7dd3fc);
+  color: var(--color-interactive-default);
   opacity: 1;
 }
 
@@ -105,7 +105,7 @@
   height: 2rem;
   border-radius: 9999px;
   overflow: hidden;
-  border: 1px solid rgba(74, 96, 112, 0.3);
+  border: 1px solid var(--color-border-muted-alpha);
   margin-left: 0.5rem;
 }
 

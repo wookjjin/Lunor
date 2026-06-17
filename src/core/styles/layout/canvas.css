@@ -4,6 +4,6 @@
    ============================================================================= */
 
 .canvas-dots {
-  background-image: radial-gradient(rgba(125, 211, 252, 0.1) 1px, transparent 1px);
+  background-image: radial-gradient(var(--color-primary-glow-subtle) 1px, transparent 1px);
   background-size: 24px 24px;
 }

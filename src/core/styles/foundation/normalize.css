@@ -54,8 +54,8 @@ dfn {
 }
 
 mark {
-  background: #ff0;
-  color: #000;
+  background: var(--color-warning-100);
+  color: var(--color-text-inverse);
 }
 
 small {
@@ -169,7 +169,7 @@ summary::-webkit-details-marker {
 /* 9. 스크롤바 정규화 (Firefox) */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-border-strong, #ced4da) var(--color-bg-subtle, #f8f9fa);
+  scrollbar-color: var(--color-border-strong) var(--color-bg-subtle);
 }
 
 /* Webkit 스크롤바 */
@@ -179,15 +179,15 @@ summary::-webkit-details-marker {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg-subtle, #f8f9fa);
+  background: var(--color-bg-subtle);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border-strong, #ced4da);
+  background: var(--color-border-strong);
   border-radius: var(--radius-full, 9999px);
-  border: 2px solid var(--color-bg-subtle, #f8f9fa);
+  border: 2px solid var(--color-bg-subtle);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-border-focus, #3470f5);
+  background: var(--color-interactive-default);
 }

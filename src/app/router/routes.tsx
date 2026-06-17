@@ -25,6 +25,20 @@ const router = createBrowserRouter([
           return { Component }
         },
       },
+      {
+        path: 'dialog',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Dialog')
+          return { Component }
+        },
+      },
+      {
+        path: 'dropdown',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Dropdown')
+          return { Component }
+        },
+      },
     ],
   },
 ])

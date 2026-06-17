@@ -14,83 +14,62 @@
   --shadow-none: none;
 
   /* elevation-1 : 카드, 드롭다운 기본 상태 */
-  --shadow-xs:
-    0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 
   /* elevation-2 : 호버된 카드, 패널 */
-  --shadow-sm:
-    0 1px 3px 0 rgba(0, 0, 0, 0.10),
-    0 1px 2px -1px rgba(0, 0, 0, 0.10);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 
   /* elevation-3 : 드롭다운, 팝오버 */
-  --shadow-md:
-    0 4px 6px -1px rgba(0, 0, 0, 0.10),
-    0 2px 4px -2px rgba(0, 0, 0, 0.10);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 
   /* elevation-4 : 모달, 다이얼로그 */
-  --shadow-lg:
-    0 10px 15px -3px rgba(0, 0, 0, 0.10),
-    0 4px 6px -4px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 
   /* elevation-5 : 사이드 패널, 드로어 */
-  --shadow-xl:
-    0 20px 25px -5px rgba(0, 0, 0, 0.10),
-    0 8px 10px -6px rgba(0, 0, 0, 0.10);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 
   /* elevation-6 : 풀스크린 오버레이 위에 뜨는 요소 */
-  --shadow-2xl:
-    0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
   /* ---------------------------------------------------------------------------
     Inner Shadow (Inset)
     --------------------------------------------------------------------------- */
-  --shadow-inner-sm:
-    inset 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-inner-sm: inset 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 
-  --shadow-inner-md:
-    inset 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+  --shadow-inner-md: inset 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 
-  --shadow-inner-lg:
-    inset 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+  --shadow-inner-lg: inset 0 4px 8px 0 rgba(0, 0, 0, 0.15);
 
   /* ---------------------------------------------------------------------------
     Focus Ring — 접근성 필수
     --------------------------------------------------------------------------- */
-  --shadow-focus-primary:
-    0 0 0 3px rgba(26, 86, 219, 0.40);     /* primary-500 @ 40% */
+  --shadow-focus-primary: 0 0 0 3px rgba(125, 211, 252, 0.4); /* primary-100 @ 40% */
 
-  --shadow-focus-danger:
-    0 0 0 3px rgba(240, 62, 62, 0.40);     /* danger-500  @ 40% */
+  --shadow-focus-danger: 0 0 0 3px rgba(255, 107, 107, 0.4); /* danger-500  @ 40% */
 
-  --shadow-focus-success:
-    0 0 0 3px rgba(43, 138, 62, 0.40);     /* success-500 @ 40% */
+  --shadow-focus-success: 0 0 0 3px rgba(125, 220, 171, 0.4); /* success-200 @ 40% */
 
-  --shadow-focus-neutral:
-    0 0 0 3px rgba(134, 142, 150, 0.40);   /* gray-600    @ 40% */
+  --shadow-focus-neutral: 0 0 0 3px rgba(74, 96, 112, 0.4); /* neutral-200 @ 40% */
 
   /* ---------------------------------------------------------------------------
     Colored / Tinted Shadows (강조 컴포넌트용)
     --------------------------------------------------------------------------- */
-  --shadow-primary-sm:
-    0 1px 3px 0  rgba(26, 86, 219, 0.20),
-    0 1px 2px -1px rgba(26, 86, 219, 0.20);
+  --shadow-primary-sm: 0 1px 3px 0 rgba(125, 211, 252, 0.2), 0 1px 2px -1px rgba(125, 211, 252, 0.2);
 
-  --shadow-primary-md:
-    0 4px 6px -1px rgba(26, 86, 219, 0.20),
-    0 2px 4px -2px rgba(26, 86, 219, 0.20);
+  --shadow-primary-md: 0 4px 6px -1px rgba(125, 211, 252, 0.2), 0 2px 4px -2px rgba(125, 211, 252, 0.2);
 
   /* ===========================================================================
     Semantic — Component Aliases
     =========================================================================== */
-  --shadow-card:      var(--shadow-sm);
-  --shadow-card-hover:var(--shadow-md);
-  --shadow-dropdown:  var(--shadow-md);
-  --shadow-popover:   var(--shadow-lg);
-  --shadow-modal:     var(--shadow-xl);
-  --shadow-drawer:    var(--shadow-2xl);
-  --shadow-toast:     var(--shadow-lg);
-  --shadow-button:    var(--shadow-xs);
-  --shadow-input:     var(--shadow-inner-sm);
+  --shadow-card: var(--shadow-sm);
+  --shadow-card-hover: var(--shadow-md);
+  --shadow-dropdown: var(--shadow-md);
+  --shadow-popover: var(--shadow-lg);
+  --shadow-modal: var(--shadow-xl);
+  --shadow-drawer: var(--shadow-2xl);
+  --shadow-toast: var(--shadow-lg);
+  --shadow-button: var(--shadow-xs);
+  --shadow-input: var(--shadow-inner-sm);
 }
 
 /* =============================================================================
@@ -99,26 +78,16 @@
    ============================================================================= */
 @media (prefers-color-scheme: dark) {
   :root {
-    --shadow-xs:
-      0 1px 2px 0 rgba(0, 0, 0, 0.30);
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
 
-    --shadow-sm:
-      0 1px 3px 0 rgba(0, 0, 0, 0.40),
-      0 1px 2px -1px rgba(0, 0, 0, 0.40);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
 
-    --shadow-md:
-      0 4px 6px -1px rgba(0, 0, 0, 0.40),
-      0 2px 4px -2px rgba(0, 0, 0, 0.40);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
 
-    --shadow-lg:
-      0 10px 15px -3px rgba(0, 0, 0, 0.50),
-      0 4px 6px -4px rgba(0, 0, 0, 0.40);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
 
-    --shadow-xl:
-      0 20px 25px -5px rgba(0, 0, 0, 0.55),
-      0 8px 10px -6px rgba(0, 0, 0, 0.40);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.55), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
 
-    --shadow-2xl:
-      0 25px 50px -12px rgba(0, 0, 0, 0.70);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
   }
 }

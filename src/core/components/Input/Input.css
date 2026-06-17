@@ -69,15 +69,15 @@
 
 /* Invalid */
 .input--invalid {
-  border-color: var(--color-danger-500);
+  border-color: var(--color-danger-border);
 }
 
 .input--invalid:focus {
-  border-color: var(--color-danger-500);
+  border-color: var(--color-danger-border);
 }
 
 .input--invalid:focus-visible {
-  outline-color: var(--color-danger-500);
+  outline-color: var(--color-danger-border);
 }
 
 /* Size */

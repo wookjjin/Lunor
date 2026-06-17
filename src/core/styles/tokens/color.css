@@ -79,6 +79,10 @@
   /* error */
   --color-danger-200: #3d1414;
   /* error-container */
+  --color-danger-500: #ff6b6b;
+  /* danger 메인 (인터랙티브 배경·보더) */
+  --color-danger-600: #e05555;
+  /* danger hover */
   --color-danger-900: #1a0000;
   /* on-error */
 
@@ -113,6 +117,9 @@
   --color-bg-inverse: var(--color-neutral-0);
   /* #ffffff */
   --color-bg-overlay: rgba(15, 21, 36, 0.48);
+  --color-bg-overlay-strong: rgba(15, 21, 36, 0.5);
+  --color-bg-glass-default: rgba(15, 21, 36, 0.6);
+  --color-bg-glass-elevated: rgba(15, 21, 36, 0.75);
 
   /* Semantic — Surface */
   --color-surface-default: var(--color-neutral-900);
@@ -147,6 +154,14 @@
 
   --color-border-inverse: var(--color-neutral-0);
 
+  /* ---------------------------------------------------------------------------
+     Semantic — Border Alpha (Neutral-200 기반 반투명 보더)
+     --------------------------------------------------------------------------- */
+  --color-border-hairline: rgba(74, 96, 112, 0.1);
+  --color-border-subtle-alpha: rgba(74, 96, 112, 0.2);
+  --color-border-muted-alpha: rgba(74, 96, 112, 0.3);
+  --color-border-strong-alpha: rgba(74, 96, 112, 0.5);
+
   /* ===========================================================================
      Semantic — Interactive / Brand (Dark Mode 기본)
      =========================================================================== */
@@ -157,6 +172,33 @@
   --color-interactive-active: var(--color-primary-200);
   /* #0e4d6e */
   --color-interactive-disabled: var(--color-neutral-300);
+
+  /* ---------------------------------------------------------------------------
+     Semantic — Primary Glow (Primary-100 기반 반투명 글로우 효과)
+     --------------------------------------------------------------------------- */
+  --color-primary-glow-subtle: rgba(125, 211, 252, 0.1);
+  --color-primary-glow-default: rgba(125, 211, 252, 0.15);
+  --color-primary-glow-emphasis: rgba(125, 211, 252, 0.2);
+  --color-primary-glow-strong: rgba(125, 211, 252, 0.3);
+  --color-primary-glow-intense: rgba(125, 211, 252, 0.4);
+  --color-primary-glow-focus: rgba(125, 211, 252, 0.5);
+
+  /* ---------------------------------------------------------------------------
+     Semantic — Text Alpha (Neutral-100 기반 반투명 텍스트)
+     --------------------------------------------------------------------------- */
+  --color-text-tertiary-alpha: rgba(160, 180, 196, 0.3);
+  --color-text-muted-alpha: rgba(160, 180, 196, 0.4);
+  --color-text-placeholder: rgba(160, 180, 196, 0.5);
+
+  /* ---------------------------------------------------------------------------
+     Semantic — Surface Alpha (컴포넌트별 반투명 표면)
+     --------------------------------------------------------------------------- */
+  --color-surface-input: rgba(20, 28, 46, 0.4);
+  --color-surface-card-rest: rgba(26, 36, 56, 0.2);
+  --color-surface-card-hover: rgba(26, 36, 56, 0.3);
+  --color-surface-toggle-group: rgba(32, 44, 66, 0.5);
+  --color-surface-active: rgba(14, 77, 110, 0.4);
+  --color-shadow-subtle: rgba(0, 0, 0, 0.1);
 
   /* ===========================================================================
      Semantic — Status (Dark Mode 기본)
@@ -170,11 +212,14 @@
   --color-warning-text: var(--color-warning-100);
 
   /* Danger/Error 최적화 반영 */
-  --color-danger-bg: var(--color-danger-900);
-  /* #1a0000 */
-  --color-danger-border: var(--color-danger-100);
-  --color-danger-text: var(--color-danger-100);
+  --color-danger-bg: var(--color-danger-500);
+  /* #ff6b6b — 인터랙티브 배경 (버튼 등) */
+  --color-danger-surface: var(--color-danger-900);
+  /* #1a0000 — 상태 영역 어두운 배경 (알림·토스트) */
+  --color-danger-border: var(--color-danger-500);
   /* #ff6b6b */
+  --color-danger-text: var(--color-danger-50);
+  /* #ffb3b3 — 밝은 상태 텍스트 */
 
   --color-info-bg: var(--color-info-900);
   --color-info-border: var(--color-info-200);

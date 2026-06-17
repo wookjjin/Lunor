@@ -23,6 +23,16 @@ export interface InputPlaygroundProps {
   placeholder: string
 }
 
+export interface DialogPlaygroundProps {
+  size: 'sm' | 'md' | 'lg'
+  closeOnOverlayClick: boolean
+  closeOnEscape: boolean
+}
+
+export interface DropdownPlaygroundProps {
+  defaultOpen: boolean
+}
+
 // ---- Outlet Context 타입 ----
 
 export interface PlaygroundOutletContext {
@@ -51,6 +61,14 @@ export const defaultPropsMap: Record<string, Record<string, unknown>> = {
     invalid: false,
     disabled: false,
     placeholder: 'Enter text...',
+  },
+  dialog: {
+    size: 'md',
+    closeOnOverlayClick: true,
+    closeOnEscape: true,
+  },
+  dropdown: {
+    defaultOpen: false,
   },
 }
 
@@ -104,6 +122,23 @@ export const propDefsMap: Record<string, PropDefs> = {
     texts: [
       { key: 'placeholder', label: 'placeholder' },
     ],
+  },
+  dialog: {
+    toggles: [
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [
+      { key: 'closeOnOverlayClick', label: 'closeOnOverlayClick' },
+      { key: 'closeOnEscape', label: 'closeOnEscape' },
+    ],
+    texts: [],
+  },
+  dropdown: {
+    toggles: [],
+    booleans: [
+      { key: 'defaultOpen', label: 'defaultOpen' },
+    ],
+    texts: [],
   },
 }
 
