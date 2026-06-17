@@ -422,7 +422,7 @@
   color: var(--color-text-placeholder);
 }
 
-.props-text-input:focus {
+.props-text-input:focus-visible {
   border-color: var(--color-primary-glow-focus);
   box-shadow: 0 0 0 1px var(--color-primary-glow-strong);
 }

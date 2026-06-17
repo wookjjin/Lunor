@@ -166,28 +166,8 @@ summary::-webkit-details-marker {
   display: none;
 }
 
-/* 9. 스크롤바 정규화 (Firefox) */
+/* 9. 스크롤바 정규화 (표준 속성 — WebKit 스타일은 layout/scrollbar.css에서 관리) */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--color-border-strong) var(--color-bg-subtle);
-}
-
-/* Webkit 스크롤바 */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-bg-subtle);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-border-strong);
-  border-radius: var(--radius-full, 9999px);
-  border: 2px solid var(--color-bg-subtle);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-interactive-default);
 }

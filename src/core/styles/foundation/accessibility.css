@@ -8,8 +8,8 @@
     :focus-visible 은 키보드 사용 시에만 활성화됨
   --------------------------------------------------------------------------- */
 
-/* 기본 포커스 제거 (마우스 클릭 시 아웃라인 숨김) */
-*:focus {
+/* 기본 포커스 제거 (마우스 클릭 시 아웃라인 숨김, 키보드 포커스는 :focus-visible 유지) */
+*:focus:not(:focus-visible) {
   outline: none;
 }
 
@@ -60,7 +60,7 @@ select:focus-visible {
   transition: transform var(--duration-150) var(--ease-out);
 }
 
-.sr-skip-link:focus {
+.sr-skip-link:focus-visible {
   transform: translateY(0);
 }
 
@@ -80,7 +80,7 @@ select:focus-visible {
 }
 
 /* 포커스 시 시각적으로 노출 (skip link 패턴) */
-.sr-only-focusable:focus,
+.sr-only-focusable:focus-visible,
 .sr-only-focusable:active {
   position: static;
   width: auto;

@@ -20,7 +20,6 @@
 /* 3. HTML & Body 기본 설정 */
 html {
   /* 텍스트 크기 자동 조정 방지 (iOS Safari) */
-  -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 
   /* 스크롤 동작 */
@@ -36,8 +35,7 @@ body {
 
   /* 텍스트 렌더링 최적화 */
   text-rendering: optimizeSpeed;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
 
   /* 기본 서체는 base.css 토큰에서 설정 */
 }

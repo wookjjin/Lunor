@@ -1,22 +1,37 @@
 /* =============================================================================
    Layout — Custom Scrollbar Design
    스크롤바 디자인 매핑 및 숨김 유틸
+   표준 속성(scrollbar-width/scrollbar-color)은 normalize.css에서 설정
+   WebKit 비표준 의사요소는 이 파일에서 관리
    ============================================================================= */
 
+/* WebKit 스크롤바 — 전역 스타일 */
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-primary-glow-emphasis);
-  border-radius: 10px;
+  width: var(--space-2);
+  height: var(--space-2);
 }
 
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-full);
+  border: var(--space-0-5) solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-interactive-default);
+  background-clip: content-box;
+}
+
+/* 스크롤은 지원하되 인터페이스 감춤 전용 클래스 */
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* 스크롤은 지원하되 인터페이스 감춤 전용 클래스 */
+  display: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
 }

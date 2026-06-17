@@ -203,9 +203,9 @@ select {
   width: 100%;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
   border-color: var(--color-border-focus);
   box-shadow: var(--shadow-focus-primary);
 }

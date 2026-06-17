@@ -25,6 +25,7 @@ export default defineConfig({
       targets: {
         safari: (15 << 16),
         chrome: (100 << 16),
+        firefox: (100 << 16),
       },
       // CSS Modules 기능을 사용하고 싶다면 설정 (선택)
       cssModules: true,
