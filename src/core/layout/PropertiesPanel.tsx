@@ -4,6 +4,7 @@ import { useState } from 'react'
 /* =============================================================================
    PropertiesPanel — 속성 패널 컴포넌트
    Props / Tokens / Code 탭 + Properties 컨트롤 + Design Tokens 카드 + Pro Tip
+   반응형: 모바일 바텀시트 ↔ 데스크톱 우측 패널
    ============================================================================= */
 
 type PanelTab = 'props' | 'tokens' | 'code'
@@ -17,22 +18,6 @@ function TabIcon({ tab }: { tab: PanelTab }) {
     case 'code':
       return <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>code</span>
   }
-}
-
-function ToggleGroup({ options, activeIndex }: { options: string[], activeIndex: number }) {
-  return (
-    <div className="props-toggle-group">
-      {options.map((opt, i) => (
-        <button
-          key={opt}
-          type="button"
-          className={`props-toggle-btn${i === activeIndex ? ' props-toggle-btn--active' : ''}`}
-        >
-          {opt}
-        </button>
-      ))}
-    </div>
-  )
 }
 
 function TokenCard({ color, name, value, isRadius }: {
@@ -67,9 +52,13 @@ function TokenCard({ color, name, value, isRadius }: {
 
 export interface PropertiesPanelProps {
   children?: ReactNode
+  /** 모바일/태블릿 바텀시트 열림 상태 */
+  isOpen?: boolean
+  /** 모바일/태블릿 바텀시트 닫기 콜백 */
+  onClose?: () => void
 }
 
-export default function PropertiesPanel({ children }: PropertiesPanelProps) {
+export default function PropertiesPanel({ children, isOpen, onClose }: PropertiesPanelProps) {
   const [activeTab, setActiveTab] = useState<PanelTab>('props')
 
   const tabs: { key: PanelTab, label: string }[] = [
@@ -90,7 +79,23 @@ export default function PropertiesPanel({ children }: PropertiesPanelProps) {
   }
 
   return (
-    <aside className="layout-properties-panel glacier-glass scrollbar-hide">
+    <aside className={`layout-properties-panel glacier-glass scrollbar-hide${isOpen ? ' layout-properties-panel--open' : ''}`}>
+      {/* 바텀시트 드래그 핸들 (모바일/태블릿) */}
+      <div className="bottomsheet-handle" />
+
+      {/* 바텀시트 헤더 (모바일/태블릿) */}
+      <div className="bottomsheet-header">
+        <span className="bottomsheet-title">Design Tokens</span>
+        <button
+          className="bottomsheet-close-btn"
+          type="button"
+          onClick={onClose}
+          aria-label="Close properties panel"
+        >
+          <span className="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
       {/* Panel Tabs */}
       <div className="props-tabs">
         {tabs.map(tab => (

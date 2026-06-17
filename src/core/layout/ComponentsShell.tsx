@@ -1,6 +1,7 @@
 import type { PlaygroundOutletContext } from './ComponentPlaygroundContext'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router'
+import { useBreakpoints } from '@/core/hooks/useMediaQuery'
 import { defaultPropsMap, getComponentType } from './ComponentPlaygroundContext'
 import PropertiesPanel from './PropertiesPanel'
 import PropsControls from './PropsControls'
@@ -9,6 +10,7 @@ import { sidebarNavGroups } from './sidebarNav'
 /* =============================================================================
    ComponentsShell — Storybook 스타일 Core 컴포넌트 레이아웃
    사이드바(브랜드+검색+그룹Nav+Footer) + 앱바(Breadcrumb+탭+액션) + 워크스페이스(캔버스+속성패널)
+   반응형: 모바일 드로어 ↔ 데스크톱 고정 사이드바 / 바텀시트 ↔ 우측 패널
    ============================================================================= */
 
 /** 현재 경로에서 Breadcrumb 표시용 라벨 추출 */
@@ -24,6 +26,13 @@ export default function ComponentsShell() {
   const location = useLocation()
   const currentLabel = getBreadcrumbLabel(location.pathname)
   const componentType = getComponentType(location.pathname)
+  const { isDesktop } = useBreakpoints()
+
+  // 사이드바 열림/닫힘 상태 (모바일/태블릿 드로어)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
+  // 속성 패널(바텀시트) 열림/닫힘 상태 (모바일/태블릿)
+  const [isPanelOpen, setIsPanelOpen] = useState(false)
 
   // 컴포넌트별 Playground Props 상태 관리
   const [propsState, setPropsState] = useState<Record<string, unknown>>(
@@ -37,9 +46,65 @@ export default function ComponentsShell() {
     setPropsState(defaultPropsMap[componentType] ?? {})
   }
 
+  // 데스크톱 전환 시 사이드바/패널 상태 초기화 (렌더 단계 ref 패턴)
+  const prevIsDesktopRef = useRef(isDesktop)
+  if (isDesktop && !prevIsDesktopRef.current) {
+    setIsSidebarOpen(false)
+    setIsPanelOpen(false)
+  }
+  if (prevIsDesktopRef.current !== isDesktop) {
+    prevIsDesktopRef.current = isDesktop
+  }
+
   const setProp = useCallback((key: string, value: unknown) => {
     setPropsState(prev => ({ ...prev, [key]: value }))
   }, [])
+
+  // 데스크톱 전환 시 body 스크롤 잠금 해제 (DOM 사이드 이펙트)
+  useEffect(() => {
+    if (isDesktop) {
+      document.body.style.overflow = ''
+    }
+  }, [isDesktop])
+
+  // 사이드바 토글
+  const toggleSidebar = useCallback(() => {
+    setIsSidebarOpen((prev) => {
+      const next = !prev
+      // 모바일에서 body 스크롤 잠금
+      if (!isDesktop) {
+        document.body.style.overflow = next ? 'hidden' : ''
+      }
+      return next
+    })
+  }, [isDesktop])
+
+  // 사이드바 닫기
+  const closeSidebar = useCallback(() => {
+    setIsSidebarOpen(false)
+    if (!isDesktop) {
+      document.body.style.overflow = ''
+    }
+  }, [isDesktop])
+
+  // 속성 패널 토글
+  const togglePanel = useCallback(() => {
+    setIsPanelOpen((prev) => {
+      const next = !prev
+      if (!isDesktop) {
+        document.body.style.overflow = next ? 'hidden' : ''
+      }
+      return next
+    })
+  }, [isDesktop])
+
+  // 속성 패널 닫기
+  const closePanel = useCallback(() => {
+    setIsPanelOpen(false)
+    if (!isDesktop) {
+      document.body.style.overflow = ''
+    }
+  }, [isDesktop])
 
   // Outlet Context로 Canvas 페이지에 props 전달
   const outletContext: PlaygroundOutletContext = {
@@ -50,8 +115,18 @@ export default function ComponentsShell() {
 
   return (
     <div className="layout-shell">
+      {/* ── Sidebar Overlay (모바일/태블릿) ── */}
+      <div
+        className={`layout-sidebar-overlay${isSidebarOpen ? ' layout-sidebar-overlay--visible' : ''}`}
+        onClick={(e) => {
+          e.stopPropagation()
+          closeSidebar()
+        }}
+        aria-hidden="true"
+      />
+
       {/* ── Sidebar ── */}
-      <aside className="layout-sidebar scrollbar-hide">
+      <aside className={`layout-sidebar scrollbar-hide${isSidebarOpen ? ' layout-sidebar--open' : ''}`}>
         {/* Brand Header */}
         <div className="sidebar-brand">
           <div className="sidebar-brand-icon">
@@ -91,6 +166,7 @@ export default function ComponentsShell() {
                       to={item.path}
                       className={({ isActive }) =>
                         `sidebar-nav-item${isActive ? ' sidebar-nav-item--active' : ''}`}
+                      onClick={closeSidebar}
                     >
                       <span className="sidebar-nav-item-icon">
                         {item.icon && (
@@ -123,6 +199,15 @@ export default function ComponentsShell() {
         {/* ── Top App Bar ── */}
         <header className="layout-top-appbar">
           <div className="appbar-breadcrumb">
+            {/* 햄버거 메뉴 (모바일/태블릿) */}
+            <button
+              className="appbar-menu-btn"
+              type="button"
+              onClick={toggleSidebar}
+              aria-label="Toggle navigation"
+            >
+              <span className="material-symbols-outlined">menu</span>
+            </button>
             <span className="appbar-breadcrumb-segment">Components</span>
             <span className="appbar-breadcrumb-separator">/</span>
             <span className="appbar-breadcrumb-current">{currentLabel}</span>
@@ -170,11 +255,33 @@ export default function ComponentsShell() {
               </div>
             </div>
           </div>
-          <PropertiesPanel>
+          <PropertiesPanel isOpen={isPanelOpen} onClose={closePanel}>
             <PropsControls props={propsState} setProp={setProp} componentType={componentType} />
           </PropertiesPanel>
         </div>
       </main>
+
+      {/* ── FAB: 속성 패널 토글 (모바일/태블릿) ── */}
+      <button
+        className="layout-fab-toggle"
+        type="button"
+        onClick={togglePanel}
+        aria-label="Toggle properties panel"
+      >
+        <span className="material-symbols-outlined">
+          {isPanelOpen ? 'keyboard_arrow_down' : 'settings_input_component'}
+        </span>
+      </button>
+
+      {/* ── Bottom Sheet Overlay (모바일/태블릿) ── */}
+      <div
+        className={`layout-bottomsheet-overlay${isPanelOpen ? ' layout-bottomsheet-overlay--visible' : ''}`}
+        onClick={(e) => {
+          e.stopPropagation()
+          closePanel()
+        }}
+        aria-hidden="true"
+      />
     </div>
   )
 }

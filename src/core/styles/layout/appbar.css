@@ -1,7 +1,7 @@
 /* =============================================================================
    Layout — Top App Bar
    메인 뷰포트 상단 앱 바 레이아웃 구역
-   Breadcrumb + Nav Tabs + Action Icons
+   반응형: 모바일 탭 숨김 ↔ 데스크톱 전체 표시
    ============================================================================= */
 
 .layout-top-appbar {
@@ -16,6 +16,14 @@
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--color-primary-glow-subtle);
+}
+
+/* ── 반응형: 모바일 패딩 축소 ── */
+@media (max-width: 639px) {
+  .layout-top-appbar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 /* ── Breadcrumb ── */
@@ -39,12 +47,27 @@
   font-weight: 600;
 }
 
+/* ── 반응형: 모바일에서 Breadcrumb 첫 세그먼트 숨김 ── */
+@media (max-width: 639px) {
+  .appbar-breadcrumb-segment:first-child,
+  .appbar-breadcrumb-separator:first-of-type {
+    display: none;
+  }
+}
+
 /* ── Nav Tabs ── */
 .appbar-tabs {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   margin-right: 1.5rem;
+}
+
+/* ── 반응형: 모바일에서 탭 숨김 ── */
+@media (max-width: 767px) {
+  .appbar-tabs {
+    display: none;
+  }
 }
 
 .appbar-tab {
@@ -74,6 +97,13 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* ── 반응형: 모바일에서 일부 액션 숨김 ── */
+@media (max-width: 639px) {
+  .appbar-actions {
+    gap: 0.25rem;
+  }
 }
 
 .appbar-action-btn {
@@ -113,4 +143,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* ── 반응형: 모바일에서 아바타 크기 축소 ── */
+@media (max-width: 639px) {
+  .appbar-avatar {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
 }

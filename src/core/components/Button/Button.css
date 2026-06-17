@@ -41,15 +41,13 @@
   background: var(--color-interactive-hover);
 }
 
-.button--outline {
-  border-color: var(--color-border-default);
-
-  background: transparent;
-  color: var(--color-text-primary);
+.button--secondary {
+  background: var(--color-secondary-100);
+  color: var(--color-text-inverse);
 }
 
-.button--outline:hover:not(:disabled) {
-  background: var(--color-bg-subtle);
+.button--secondary:hover:not(:disabled) {
+  background: var(--color-secondary-50);
 }
 
 .button--ghost {

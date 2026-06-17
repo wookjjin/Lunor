@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from 'react'
 
 export type ButtonVariant
   = | 'solid'
-    | 'outline'
+    | 'secondary'
     | 'ghost'
     | 'danger'
 

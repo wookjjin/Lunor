@@ -7,3 +7,6 @@
 @import './Input/Input.css';
 @import './Dialog/Dialog.css';
 @import './Dropdown/Dropdown.css';
+
+/* Showcase 공통 스타일 */
+@import './Showcase.css';

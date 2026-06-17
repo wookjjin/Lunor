@@ -8,7 +8,7 @@ import { useOutletContext } from 'react-router'
 // ---- 컴포넌트별 Playground Props 타입 ----
 
 export interface ButtonPlaygroundProps {
-  variant: 'solid' | 'outline' | 'ghost' | 'danger'
+  variant: 'solid' | 'secondary' | 'ghost' | 'danger'
   size: 'sm' | 'md' | 'lg'
   fullWidth: boolean
   disabled: boolean
@@ -99,7 +99,7 @@ export interface PropDefs {
 export const propDefsMap: Record<string, PropDefs> = {
   button: {
     toggles: [
-      { key: 'variant', label: 'variant', options: ['solid', 'outline', 'ghost', 'danger'] },
+      { key: 'variant', label: 'variant', options: ['solid', 'secondary', 'ghost', 'danger'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
     ],
     booleans: [

@@ -1,0 +1,214 @@
+/* =============================================================================
+   Showcase — Component Showcase 공통 스타일
+   Glacier UI 스타일 카드 + 반응형 그리드
+   모바일 1열 → 태블릿 2열 → 데스크톱 3열
+   ============================================================================= */
+
+/* ── 쇼케이스 컨테이너 ── */
+.showcase-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 48rem; /* 768px — 쇼케이스 최대 너비 */
+}
+
+/* ── 페이지 헤더 ── */
+.showcase-header {
+  margin-bottom: 0.5rem;
+}
+
+.showcase-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5rem;
+}
+
+.showcase-description {
+  font-size: 0.875rem;
+  color: var(--color-text-tertiary);
+  line-height: 1.625;
+  margin: 0;
+}
+
+/* ── 반응형 그리드 ── */
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* 태블릿: 2열 */
+@media (min-width: 768px) {
+  .showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .showcase-container {
+    max-width: 64rem; /* 1024px */
+  }
+}
+
+/* 데스크톱: 3열 (Danger 카드가 4개째이므로 2×2 그리드에서 자연스럽게 배치) */
+@media (min-width: 1024px) {
+  .showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .showcase-container {
+    max-width: 72rem; /* 1152px */
+  }
+}
+
+/* 와이드 데스크톱: 4열 */
+@media (min-width: 1280px) {
+  .showcase-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ── 쇼케이스 카드 ── */
+.showcase-card {
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition:
+    background-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.showcase-card:hover {
+  box-shadow: 0 0 20px var(--color-primary-glow-subtle);
+}
+
+/* ── 카드 헤더 ── */
+.showcase-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.showcase-card-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+}
+
+.showcase-card-label--primary {
+  color: var(--color-interactive-default);
+}
+
+.showcase-card-label--secondary {
+  color: var(--color-secondary-100);
+}
+
+.showcase-card-label--ghost {
+  color: var(--color-text-tertiary);
+}
+
+.showcase-card-label--danger {
+  color: var(--color-danger-500);
+}
+
+/* ── 뱃지 ── */
+.showcase-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.625rem;
+  border: 1px solid var(--color-primary-glow-emphasis);
+  color: var(--color-interactive-default);
+  background: var(--color-primary-glow-subtle);
+}
+
+.showcase-badge--primary {
+  border-color: var(--color-primary-glow-emphasis);
+  color: var(--color-interactive-default);
+  background: var(--color-primary-glow-subtle);
+}
+
+/* ── 카드 바디 ── */
+.showcase-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* ── 버튼 행 (2개 나란히) ── */
+.showcase-row {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.showcase-row > * {
+  flex: 1;
+}
+
+/* ── 인터랙티비티 프리뷰 ── */
+.showcase-preview {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  height: 10rem;
+  position: relative;
+  border: 1px solid var(--color-primary-glow-subtle);
+  margin-top: 0.5rem;
+}
+
+.showcase-preview-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--color-bg-base), transparent);
+  pointer-events: none;
+}
+
+.showcase-preview-content {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+}
+
+.showcase-preview-label {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--color-interactive-default);
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin: 0;
+}
+
+.showcase-preview-text {
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  margin: 0.25rem 0 0;
+}
+
+/* ── 반응형: 모바일 패딩 축소 ── */
+@media (max-width: 639px) {
+  .showcase-card {
+    padding: 1rem;
+  }
+
+  .showcase-card-header {
+    margin-bottom: 1rem;
+  }
+
+  .showcase-card-body {
+    gap: 1rem;
+  }
+
+  .showcase-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .showcase-preview {
+    height: 8rem;
+  }
+}

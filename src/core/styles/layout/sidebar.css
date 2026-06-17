@@ -1,7 +1,7 @@
 /* =============================================================================
    Layout — Sidebar Navigation Bar
    사이드 네비게이션 바 레이아웃 구조
-   Brand Header + Search + Grouped Nav + Footer Action
+   반응형: 모바일 드로어 ↔ 데스크톱 고정 사이드바
    ============================================================================= */
 
 .layout-sidebar {
@@ -15,6 +15,39 @@
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-right: 1px solid var(--color-primary-glow-subtle);
+}
+
+/* ── 반응형: 모바일/태블릿 드로어 모드 ── */
+@media (max-width: 1023px) {
+  .layout-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: var(--z-index-drawer);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    /* 드로어 모드에서는 글래스 효과 강화 */
+    background: var(--color-bg-glass-elevated);
+    border-right: 1px solid var(--color-primary-glow-default);
+  }
+
+  .layout-sidebar--open {
+    transform: translateX(0);
+  }
+}
+
+/* ── 반응형: 데스크톱 고정 사이드바 ── */
+@media (min-width: 1024px) {
+  .layout-sidebar {
+    /* position: static (기본값) — flex 자식으로 레이아웃에 참여 */
+    transform: none;
+    transition: none;
+  }
+
+  .layout-sidebar--open {
+    transform: none;
+  }
 }
 
 /* ── Brand Header ── */
@@ -106,6 +139,13 @@
   color: var(--color-text-tertiary);
   border: 1px solid var(--color-border-strong-alpha);
   font-family: inherit;
+}
+
+/* ── 반응형: 태블릿 이하에서 kbd 힌트 숨김 ── */
+@media (max-width: 767px) {
+  .sidebar-search-kbd {
+    display: none;
+  }
 }
 
 /* ── Nav Groups ── */

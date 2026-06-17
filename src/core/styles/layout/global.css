@@ -1,6 +1,7 @@
 /* =============================================================================
    Layout — Global Reset & Typography Defaults
    html/body 글로벌 레이아웃 리셋 및 타이포그래피 기본값
+   반응형 브레이크포인트 전략: 모바일 퍼스트 (min-width 기준)
    ============================================================================= */
 
 html,
@@ -28,6 +29,128 @@ body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+}
+
+/* ── Sidebar Overlay (모바일/태블릿 드로어 배경) ── */
+.layout-sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-overlay);
+  background: rgba(10, 14, 26, 0.8);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.layout-sidebar-overlay--visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ── 반응형: lg 이상에서 오버레이 불필요 ── */
+@media (min-width: 1024px) {
+  .layout-sidebar-overlay {
+    display: none !important;
+  }
+}
+
+/* ── Appbar Hamburger Button (모바일/태블릿에서만 표시) ── */
+.appbar-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  margin-left: -0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--color-interactive-default);
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+
+.appbar-menu-btn:hover {
+  background: var(--color-surface-card-hover);
+}
+
+@media (min-width: 1024px) {
+  .appbar-menu-btn {
+    display: none;
+  }
+}
+
+/* ── 모바일 바텀시트 FAB 버튼 ── */
+.layout-fab-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: var(--z-index-fab);
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  background: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+  border: none;
+  box-shadow: 0 4px 16px rgba(125, 211, 252, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+.layout-fab-toggle:hover {
+  box-shadow: 0 4px 24px rgba(125, 211, 252, 0.3);
+}
+
+.layout-fab-toggle:active {
+  transform: scale(0.95);
+}
+
+/* lg 이상에서는 FAB 숨김 (우측 패널이 항상 표시되므로) */
+@media (min-width: 1024px) {
+  .layout-fab-toggle {
+    display: none;
+  }
+}
+
+/* ── 바텀시트 오버레이 (모바일/태블릿) ── */
+.layout-bottomsheet-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-overlay);
+  background: rgba(10, 14, 26, 0.8);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.layout-bottomsheet-overlay--visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+@media (min-width: 1024px) {
+  .layout-bottomsheet-overlay {
+    display: none !important;
+  }
 }
 
 *,
