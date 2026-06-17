@@ -9,6 +9,8 @@ export interface NavItem {
   path: string
   icon?: string
   badge?: number
+  /** true면 정확히 일치할 때만 active 표시 (접두사 매칭 방지) */
+  end?: boolean
   children?: NavGroup[]
 }
 
@@ -18,6 +20,17 @@ export interface NavGroup {
 }
 
 export const sidebarNavGroups: NavGroup[] = [
+  {
+    groupLabel: 'Overview',
+    items: [
+      {
+        label: 'Home',
+        path: '/components',
+        icon: 'home',
+        end: true,
+      },
+    ],
+  },
   {
     groupLabel: 'Foundation',
     items: [

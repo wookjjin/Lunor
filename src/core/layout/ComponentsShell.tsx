@@ -18,6 +18,9 @@ import { sidebarNavGroups } from './sidebarNav'
 /** 현재 경로에서 Breadcrumb 표시용 라벨 추출 */
 function getBreadcrumbLabel(pathname: string): string {
   const segments = pathname.split('/').filter(Boolean)
+  // Home 페이지 (/components 또는 /components/)
+  if (segments.length === 1 && segments[0] === 'components')
+    return 'Home'
   if (segments.length >= 2 && segments[0] === 'components') {
     return segments[1].charAt(0).toUpperCase() + segments[1].slice(1)
   }
@@ -28,6 +31,7 @@ export default function ComponentsShell() {
   const location = useLocation()
   const currentLabel = getBreadcrumbLabel(location.pathname)
   const componentType = getComponentType(location.pathname)
+  const isHomePage = location.pathname === '/components' || location.pathname === '/components/'
   const { isDesktop } = useBreakpoints()
   const { theme, toggleTheme } = useThemeStore()
 
@@ -167,6 +171,7 @@ export default function ComponentsShell() {
                   <li key={item.path}>
                     <NavLink
                       to={item.path}
+                      end={item.end}
                       className={({ isActive }) =>
                         `sidebar-nav-item${isActive ? ' sidebar-nav-item--active' : ''}`}
                       onClick={closeSidebar}
@@ -267,34 +272,40 @@ export default function ComponentsShell() {
               </div>
             </div>
           </div>
-          <PropertiesPanel isOpen={isPanelOpen} onClose={closePanel}>
-            <PropsControls props={propsState} setProp={setProp} componentType={componentType} />
-          </PropertiesPanel>
+          {!isHomePage && (
+            <PropertiesPanel isOpen={isPanelOpen} onClose={closePanel}>
+              <PropsControls props={propsState} setProp={setProp} componentType={componentType} />
+            </PropertiesPanel>
+          )}
         </div>
       </main>
 
-      {/* ── FAB: 속성 패널 토글 (모바일/태블릿) ── */}
-      <Button
-        variant="solid"
-        size="sm"
-        className="layout-fab-toggle"
-        onClick={togglePanel}
-        aria-label="Toggle properties panel"
-      >
-        <span className="material-symbols-outlined">
-          {isPanelOpen ? 'keyboard_arrow_down' : 'settings_input_component'}
-        </span>
-      </Button>
+      {/* ── FAB: 속성 패널 토글 (모바일/태블릿) — Home에서 숨김 ── */}
+      {!isHomePage && (
+        <Button
+          variant="solid"
+          size="sm"
+          className="layout-fab-toggle"
+          onClick={togglePanel}
+          aria-label="Toggle properties panel"
+        >
+          <span className="material-symbols-outlined">
+            {isPanelOpen ? 'keyboard_arrow_down' : 'settings_input_component'}
+          </span>
+        </Button>
+      )}
 
-      {/* ── Bottom Sheet Overlay (모바일/태블릿) ── */}
-      <div
-        className={`layout-bottomsheet-overlay${isPanelOpen ? ' layout-bottomsheet-overlay--visible' : ''}`}
-        onClick={(e) => {
-          e.stopPropagation()
-          closePanel()
-        }}
-        aria-hidden="true"
-      />
+      {/* ── Bottom Sheet Overlay (모바일/태블릿) — Home에서 숨김 ── */}
+      {!isHomePage && (
+        <div
+          className={`layout-bottomsheet-overlay${isPanelOpen ? ' layout-bottomsheet-overlay--visible' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation()
+            closePanel()
+          }}
+          aria-hidden="true"
+        />
+      )}
     </div>
   )
 }
