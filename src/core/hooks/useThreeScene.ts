@@ -243,14 +243,18 @@ function updateSceneTheme(ctx: SceneContext, theme: string) {
   const colors = createParticleColors(ctx.particlePositions.length / 3, palette)
   ctx.particles.geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
 
-  // 파티클 재질 업데이트 (블렌딩 모드/크기/불투명도)
+  // 파티클 재질 교체 (블렌딩 모드 변경 시 재컴파일 보장)
   const isLight = theme === 'light'
-  const particleMat = ctx.particles.material as THREE.PointsMaterial
-  particleMat.size = isLight ? 0.12 : 0.08
-  particleMat.opacity = isLight ? 1.0 : 0.8
-  particleMat.blending = isLight ? THREE.NormalBlending : THREE.AdditiveBlending
-  particleMat.depthWrite = isLight
-  particleMat.needsUpdate = true
+  ;(ctx.particles.material as THREE.PointsMaterial).dispose()
+  ctx.particles.material = new THREE.PointsMaterial({
+    size: isLight ? 0.12 : 0.08,
+    vertexColors: true,
+    transparent: true,
+    opacity: isLight ? 1.0 : 0.8,
+    sizeAttenuation: true,
+    blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending,
+    depthWrite: isLight,
+  })
 
   // 크리스탈 색상 및 불투명도 업데이트
   ;(ctx.crystal.material as THREE.MeshPhongMaterial).color.set(palette.crystalColor)
@@ -340,9 +344,8 @@ export function useThreeScene(
 ) {
   const { particleCount = 600, crystalSize = 1.2 } = options
   const ctxRef = useRef<SceneContext | null>(null)
-  const theme = useThemeStore(state => state.theme)
 
-  // 씬 초기화 — theme 의존성을 제거하여 테마 전환 시 씬이 재생성되지 않도록 함
+  // 씬 초기화 — 컴포넌트 key={theme}로 인해 테마 변경 시 재마운트됨
   const init = useCallback(() => {
     const container = containerRef.current
     if (!container)
@@ -353,7 +356,6 @@ export function useThreeScene(
       cleanup(ctxRef.current, container)
     }
 
-    // theme 대신 store에서 직접 읽어서 의존성에서 제외
     const currentTheme = useThemeStore.getState().theme
     const ctx = initScene(container, particleCount, crystalSize, currentTheme)
     ctxRef.current = ctx
@@ -419,14 +421,6 @@ export function useThreeScene(
       ctxRef.current = null
     }
   }, [init])
-
-  // 테마 변경 감지 — 씬 색상 업데이트
-  useEffect(() => {
-    const ctx = ctxRef.current
-    if (ctx && ctx.theme !== theme) {
-      updateSceneTheme(ctx, theme)
-    }
-  }, [theme])
 }
 
 /** Three.js 리소스 정리 */
