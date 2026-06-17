@@ -344,6 +344,7 @@ export function useThreeScene(
 ) {
   const { particleCount = 600, crystalSize = 1.2 } = options
   const ctxRef = useRef<SceneContext | null>(null)
+  const theme = useThemeStore(state => state.theme)
 
   // 씬 초기화 — 컴포넌트 key={theme}로 인해 테마 변경 시 재마운트됨
   const init = useCallback(() => {
@@ -409,10 +410,10 @@ export function useThreeScene(
 
   // 초기화 + 정리
   useEffect(() => {
+    const container = containerRef.current
     init()
 
     return () => {
-      const container = containerRef.current
       const ctx = ctxRef.current
       if (ctx && container) {
         ;(ctx as any)._cleanup?.()
@@ -420,7 +421,15 @@ export function useThreeScene(
       }
       ctxRef.current = null
     }
-  }, [init])
+  }, [containerRef, init, theme])
+
+  // 테마 변경 감지 — 씬 색상 업데이트 (cleanup + init 이후 실행됨)
+  useEffect(() => {
+    const ctx = ctxRef.current
+    if (ctx && ctx.theme !== theme) {
+      updateSceneTheme(ctx, theme)
+    }
+  }, [theme])
 }
 
 /** Three.js 리소스 정리 */

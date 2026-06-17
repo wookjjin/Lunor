@@ -1,6 +1,5 @@
 import { useCallback, useRef, useState } from 'react'
 import { Link } from 'react-router'
-import { useThemeStore } from '@/app/store/theme.store'
 import { useThreeScene } from '@/core/hooks/useThreeScene'
 import '@/core/pages/Home.css'
 
@@ -79,7 +78,6 @@ function App() {
 export default function HomePage() {
   const canvasRef = useRef<HTMLDivElement>(null)
   const [codeCopied, setCodeCopied] = useState(false)
-  const theme = useThemeStore(state => state.theme)
   useThreeScene(canvasRef, { particleCount: 600, crystalSize: 1.2 })
 
   /** 카드 3D tilt 효과 (CSS transform) */
@@ -107,7 +105,7 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div className="home-page" key={theme}>
+    <div className="home-page">
       {/* ── Hero Section ── */}
       <section className="home-hero">
         <div className="home-hero-canvas" ref={canvasRef} aria-hidden="true" />
