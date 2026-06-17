@@ -48,13 +48,13 @@ const COLORS = {
     pointLight: 0x7DD3FC,
   },
   light: {
-    bg: 0xE0E8F0,
+    bg: 0xFFFFFF,
     particlePrimary: 0x0E4D6E, // --color-primary-200
     particleSecondary: 0x4A6070, // --color-neutral-200
     particleTertiary: 0x4D2A73, // --color-tertiary-200
     crystalColor: 0x0E4D6E,
-    crystalWireframe: 0xA0B4C4,
-    ambientLight: 0xC8EAFF,
+    crystalWireframe: 0x7A8E9C,
+    ambientLight: 0xE8F4FC,
     pointLight: 0x0E4D6E,
   },
 }
@@ -111,12 +111,12 @@ function createParticlePositions(count: number): { positions: Float32Array, orig
 }
 
 /** 크리스탈(정이십면체) 메시 생성 */
-function createCrystal(size: number, palette: typeof COLORS.dark): { mesh: THREE.Mesh, wireframe: THREE.LineSegments } {
+function createCrystal(size: number, palette: typeof COLORS.dark, isLight: boolean): { mesh: THREE.Mesh, wireframe: THREE.LineSegments } {
   const geometry = new THREE.IcosahedronGeometry(size, 1)
   const material = new THREE.MeshPhongMaterial({
     color: palette.crystalColor,
     transparent: true,
-    opacity: 0.15,
+    opacity: isLight ? 0.35 : 0.15,
     shininess: 100,
     side: THREE.DoubleSide,
   })
@@ -127,7 +127,7 @@ function createCrystal(size: number, palette: typeof COLORS.dark): { mesh: THREE
   const wireframeMaterial = new THREE.LineBasicMaterial({
     color: palette.crystalWireframe,
     transparent: true,
-    opacity: 0.6,
+    opacity: isLight ? 0.8 : 0.6,
   })
   const wireframe = new THREE.LineSegments(
     new THREE.WireframeGeometry(wireframeGeometry),
@@ -192,21 +192,22 @@ function initScene(
   particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
   particleGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1))
 
+  const isLight = theme === 'light'
   const particleMaterial = new THREE.PointsMaterial({
-    size: 0.08,
+    size: isLight ? 0.12 : 0.08,
     vertexColors: true,
     transparent: true,
-    opacity: 0.8,
+    opacity: isLight ? 1.0 : 0.8,
     sizeAttenuation: true,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false,
+    blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending,
+    depthWrite: isLight,
   })
 
   const particles = new THREE.Points(particleGeometry, particleMaterial)
   scene.add(particles)
 
   // Crystal
-  const { mesh: crystal, wireframe: crystalWireframe } = createCrystal(crystalSize, palette)
+  const { mesh: crystal, wireframe: crystalWireframe } = createCrystal(crystalSize, palette, isLight)
   scene.add(crystal)
   scene.add(crystalWireframe)
 
@@ -242,9 +243,20 @@ function updateSceneTheme(ctx: SceneContext, theme: string) {
   const colors = createParticleColors(ctx.particlePositions.length / 3, palette)
   ctx.particles.geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
 
-  // 크리스탈 색상 업데이트
+  // 파티클 재질 업데이트 (블렌딩 모드/크기/불투명도)
+  const isLight = theme === 'light'
+  const particleMat = ctx.particles.material as THREE.PointsMaterial
+  particleMat.size = isLight ? 0.12 : 0.08
+  particleMat.opacity = isLight ? 1.0 : 0.8
+  particleMat.blending = isLight ? THREE.NormalBlending : THREE.AdditiveBlending
+  particleMat.depthWrite = isLight
+  particleMat.needsUpdate = true
+
+  // 크리스탈 색상 및 불투명도 업데이트
   ;(ctx.crystal.material as THREE.MeshPhongMaterial).color.set(palette.crystalColor)
+  ;(ctx.crystal.material as THREE.MeshPhongMaterial).opacity = isLight ? 0.35 : 0.15
   ;(ctx.crystalWireframe.material as THREE.LineBasicMaterial).color.set(palette.crystalWireframe)
+  ;(ctx.crystalWireframe.material as THREE.LineBasicMaterial).opacity = isLight ? 0.8 : 0.6
 
   // 조명 업데이트
   const lights = ctx.scene.children.filter(c => c instanceof THREE.Light) as THREE.Light[]
@@ -330,7 +342,7 @@ export function useThreeScene(
   const ctxRef = useRef<SceneContext | null>(null)
   const theme = useThemeStore(state => state.theme)
 
-  // 씬 초기화
+  // 씬 초기화 — theme 의존성을 제거하여 테마 전환 시 씬이 재생성되지 않도록 함
   const init = useCallback(() => {
     const container = containerRef.current
     if (!container)
@@ -341,7 +353,9 @@ export function useThreeScene(
       cleanup(ctxRef.current, container)
     }
 
-    const ctx = initScene(container, particleCount, crystalSize, theme)
+    // theme 대신 store에서 직접 읽어서 의존성에서 제외
+    const currentTheme = useThemeStore.getState().theme
+    const ctx = initScene(container, particleCount, crystalSize, currentTheme)
     ctxRef.current = ctx
 
     // 애니메이션 시작
@@ -389,7 +403,7 @@ export function useThreeScene(
       observer.disconnect()
       motionQuery.removeEventListener('change', handleMotionChange)
     }
-  }, [containerRef, particleCount, crystalSize, theme])
+  }, [containerRef, particleCount, crystalSize])
 
   // 초기화 + 정리
   useEffect(() => {

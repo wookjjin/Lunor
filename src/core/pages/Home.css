@@ -529,6 +529,93 @@
   display: none;
 }
 
+/* ── 라이트 모드 완전 재정의 ──
+   다크 모드 기본값과 완전히 분리하여
+   각 테마에 최적화된 값을 독립적으로 관리 */
+
+/* Hero */
+[data-theme='light'] .home-hero-overlay {
+  background: linear-gradient(180deg, transparent 0%, var(--color-bg-base) 100%);
+  opacity: 0.2;
+}
+
+[data-theme='light'] .home-hero-badge {
+  background: var(--color-bg-glass-elevated);
+  border-color: var(--color-border-subtle-alpha);
+}
+
+[data-theme='light'] .home-hero-subtitle {
+  color: var(--color-text-primary);
+}
+
+/* CTA */
+[data-theme='light'] .home-cta-primary:hover {
+  color: var(--color-neutral-950);
+}
+
+[data-theme='light'] .home-cta-secondary {
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong-alpha);
+}
+
+[data-theme='light'] .home-cta-secondary:hover {
+  background: var(--color-surface-card-hover);
+  border-color: var(--color-border-default);
+  color: var(--color-neutral-950);
+}
+
+/* Scroll indicator */
+[data-theme='light'] .home-scroll-indicator {
+  color: var(--color-text-secondary);
+}
+
+[data-theme='light'] .home-scroll-mouse {
+  border-color: var(--color-border-strong);
+}
+
+/* Showcase */
+[data-theme='light'] .home-showcase-label {
+  background: var(--color-primary-glow-default);
+}
+
+/* Cards */
+[data-theme='light'] .home-card,
+[data-theme='light'] .home-stat-item {
+  background: var(--color-surface-card-rest);
+  border-color: var(--color-border-subtle-alpha);
+}
+
+[data-theme='light'] .home-card:hover {
+  background: var(--color-surface-card-hover);
+}
+
+[data-theme='light'] .home-card-icon,
+[data-theme='light'] .home-card-arrow {
+  background: var(--color-primary-glow-default);
+}
+
+[data-theme='light'] .home-card:hover .home-card-arrow {
+  background: var(--color-interactive-default);
+  color: var(--color-neutral-950);
+}
+
+/* Code block */
+[data-theme='light'] .home-code-block {
+  background: var(--color-surface-card-rest);
+  border-color: var(--color-border-subtle-alpha);
+}
+
+/* Stats */
+[data-theme='light'] .home-stat-label {
+  color: var(--color-text-secondary);
+}
+
+/* Footer */
+[data-theme='light'] .home-footer {
+  color: var(--color-text-secondary);
+  border-top-color: var(--color-border-subtle-alpha);
+}
+
 /* ── 애니메이션 ── */
 @keyframes home-fade-in-up {
   from {
