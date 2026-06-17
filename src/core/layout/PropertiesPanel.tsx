@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { useState } from 'react'
+import { Button } from '@/core/components/Button/Button'
 
 /* =============================================================================
    PropertiesPanel — 속성 패널 컴포넌트
@@ -86,28 +87,30 @@ export default function PropertiesPanel({ children, isOpen, onClose }: Propertie
       {/* 바텀시트 헤더 (모바일/태블릿) */}
       <div className="bottomsheet-header">
         <span className="bottomsheet-title">Design Tokens</span>
-        <button
+        <Button
+          variant="ghost"
+          size="sm"
           className="bottomsheet-close-btn"
-          type="button"
           onClick={onClose}
           aria-label="Close properties panel"
         >
           <span className="material-symbols-outlined">close</span>
-        </button>
+        </Button>
       </div>
 
       {/* Panel Tabs */}
       <div className="props-tabs">
         {tabs.map(tab => (
-          <button
+          <Button
             key={tab.key}
-            type="button"
+            variant="ghost"
+            size="sm"
             className={`props-tab${activeTab === tab.key ? ' props-tab--active' : ''}`}
             onClick={() => setActiveTab(tab.key)}
           >
             <TabIcon tab={tab.key} />
             {tab.label}
-          </button>
+          </Button>
         ))}
       </div>
 

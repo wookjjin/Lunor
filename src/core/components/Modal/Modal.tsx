@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { Button } from '@/core/components/Button/Button'
 
 interface ModalProps {
   children: ReactNode
@@ -16,9 +17,9 @@ export function Modal({ children, isOpen, onClose, title }: ModalProps) {
       <div onClick={onClose} />
       <div>
         {title && <h2>{title}</h2>}
-        <button type="button" onClick={onClose}>
+        <Button variant="ghost" size="sm" onClick={onClose} aria-label="Close">
           ✕
-        </button>
+        </Button>
         {children}
       </div>
     </div>

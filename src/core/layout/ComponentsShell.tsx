@@ -1,6 +1,8 @@
 import type { PlaygroundOutletContext } from './ComponentPlaygroundContext'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router'
+import { useThemeStore } from '@/app/store/theme.store'
+import { Button } from '@/core/components/Button/Button'
 import { useBreakpoints } from '@/core/hooks/useMediaQuery'
 import { defaultPropsMap, getComponentType } from './ComponentPlaygroundContext'
 import PropertiesPanel from './PropertiesPanel'
@@ -27,6 +29,7 @@ export default function ComponentsShell() {
   const currentLabel = getBreadcrumbLabel(location.pathname)
   const componentType = getComponentType(location.pathname)
   const { isDesktop } = useBreakpoints()
+  const { theme, toggleTheme } = useThemeStore()
 
   // 사이드바 열림/닫힘 상태 (모바일/태블릿 드로어)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -187,10 +190,10 @@ export default function ComponentsShell() {
 
         {/* Footer Action */}
         <div className="sidebar-footer">
-          <button className="sidebar-footer-btn" type="button">
+          <Button variant="ghost" size="sm" className="sidebar-footer-btn">
             <span className="material-symbols-outlined">settings</span>
             <span>Settings</span>
-          </button>
+          </Button>
         </div>
       </aside>
 
@@ -200,14 +203,15 @@ export default function ComponentsShell() {
         <header className="layout-top-appbar">
           <div className="appbar-breadcrumb">
             {/* 햄버거 메뉴 (모바일/태블릿) */}
-            <button
+            <Button
+              variant="ghost"
+              size="sm"
               className="appbar-menu-btn"
-              type="button"
               onClick={toggleSidebar}
               aria-label="Toggle navigation"
             >
               <span className="material-symbols-outlined">menu</span>
-            </button>
+            </Button>
             <span className="appbar-breadcrumb-segment">Components</span>
             <span className="appbar-breadcrumb-separator">/</span>
             <span className="appbar-breadcrumb-current">{currentLabel}</span>
@@ -219,12 +223,20 @@ export default function ComponentsShell() {
               <a className="appbar-tab" href="#">Props</a>
             </nav>
             <div className="appbar-actions">
-              <button className="appbar-action-btn" type="button">
-                <span className="material-symbols-outlined">light_mode</span>
-              </button>
-              <button className="appbar-action-btn" type="button">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="appbar-action-btn"
+                onClick={(e) => { toggleTheme(e.clientX, e.clientY) }}
+                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                <span className="material-symbols-outlined">
+                  {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+                </span>
+              </Button>
+              <Button variant="ghost" size="sm" className="appbar-action-btn">
                 <span className="material-symbols-outlined">grid_view</span>
-              </button>
+              </Button>
               <a className="appbar-action-btn" href="#">
                 <span className="material-symbols-outlined">terminal</span>
               </a>
@@ -262,16 +274,17 @@ export default function ComponentsShell() {
       </main>
 
       {/* ── FAB: 속성 패널 토글 (모바일/태블릿) ── */}
-      <button
+      <Button
+        variant="solid"
+        size="sm"
         className="layout-fab-toggle"
-        type="button"
         onClick={togglePanel}
         aria-label="Toggle properties panel"
       >
         <span className="material-symbols-outlined">
           {isPanelOpen ? 'keyboard_arrow_down' : 'settings_input_component'}
         </span>
-      </button>
+      </Button>
 
       {/* ── Bottom Sheet Overlay (모바일/태블릿) ── */}
       <div

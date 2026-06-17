@@ -75,19 +75,45 @@
 /* =============================================================================
   Dark Mode — 그림자 불투명도 조정
   (어두운 배경에서는 opacity를 높여야 그림자가 보임)
+  data-theme 속성으로 다크/라이트 전환
    ============================================================================= */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+[data-theme='dark'] {
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
 
-    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
 
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
 
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
 
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.55), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.55), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
 
-    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-  }
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+
+  /* Dark Mode — Focus Ring 색상 보정 (밝은 배경에서 더 진한 색상 필요) */
+  --shadow-focus-primary: 0 0 0 3px rgba(125, 211, 252, 0.5);
+
+  --shadow-focus-danger: 0 0 0 3px rgba(255, 107, 107, 0.5);
+
+  --shadow-focus-success: 0 0 0 3px rgba(125, 220, 171, 0.5);
+
+  --shadow-focus-neutral: 0 0 0 3px rgba(160, 180, 196, 0.5);
+}
+
+[data-theme='light'] {
+  /* Light Mode — 그림자는 기본값(:root)을 그대로 사용하므로 오버라이드 불필요 */
+
+  /* Focus Ring — 라이트 배경에서 더 진한 색상으로 가시성 확보 */
+  --shadow-focus-primary: 0 0 0 3px rgba(14, 77, 110, 0.35);
+
+  --shadow-focus-danger: 0 0 0 3px rgba(224, 85, 85, 0.35);
+
+  --shadow-focus-success: 0 0 0 3px rgba(6, 56, 34, 0.35);
+
+  --shadow-focus-neutral: 0 0 0 3px rgba(74, 96, 112, 0.35);
+
+  /* Colored / Tinted Shadows — 라이트 배경에서 더 미세하게 */
+  --shadow-primary-sm: 0 1px 3px 0 rgba(14, 77, 110, 0.1), 0 1px 2px -1px rgba(14, 77, 110, 0.1);
+
+  --shadow-primary-md: 0 4px 6px -1px rgba(14, 77, 110, 0.1), 0 2px 4px -2px rgba(14, 77, 110, 0.1);
 }

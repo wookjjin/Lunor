@@ -1,6 +1,7 @@
 import type { ErrorInfo, ReactNode } from 'react'
 import { Component } from 'react'
 import { handleGlobalError } from '@/app/error/handleGlobalError'
+import { Button } from '@/core/components/Button/Button'
 
 interface Props {
   children: ReactNode
@@ -34,12 +35,13 @@ export class GlobalErrorBoundary extends Component<Props, State> {
           <div style={{ padding: '2rem', textAlign: 'center' }}>
             <h2>오류가 발생했습니다</h2>
             <p>{this.state.error?.message}</p>
-            <button
-              type="button"
+            <Button
+              variant="solid"
+              size="md"
               onClick={() => this.setState({ hasError: false, error: null })}
             >
               다시 시도
-            </button>
+            </Button>
           </div>
         )
       )

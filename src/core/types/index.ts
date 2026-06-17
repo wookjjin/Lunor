@@ -28,3 +28,6 @@ export interface ApiResponse<T> {
 
 /** ID 타입 */
 export type ID = string | number
+
+/** 테마 타입 */
+export type Theme = 'dark' | 'light'

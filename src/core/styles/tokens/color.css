@@ -225,3 +225,133 @@
   --color-info-border: var(--color-info-200);
   --color-info-text: var(--color-info-100);
 }
+
+/* ===========================================================================
+   Semantic — Light Mode Override
+   [data-theme="light"] 선택자가 :root의 다크 모드 값을 오버라이드
+   Dark 모드가 기본(:root)이며, Light 모드는 data-theme 속성으로 전환
+   =========================================================================== */
+[data-theme='light'] {
+  /* ---------------------------------------------------------------------------
+     Semantic — Background (Light Mode)
+     --------------------------------------------------------------------------- */
+  --color-bg-base: var(--color-neutral-0);
+  /* #ffffff: 밝은 메인 배경 */
+  --color-bg-subtle: var(--color-neutral-50);
+  /* #e0e8f0: 사이드바 및 레이어 */
+  --color-bg-muted: rgba(10, 14, 26, 0.04);
+  --color-bg-emphasis: rgba(10, 14, 26, 0.08);
+  --color-bg-inverse: var(--color-neutral-950);
+  /* #0a0e1a: 반전 텍스트 배경 */
+  --color-bg-overlay: rgba(10, 14, 26, 0.32);
+  --color-bg-overlay-strong: rgba(10, 14, 26, 0.48);
+  --color-bg-glass-default: rgba(255, 255, 255, 0.6);
+  --color-bg-glass-elevated: rgba(255, 255, 255, 0.75);
+
+  /* ---------------------------------------------------------------------------
+     Semantic — Surface (Light Mode)
+     --------------------------------------------------------------------------- */
+  --color-surface-default: var(--color-neutral-50);
+  --color-surface-raised: var(--color-neutral-0);
+  --color-surface-overlay: var(--color-neutral-50);
+  --color-surface-sunken: rgba(10, 14, 26, 0.04);
+
+  /* ---------------------------------------------------------------------------
+     Semantic — Text (Light Mode)
+     --------------------------------------------------------------------------- */
+  --color-text-primary: var(--color-neutral-950);
+  /* #0a0e1a: 진한 가독성 높은 텍스트 */
+  --color-text-secondary: var(--color-neutral-300);
+  /* #2a3a48: 보조 텍스트 */
+  --color-text-tertiary: var(--color-neutral-200);
+  /* #4a6070 */
+  --color-text-disabled: var(--color-neutral-100);
+  /* #a0b4c4 */
+  --color-text-inverse: var(--color-neutral-0);
+  --color-text-link: var(--color-primary-200);
+  /* #0e4d6e */
+  --color-text-link-hover: var(--color-primary-300);
+  /* #004d73 */
+
+  /* ---------------------------------------------------------------------------
+     Semantic — Border (Light Mode)
+     --------------------------------------------------------------------------- */
+  --color-border-default: var(--color-neutral-100);
+  /* #a0b4c4: 기본 보더 */
+  --color-border-subtle: var(--color-neutral-50);
+  /* #e0e8f0: 미세한 보더 */
+  --color-border-strong: var(--color-neutral-200);
+  /* #4a6070: 강조 보더 */
+  --color-border-focus: var(--color-primary-200);
+  --color-border-inverse: var(--color-neutral-950);
+
+  /* ---------------------------------------------------------------------------
+     Semantic — Border Alpha (Light Mode)
+     --------------------------------------------------------------------------- */
+  --color-border-hairline: rgba(74, 96, 112, 0.08);
+  --color-border-subtle-alpha: rgba(74, 96, 112, 0.12);
+  --color-border-muted-alpha: rgba(74, 96, 112, 0.2);
+  --color-border-strong-alpha: rgba(74, 96, 112, 0.35);
+
+  /* ---------------------------------------------------------------------------
+     Semantic — Interactive / Brand (Light Mode)
+     hover → 더 밝은 색, active → 가장 밝은 색 (Dark 모드와 동일한 계층 구조)
+     --------------------------------------------------------------------------- */
+  --color-interactive-default: var(--color-primary-200);
+  /* #0e4d6e */
+  --color-interactive-hover: var(--color-primary-100);
+  /* #7dd3fc — 밝은 하늘색으로 hover 시 확연한 변화 */
+  --color-interactive-active: var(--color-primary-50);
+  /* #c8eaff */
+  --color-interactive-disabled: var(--color-neutral-100);
+
+  /* ---------------------------------------------------------------------------
+     Semantic — Primary Glow (Light Mode — Primary-200 기반)
+     --------------------------------------------------------------------------- */
+  --color-primary-glow-subtle: rgba(14, 77, 110, 0.06);
+  --color-primary-glow-default: rgba(14, 77, 110, 0.1);
+  --color-primary-glow-emphasis: rgba(14, 77, 110, 0.15);
+  --color-primary-glow-strong: rgba(14, 77, 110, 0.2);
+  --color-primary-glow-intense: rgba(14, 77, 110, 0.3);
+  --color-primary-glow-focus: rgba(14, 77, 110, 0.4);
+
+  /* ---------------------------------------------------------------------------
+     Semantic — Text Alpha (Light Mode — Neutral-200 기반)
+     --------------------------------------------------------------------------- */
+  --color-text-tertiary-alpha: rgba(74, 96, 112, 0.4);
+  --color-text-muted-alpha: rgba(74, 96, 112, 0.55);
+  --color-text-placeholder: rgba(74, 96, 112, 0.6);
+
+  /* ---------------------------------------------------------------------------
+     Semantic — Surface Alpha (Light Mode)
+     --------------------------------------------------------------------------- */
+  --color-surface-input: rgba(224, 232, 240, 0.6);
+  --color-surface-card-rest: rgba(224, 232, 240, 0.3);
+  --color-surface-card-hover: rgba(224, 232, 240, 0.5);
+  --color-surface-toggle-group: rgba(224, 232, 240, 0.4);
+  --color-surface-active: rgba(14, 77, 110, 0.1);
+  --color-shadow-subtle: rgba(0, 0, 0, 0.05);
+
+  /* ---------------------------------------------------------------------------
+     Semantic — Status (Light Mode)
+     --------------------------------------------------------------------------- */
+  --color-success-bg: var(--color-success-50);
+  --color-success-border: var(--color-success-200);
+  --color-success-text: var(--color-success-900);
+
+  --color-warning-bg: var(--color-warning-50);
+  --color-warning-border: var(--color-warning-200);
+  --color-warning-text: var(--color-warning-900);
+
+  --color-danger-bg: var(--color-danger-500);
+  /* #ff6b6b — 인터랙티브 배경 (버튼 등) */
+  --color-danger-surface: rgba(255, 107, 107, 0.08);
+  /* 라이트 모드 상태 영역 */
+  --color-danger-border: var(--color-danger-500);
+  --color-danger-text: var(--color-danger-200);
+  /* #3d1414 — 진한 상태 텍스트 */
+
+  --color-info-bg: var(--color-info-50);
+  --color-info-border: var(--color-info-200);
+  --color-info-text: var(--color-info-900);
+}

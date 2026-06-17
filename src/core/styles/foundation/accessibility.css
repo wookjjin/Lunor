@@ -17,7 +17,6 @@
 *:focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
-  border-radius: var(--radius-sm);
   box-shadow: var(--shadow-focus-primary);
 }
 
@@ -29,7 +28,6 @@ a:focus-visible,
   outline: 2px solid var(--color-border-focus);
   outline-offset: 3px;
   box-shadow: var(--shadow-focus-primary);
-  border-radius: var(--radius-sm);
 }
 
 /* 인풋·셀렉트는 내부 포커스 스타일 우선 */

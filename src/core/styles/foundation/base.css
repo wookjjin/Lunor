@@ -11,6 +11,48 @@
   color-scheme: dark;
 }
 
+[data-theme='light'] {
+  color-scheme: light;
+}
+
+/* =============================================================================
+  View Transition — Circular Reveal 테마 전환
+  클릭 좌표(--vt-x, --vt-y)를 중심으로 원형 확산 애니메이션
+  ============================================================================= */
+
+/* 기본 좌표: 화면 중앙 */
+:root {
+  --vt-x: 50%;
+  --vt-y: 50%;
+}
+
+/* View Transition 기본 설정: old/new 모두 표시 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* 새 테마가 원형으로 확산 */
+::view-transition-new(root) {
+  clip-path: circle(0% at var(--vt-x) var(--vt-y));
+  animation: circular-reveal-in var(--duration-theme) var(--ease-emphasized) forwards;
+}
+
+@keyframes circular-reveal-in {
+  to {
+    clip-path: circle(150% at var(--vt-x) var(--vt-y));
+  }
+}
+
+/* prefers-reduced-motion: Circular Reveal 즉시 전환 */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    animation: none;
+    clip-path: circle(150% at var(--vt-x) var(--vt-y));
+  }
+}
+
 body {
   font-family: var(--font-family-base);
   font-size: var(--font-size-md); /* 16px */

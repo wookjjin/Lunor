@@ -39,6 +39,7 @@
 
 .button--solid:hover:not(:disabled) {
   background: var(--color-interactive-hover);
+  color: var(--color-primary-400);
 }
 
 .button--secondary {

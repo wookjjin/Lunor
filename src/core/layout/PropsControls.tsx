@@ -1,4 +1,5 @@
 import type { PropDefs } from './ComponentPlaygroundContext'
+import { Button } from '@/core/components/Button/Button'
 import { propDefsMap } from './ComponentPlaygroundContext'
 
 /* =============================================================================
@@ -20,14 +21,15 @@ function ToggleGroup({ options, activeValue, onChange }: {
   return (
     <div className="props-toggle-group">
       {options.map(opt => (
-        <button
+        <Button
           key={opt}
-          type="button"
+          variant="ghost"
+          size="sm"
           className={`props-toggle-btn${opt === activeValue ? ' props-toggle-btn--active' : ''}`}
           onClick={() => onChange(opt)}
         >
           {opt}
-        </button>
+        </Button>
       ))}
     </div>
   )
@@ -42,20 +44,22 @@ function BooleanToggle({ label, checked, onChange }: {
     <div className="props-row">
       <label className="props-label">{label}</label>
       <div className="props-toggle-group">
-        <button
-          type="button"
+        <Button
+          variant="ghost"
+          size="sm"
           className={`props-toggle-btn${!checked ? ' props-toggle-btn--active' : ''}`}
           onClick={() => onChange(false)}
         >
           false
-        </button>
-        <button
-          type="button"
+        </Button>
+        <Button
+          variant="ghost"
+          size="sm"
           className={`props-toggle-btn${checked ? ' props-toggle-btn--active' : ''}`}
           onClick={() => onChange(true)}
         >
           true
-        </button>
+        </Button>
       </div>
     </div>
   )
