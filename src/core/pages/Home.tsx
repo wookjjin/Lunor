@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 import { Link } from 'react-router'
 import { useThreeScene } from '@/core/hooks/useThreeScene'
-import '@/core/pages/Home.css'
+import '@/core/styles/pages/Home.css'
 
 /* =============================================================================
    HomePage — Core UI 인터랙티브 랜딩 페이지
