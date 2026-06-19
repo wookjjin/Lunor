@@ -130,6 +130,39 @@
   font-size: 20px;
 }
 
+/* ── Theme Ticker — 아이콘 롤링 애니메이션 (전광판 스타일) ── */
+.theme-ticker {
+  display: inline-block;
+  overflow: hidden;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.theme-ticker__track {
+  display: flex;
+  flex-direction: column;
+  height: 200%;
+  transition: transform var(--duration-theme) var(--ease-emphasized);
+}
+
+.theme-ticker__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* 테마별 트랙 위치 — dark_mode가 첫 번째, light_mode가 두 번째 */
+[data-theme='dark'] .theme-ticker__track {
+  transform: translateY(0);
+}
+
+[data-theme='light'] .theme-ticker__track {
+  transform: translateY(-50%);
+}
+
 .appbar-avatar {
   width: 2rem;
   height: 2rem;

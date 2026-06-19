@@ -235,8 +235,11 @@ export default function ComponentsShell() {
                 onClick={(e) => { toggleTheme(e.clientX, e.clientY) }}
                 aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               >
-                <span className="material-symbols-outlined">
-                  {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+                <span className="theme-ticker">
+                  <span className="theme-ticker__track">
+                    <span className="theme-ticker__icon material-symbols-outlined">dark_mode</span>
+                    <span className="theme-ticker__icon material-symbols-outlined">light_mode</span>
+                  </span>
                 </span>
               </Button>
               <Button variant="ghost" size="sm" className="appbar-action-btn">
