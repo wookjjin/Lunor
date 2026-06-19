@@ -1,0 +1,105 @@
+/* =============================================================================
+   ShowcaseItem — Showcase 카드 단위 아이템 스타일
+   Showcase.css에서 showcase__item / header / label / badge / body 관련 스타일을 이전
+   ============================================================================= */
+
+/* ── flex 아이템 (카드) ── */
+.showcase__item {
+  flex: 1 1 100%;
+}
+
+/* 태블릿: 2열 */
+@media (min-width: 768px) {
+  .showcase__item {
+    flex: 1 1 calc(50% - var(--space-6) / 2);
+  }
+}
+
+/* 와이드 데스크톱: 4열 */
+@media (min-width: 1280px) {
+  .showcase__item {
+    flex: 1 1 calc(25% - var(--space-6) * 3 / 4);
+  }
+}
+
+/* ── 쇼케이스 카드 ── */
+.showcase__item {
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  transition: var(--transition-base);
+}
+
+.showcase__item:hover {
+  box-shadow: 0 0 var(--space-5) var(--color-primary-glow-subtle);
+}
+
+/* ── 카드 헤더 ── */
+.showcase__item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+
+.showcase__item-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-text-tertiary);
+}
+
+.showcase__item-label--primary {
+  color: var(--color-interactive-default);
+}
+
+.showcase__item-label--secondary {
+  color: var(--color-secondary-100);
+}
+
+.showcase__item-label--ghost {
+  color: var(--color-text-tertiary);
+}
+
+.showcase__item-label--danger {
+  color: var(--color-danger-500);
+}
+
+/* ── 뱃지 ── */
+.showcase__badge {
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-2xs);
+  border: 1px solid var(--color-primary-glow-emphasis);
+  color: var(--color-interactive-default);
+  background: var(--color-primary-glow-subtle);
+}
+
+.showcase__badge--primary {
+  border-color: var(--color-primary-glow-emphasis);
+  color: var(--color-interactive-default);
+  background: var(--color-primary-glow-subtle);
+}
+
+/* ── 카드 바디 ── */
+.showcase__item-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+/* ── 반응형: 모바일 패딩 축소 ── */
+@media (max-width: 639px) {
+  .showcase__item {
+    padding: var(--space-4);
+  }
+
+  .showcase__item-header {
+    margin-bottom: var(--space-4);
+  }
+
+  .showcase__item-body {
+    gap: var(--space-4);
+  }
+}
