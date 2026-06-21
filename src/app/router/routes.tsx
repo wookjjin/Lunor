@@ -26,6 +26,13 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: 'card',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Card')
+          return { Component }
+        },
+      },
+      {
         path: 'input',
         lazy: async () => {
           const { default: Component } = await import('@/core/pages/Input')
@@ -43,6 +50,20 @@ const router = createBrowserRouter([
         path: 'dropdown',
         lazy: async () => {
           const { default: Component } = await import('@/core/pages/Dropdown')
+          return { Component }
+        },
+      },
+      {
+        path: 'table',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Table')
+          return { Component }
+        },
+      },
+      {
+        path: 'datatable',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/DataTable')
           return { Component }
         },
       },

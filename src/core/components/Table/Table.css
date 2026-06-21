@@ -1,0 +1,83 @@
+/* Scroll wrapper: 가로 스크롤을 담당하여 테이블이 잘리지 않도록 함 */
+.table__scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Base */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+  background: var(--color-bg-default, #fff);
+}
+
+.table__head {
+  background: var(--color-bg-subtle, #f5f5f5);
+  border-bottom: 1px solid var(--color-border-default, #e0e0e0);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.table__row {
+  border-bottom: 1px solid var(--color-border-subtle, #f0f0f0);
+  transition: background-color 120ms;
+}
+
+.table__header,
+.table__cell {
+  padding: var(--space-3) var(--space-4);
+  vertical-align: middle;
+}
+
+.table__header {
+  font-weight: 600;
+  color: var(--color-text-secondary, #666);
+  white-space: nowrap;
+}
+
+.table__cell {
+  color: var(--color-text-primary, #333);
+}
+
+/* Alignment */
+.table__cell--left,
+.table__header--left {
+  text-align: left;
+}
+
+.table__cell--center,
+.table__header--center {
+  text-align: center;
+}
+
+.table__cell--right,
+.table__header--right {
+  text-align: right;
+}
+
+/* Hoverable */
+.table--hoverable .table__row:hover {
+  background: var(--color-bg-hover, #fafafa);
+  cursor: pointer;
+}
+
+/* Bordered */
+.table--bordered .table__header,
+.table--bordered .table__cell {
+  border-right: 1px solid var(--color-border-subtle, #f0f0f0);
+}
+
+.table--bordered .table__header:last-child,
+.table--bordered .table__cell:last-child {
+  border-right: none;
+}
+
+/* Compact */
+.table--compact .table__header,
+.table--compact .table__cell {
+  padding: var(--space-2) var(--space-3);
+}

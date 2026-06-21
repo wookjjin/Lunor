@@ -81,6 +81,11 @@ export const sidebarNavGroups: NavGroup[] = [
         icon: 'table',
       },
       {
+        label: 'DataTable',
+        path: '/components/datatable',
+        icon: 'table_chart',
+      },
+      {
         label: 'Dropdown',
         path: '/components/dropdown',
         icon: 'arrow_drop_down',

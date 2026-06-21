@@ -33,6 +33,12 @@ export interface DropdownPlaygroundProps {
   defaultOpen: boolean
 }
 
+export interface CardPlaygroundProps {
+  variant: 'default' | 'outlined' | 'elevated'
+  padding: 'none' | 'sm' | 'md' | 'lg'
+  children: string
+}
+
 // ---- Outlet Context 타입 ----
 
 export interface PlaygroundOutletContext {
@@ -69,6 +75,11 @@ export const defaultPropsMap: Record<string, Record<string, unknown>> = {
   },
   dropdown: {
     defaultOpen: false,
+  },
+  card: {
+    variant: 'default',
+    padding: 'md',
+    children: 'Card content',
   },
 }
 
@@ -139,6 +150,16 @@ export const propDefsMap: Record<string, PropDefs> = {
       { key: 'defaultOpen', label: 'defaultOpen' },
     ],
     texts: [],
+  },
+  card: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'outlined', 'elevated'] },
+      { key: 'padding', label: 'padding', options: ['none', 'sm', 'md', 'lg'] },
+    ],
+    booleans: [],
+    texts: [
+      { key: 'children', label: 'content' },
+    ],
   },
 }
 

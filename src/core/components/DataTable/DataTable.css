@@ -1,0 +1,72 @@
+/* Base */
+.data-table {
+  width: 100%;
+  position: relative;
+  background: var(--color-bg-default, #fff);
+  border-radius: var(--radius-md, 6px);
+  overflow: hidden;
+}
+
+/* Virtual scroll container */
+.data-table--virtual {
+  display: flex;
+  flex-direction: column;
+  /* 가로 스크롤 시 헤더/바디가 함께 움직이도록 컨테이너가 스크롤을 담당 */
+}
+
+.data-table__header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+/* 헤더 테이블은 바디와 정렬을 맞추기 위해 margin-bottom 제거 */
+.data-table__header-wrapper .table {
+  margin-bottom: 0;
+}
+
+.data-table__header-wrapper .table__body {
+  display: none;
+}
+
+/* 헤더 래퍼의 내부 스크롤 영역은 가상 스크롤 컨테이너가 제어하도록 무한 스크롤 방지 */
+.data-table__header-wrapper .table__scroll {
+  overflow: visible;
+}
+
+.data-table__body-wrapper {
+  flex-shrink: 0;
+}
+
+.data-table__virtual-inner .table {
+  margin-bottom: 0;
+}
+
+.data-table__virtual-inner .table__head {
+  display: none;
+}
+
+/* 바디 내부 스크롤도 상위 컨테이너가 제어하도록 중첩 스크롤 방지 */
+.data-table__virtual-inner .table__scroll {
+  overflow: visible;
+}
+
+/* Empty state */
+.data-table[data-empty] {
+  display: flex;
+  flex-direction: column;
+}
+
+.data-table__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 120px;
+  padding: var(--space-6, 24px);
+
+  color: var(--color-text-tertiary, #999);
+  font-size: 0.875rem;
+  text-align: center;
+}
