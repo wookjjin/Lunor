@@ -30,15 +30,15 @@
 }
 
 .dialog--sm {
-  max-width: 400px;
+  max-width: var(--layout-dialog-sm);
 }
 
 .dialog--md {
-  max-width: 600px;
+  max-width: var(--layout-dialog-md);
 }
 
 .dialog--lg {
-  max-width: 800px;
+  max-width: var(--layout-dialog-lg);
 }
 
 .dialog__header {
@@ -51,7 +51,7 @@
   margin: 0;
 
   font-size: var(--font-size-lg);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .dialog__body {

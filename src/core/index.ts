@@ -1,9 +1,18 @@
 // Components
 export { Button } from '@/core/components/Button/Button'
+export { Dropdown } from '@/core/components/Dropdown/Dropdown'
+export type {
+  DropdownContentProps,
+  DropdownItemProps,
+  DropdownPlacement,
+  DropdownRootProps,
+  DropdownSeparatorProps,
+  DropdownTriggerProps,
+} from '@/core/components/Dropdown/Dropdown.types'
 export { Input } from '@/core/components/Input/Input'
 export { Modal } from '@/core/components/Modal/Modal'
 export { Table } from '@/core/components/Table/Table'
-export type { Column, TableProps } from '@/core/components/Table/Table'
+export type { Column, TableProps } from '@/core/components/Table/Table.types'
 
 // Constants
 export { API_BASE_URL, APP_NAME, DEFAULT_PAGE_SIZE, MAX_RETRY_COUNT } from '@/core/constants'

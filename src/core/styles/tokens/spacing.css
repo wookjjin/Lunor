@@ -9,94 +9,108 @@
   /* ---------------------------------------------------------------------------
     Primitive Scale — 4px base grid
     --------------------------------------------------------------------------- */
-  --space-0:    0;
-  --space-px:   1px;
-  --space-0-5:  0.125rem;   /*  2px */
-  --space-1:    0.25rem;    /*  4px */
-  --space-1-5:  0.375rem;   /*  6px */
-  --space-2:    0.5rem;     /*  8px */
-  --space-2-5:  0.625rem;   /* 10px */
-  --space-3:    0.75rem;    /* 12px */
-  --space-3-5:  0.875rem;   /* 14px */
-  --space-4:    1rem;       /* 16px */
-  --space-5:    1.25rem;    /* 20px */
-  --space-6:    1.5rem;     /* 24px */
-  --space-7:    1.75rem;    /* 28px */
-  --space-8:    2rem;       /* 32px */
-  --space-10:   2.5rem;     /* 40px */
-  --space-12:   3rem;       /* 48px */
-  --space-14:   3.5rem;     /* 56px */
-  --space-16:   4rem;       /* 64px */
-  --space-20:   5rem;       /* 80px */
-  --space-24:   6rem;       /* 96px */
-  --space-28:   7rem;       /* 112px */
-  --space-32:   8rem;       /* 128px */
-  --space-36:   9rem;       /* 144px */
-  --space-40:   10rem;      /* 160px */
-  --space-48:   12rem;      /* 192px */
-  --space-56:   14rem;      /* 224px */
-  --space-64:   16rem;      /* 256px */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0-5: 0.125rem; /*  2px */
+  --space-1: 0.25rem; /*  4px */
+  --space-1-5: 0.375rem; /*  6px */
+  --space-2: 0.5rem; /*  8px */
+  --space-2-5: 0.625rem; /* 10px */
+  --space-3: 0.75rem; /* 12px */
+  --space-3-5: 0.875rem; /* 14px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-7: 1.75rem; /* 28px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-14: 3.5rem; /* 56px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+  --space-28: 7rem; /* 112px */
+  --space-32: 8rem; /* 128px */
+  --space-36: 9rem; /* 144px */
+  --space-40: 10rem; /* 160px */
+  --space-48: 12rem; /* 192px */
+  --space-56: 14rem; /* 224px */
+  --space-64: 16rem; /* 256px */
 
   /* ===========================================================================
     Semantic — Component Inner Spacing (padding / gap)
     =========================================================================== */
 
   /* 버튼, 인풋, 배지 등 컴포넌트 내부 패딩 */
-  --spacing-component-xs:  var(--space-1)  var(--space-2);    /*  4px  8px */
-  --spacing-component-sm:  var(--space-1-5) var(--space-3);   /*  6px 12px */
-  --spacing-component-md:  var(--space-2)  var(--space-4);    /*  8px 16px */
-  --spacing-component-lg:  var(--space-3)  var(--space-5);    /* 12px 20px */
-  --spacing-component-xl:  var(--space-4)  var(--space-6);    /* 16px 24px */
+  --spacing-component-xs: var(--space-1) var(--space-2); /*  4px  8px */
+  --spacing-component-sm: var(--space-1-5) var(--space-3); /*  6px 12px */
+  --spacing-component-md: var(--space-2) var(--space-4); /*  8px 16px */
+  --spacing-component-lg: var(--space-3) var(--space-5); /* 12px 20px */
+  --spacing-component-xl: var(--space-4) var(--space-6); /* 16px 24px */
 
   /* 컴포넌트 가로/세로 패딩 개별 토큰 */
-  --spacing-padding-x-xs:  var(--space-2);
-  --spacing-padding-x-sm:  var(--space-3);
-  --spacing-padding-x-md:  var(--space-4);
-  --spacing-padding-x-lg:  var(--space-5);
-  --spacing-padding-x-xl:  var(--space-6);
+  --spacing-padding-x-xs: var(--space-2);
+  --spacing-padding-x-sm: var(--space-3);
+  --spacing-padding-x-md: var(--space-4);
+  --spacing-padding-x-lg: var(--space-5);
+  --spacing-padding-x-xl: var(--space-6);
 
-  --spacing-padding-y-xs:  var(--space-1);
-  --spacing-padding-y-sm:  var(--space-1-5);
-  --spacing-padding-y-md:  var(--space-2);
-  --spacing-padding-y-lg:  var(--space-3);
-  --spacing-padding-y-xl:  var(--space-4);
+  --spacing-padding-y-xs: var(--space-1);
+  --spacing-padding-y-sm: var(--space-1-5);
+  --spacing-padding-y-md: var(--space-2);
+  --spacing-padding-y-lg: var(--space-3);
+  --spacing-padding-y-xl: var(--space-4);
 
   /* ===========================================================================
     Semantic — Section / Block Spacing (섹션간 여백)
     =========================================================================== */
-  --spacing-section-xs:  var(--space-8);    /* 32px */
-  --spacing-section-sm:  var(--space-12);   /* 48px */
-  --spacing-section-md:  var(--space-16);   /* 64px */
-  --spacing-section-lg:  var(--space-24);   /* 96px */
-  --spacing-section-xl:  var(--space-32);   /* 128px */
+  --spacing-section-xs: var(--space-8); /* 32px */
+  --spacing-section-sm: var(--space-12); /* 48px */
+  --spacing-section-md: var(--space-16); /* 64px */
+  --spacing-section-lg: var(--space-24); /* 96px */
+  --spacing-section-xl: var(--space-32); /* 128px */
 
   /* ===========================================================================
     Semantic — Stack / Inline Gap (Flex/Grid gap)
     =========================================================================== */
-  --spacing-gap-2xs: var(--space-1);    /*  4px */
-  --spacing-gap-xs:  var(--space-2);    /*  8px */
-  --spacing-gap-sm:  var(--space-3);    /* 12px */
-  --spacing-gap-md:  var(--space-4);    /* 16px */
-  --spacing-gap-lg:  var(--space-6);    /* 24px */
-  --spacing-gap-xl:  var(--space-8);    /* 32px */
-  --spacing-gap-2xl: var(--space-12);   /* 48px */
+  --spacing-gap-2xs: var(--space-1); /*  4px */
+  --spacing-gap-xs: var(--space-2); /*  8px */
+  --spacing-gap-sm: var(--space-3); /* 12px */
+  --spacing-gap-md: var(--space-4); /* 16px */
+  --spacing-gap-lg: var(--space-6); /* 24px */
+  --spacing-gap-xl: var(--space-8); /* 32px */
+  --spacing-gap-2xl: var(--space-12); /* 48px */
 
   /* ===========================================================================
     Layout — Container & Page
     =========================================================================== */
-  --layout-page-gutter-mobile: var(--space-4);    /* 16px */
-  --layout-page-gutter-tablet: var(--space-6);    /* 24px */
-  --layout-page-gutter-desktop:var(--space-8);    /* 32px */
+  --layout-page-gutter-mobile: var(--space-4); /* 16px */
+  --layout-page-gutter-tablet: var(--space-6); /* 24px */
+  --layout-page-gutter-desktop: var(--space-8); /* 32px */
 
-  --layout-content-max-width:  80rem;             /* 1280px */
-  --layout-prose-max-width:    65ch;
+  --layout-content-max-width: 80rem; /* 1280px */
+  --layout-prose-max-width: 65ch;
 
   /* Sidebar / Nav */
-  --layout-sidebar-width:      15rem;  /* 240px */
-  --layout-sidebar-collapsed:  4rem;   /*  64px */
-  --layout-header-height:      3.5rem; /*  56px */
-  --layout-footer-height:      4rem;   /*  64px */
+  --layout-sidebar-width: 15rem; /* 240px */
+  --layout-sidebar-collapsed: 4rem; /*  64px */
+  --layout-header-height: 3.5rem; /*  56px */
+  --layout-footer-height: 4rem; /*  64px */
 
   /* Z-Index는 z-index.css에서 관리하지만, layout 편의상 사용할 수 있는 공간 토큰 */
   --layout-panel-gap: var(--space-4);
+
+  /* ===========================================================================
+      Layout — Showcase Container Max Widths
+      =========================================================================== */
+  --layout-showcase-max-width-sm: 64rem; /* 1024px */
+  --layout-showcase-max-width-md: 72rem; /* 1152px */
+  --layout-showcase-max-width-lg: 80rem; /* 1280px */
+
+  /* ===========================================================================
+     Layout — Dialog Max Widths
+     =========================================================================== */
+  --layout-dialog-sm: 25rem; /* 400px */
+  --layout-dialog-md: 37.5rem; /* 600px */
+  --layout-dialog-lg: 50rem; /* 800px */
 }

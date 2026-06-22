@@ -6,52 +6,52 @@
   /* ---------------------------------------------------------------------------
     Primitive Scale
     --------------------------------------------------------------------------- */
-  --radius-none:    0;
-  --radius-xs:      0.125rem;  /*  2px */
-  --radius-sm:      0.25rem;   /*  4px */
-  --radius-md:      0.375rem;  /*  6px */
-  --radius-lg:      0.5rem;    /*  8px */
-  --radius-xl:      0.75rem;   /* 12px */
-  --radius-2xl:     1rem;      /* 16px */
-  --radius-3xl:     1.5rem;    /* 24px */
-  --radius-full:    9999px;    /* pill / circle */
+  --radius-none: 0;
+  --radius-xs: 0.125rem; /*  2px */
+  --radius-sm: 0.25rem; /*  4px */
+  --radius-md: 0.375rem; /*  6px */
+  --radius-lg: 0.5rem; /*  8px */
+  --radius-xl: 0.75rem; /* 12px */
+  --radius-2xl: 1rem; /* 16px */
+  --radius-3xl: 1.5rem; /* 24px */
+  --radius-full: 9999px; /* pill / circle */
 
   /* ===========================================================================
     Semantic — Component Aliases
     =========================================================================== */
 
   /* 버튼 */
-  --radius-button-sm:   var(--radius-sm);
-  --radius-button-md:   var(--radius-md);
-  --radius-button-lg:   var(--radius-lg);
+  --radius-button-sm: var(--radius-sm);
+  --radius-button-md: var(--radius-md);
+  --radius-button-lg: var(--radius-lg);
   --radius-button-pill: var(--radius-full);
 
   /* 인풋·셀렉트·텍스트에어리어 */
-  --radius-input-sm:    var(--radius-sm);
-  --radius-input-md:    var(--radius-md);
-  --radius-input-lg:    var(--radius-lg);
+  --radius-input-sm: var(--radius-sm);
+  --radius-input-md: var(--radius-md);
+  --radius-input-lg: var(--radius-lg);
 
   /* 카드·패널 */
-  --radius-card-sm:     var(--radius-lg);
-  --radius-card-md:     var(--radius-xl);
-  --radius-card-lg:     var(--radius-2xl);
+  --radius-card-sm: var(--radius-lg);
+  --radius-card-md: var(--radius-xl);
+  --radius-card-lg: var(--radius-2xl);
 
   /* 모달·다이얼로그 */
-  --radius-modal:       var(--radius-2xl);
-  --radius-drawer:      var(--radius-2xl) var(--radius-2xl) 0 0; /* bottom-sheet */
+  --radius-modal: var(--radius-2xl);
+  --radius-drawer: var(--radius-2xl) var(--radius-2xl) 0 0; /* bottom-sheet */
 
   /* 팝오버·툴팁·드롭다운 */
-  --radius-popover:     var(--radius-lg);
-  --radius-tooltip:     var(--radius-md);
-  --radius-dropdown:    var(--radius-lg);
+  --radius-popover: var(--radius-lg);
+  --radius-tooltip: var(--radius-md);
+  --radius-dropdown: var(--radius-lg);
 
   /* 배지·태그·칩 */
-  --radius-badge:       var(--radius-full);
-  --radius-tag:         var(--radius-sm);
-  --radius-chip:        var(--radius-full);
+  --radius-badge: var(--radius-full);
+  --radius-tag: var(--radius-sm);
+  --radius-chip: var(--radius-full);
 
   /* 아바타 */
-  --radius-avatar:      var(--radius-full);
+  --radius-avatar: var(--radius-full);
 
   /* 이미지·썸네일 */
   --radius-thumbnail-sm: var(--radius-sm);
@@ -59,12 +59,12 @@
   --radius-thumbnail-lg: var(--radius-xl);
 
   /* 알림·토스트 */
-  --radius-toast:       var(--radius-lg);
+  --radius-toast: var(--radius-lg);
 
   /* 스켈레톤 */
-  --radius-skeleton:    var(--radius-sm);
+  --radius-skeleton: var(--radius-sm);
   --radius-skeleton-circle: var(--radius-full);
 
   /* 진행 표시줄 */
-  --radius-progress:    var(--radius-full);
+  --radius-progress: var(--radius-full);
 }

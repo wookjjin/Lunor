@@ -9,22 +9,22 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   text-align: left;
-  background: var(--color-bg-default, #fff);
+  background: var(--color-bg-default);
 }
 
 .table__head {
-  background: var(--color-bg-subtle, #f5f5f5);
-  border-bottom: 1px solid var(--color-border-default, #e0e0e0);
+  background: var(--color-bg-subtle);
+  border-bottom: 1px solid var(--color-border-default);
   position: sticky;
   top: 0;
   z-index: 1;
 }
 
 .table__row {
-  border-bottom: 1px solid var(--color-border-subtle, #f0f0f0);
-  transition: background-color 120ms;
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: background-color var(--duration-100);
 }
 
 .table__header,
@@ -34,13 +34,13 @@
 }
 
 .table__header {
-  font-weight: 600;
-  color: var(--color-text-secondary, #666);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
   white-space: nowrap;
 }
 
 .table__cell {
-  color: var(--color-text-primary, #333);
+  color: var(--color-text-primary);
 }
 
 /* Alignment */
@@ -59,16 +59,21 @@
   text-align: right;
 }
 
-/* Hoverable */
+/* Hoverable — Dark Mode(기본): 더 눈에 띄는 글로우 하이라이트 */
 .table--hoverable .table__row:hover {
-  background: var(--color-bg-hover, #fafafa);
+  background: var(--color-primary-glow-strong);
   cursor: pointer;
+}
+
+/* Light Mode: 기존 hover 색상 유지 */
+[data-theme='light'] .table--hoverable .table__row:hover {
+  background: var(--color-bg-hover);
 }
 
 /* Bordered */
 .table--bordered .table__header,
 .table--bordered .table__cell {
-  border-right: 1px solid var(--color-border-subtle, #f0f0f0);
+  border-right: 1px solid var(--color-border-subtle);
 }
 
 .table--bordered .table__header:last-child,

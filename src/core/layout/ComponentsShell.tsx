@@ -261,8 +261,10 @@ export default function ComponentsShell() {
         {/* ── Workspace: Canvas + Properties Panel ── */}
         <div className="layout-workspace">
           <div className="layout-canvas-area canvas-dots">
-            <Outlet context={outletContext} />
-            {/* Floating Control Hint */}
+            <div className="canvas-content-wrapper">
+              <Outlet context={outletContext} />
+            </div>
+            {/* Floating Control Hint — sticky로 스크롤 컨테이너 뷰포트 하단 고정 */}
             <div className="canvas-floating-hint">
               <div className="canvas-floating-hint-item">
                 <span className="material-symbols-outlined">zoom_in</span>

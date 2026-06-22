@@ -1,24 +1,24 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from 'react'
 
-export type DialogSize =
-  | 'sm'
-  | 'md'
-  | 'lg';
+export type DialogSize
+  = | 'sm'
+    | 'md'
+    | 'lg'
 
 export interface DialogProps {
-  open: boolean;
+  open: boolean
 
-  title?: ReactNode;
+  title?: ReactNode
 
-  children?: ReactNode;
+  children?: ReactNode
 
-  footer?: ReactNode;
+  footer?: ReactNode
 
-  size?: DialogSize;
+  size?: DialogSize
 
-  closeOnOverlayClick?: boolean;
+  closeOnOverlayClick?: boolean
 
-  closeOnEscape?: boolean;
+  closeOnEscape?: boolean
 
-  onClose?: () => void;
+  onClose?: () => void
 }

@@ -2,8 +2,8 @@
 .data-table {
   width: 100%;
   position: relative;
-  background: var(--color-bg-default, #fff);
-  border-radius: var(--radius-md, 6px);
+  background: var(--color-bg-default);
+  border-radius: var(--radius-md);
   overflow: hidden;
 }
 
@@ -63,10 +63,10 @@
   align-items: center;
   justify-content: center;
 
-  min-height: 120px;
-  padding: var(--space-6, 24px);
+  min-height: var(--space-32);
+  padding: var(--space-6);
 
-  color: var(--color-text-tertiary, #999);
-  font-size: 0.875rem;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
   text-align: center;
 }

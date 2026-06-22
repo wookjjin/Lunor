@@ -9,16 +9,16 @@
   border-radius: var(--radius-md);
 
   font: inherit;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 
   cursor: pointer;
   user-select: none;
 
   transition:
-    background-color 150ms,
-    border-color 150ms,
-    color 150ms,
-    opacity 150ms;
+    background-color var(--duration-150),
+    border-color var(--duration-150),
+    color var(--duration-150),
+    opacity var(--duration-150);
 }
 
 .button:focus-visible {
@@ -71,24 +71,24 @@
 
 /* Size */
 .button--sm {
-  min-height: 32px;
+  min-height: var(--space-8);
   padding: 0 var(--space-3);
 
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 }
 
 .button--md {
-  min-height: 40px;
+  min-height: var(--space-10);
   padding: 0 var(--space-4);
 
-  font-size: 1rem;
+  font-size: var(--font-size-md);
 }
 
 .button--lg {
-  min-height: 48px;
+  min-height: var(--space-12);
   padding: 0 var(--space-5);
 
-  font-size: 1.125rem;
+  font-size: var(--font-size-lg);
 }
 
 /* Full Width */

@@ -80,7 +80,7 @@ export default function DataTablePage() {
   const compact = (props.compact ?? false) as boolean
   const [selected, setSelected] = useState<OrderRow | null>(null)
 
-  const smallData = useMemo(() => generateData(20), [])
+  const smallData = useMemo(() => generateData(8), [])
   const largeData = useMemo(() => generateData(5000), [])
 
   return (
@@ -89,7 +89,7 @@ export default function DataTablePage() {
       description="A data table component with optional virtual scrolling for rendering large datasets efficiently."
     >
       {/* 기본 (가상 스크롤 미사용) */}
-      <ShowcaseItem label="Default" variant="primary" badge="20 rows" className="glacier-glass">
+      <ShowcaseItem label="Default" variant="primary" badge="8 rows" className="glacier-glass">
         <DataTable
           columns={columns}
           data={smallData}

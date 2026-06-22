@@ -31,6 +31,17 @@ export interface DialogPlaygroundProps {
 
 export interface DropdownPlaygroundProps {
   defaultOpen: boolean
+  placement: 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'
+}
+
+export interface TablePlaygroundProps {
+  hoverable: boolean
+  compact: boolean
+}
+
+export interface DataTablePlaygroundProps {
+  bordered: boolean
+  compact: boolean
 }
 
 export interface CardPlaygroundProps {
@@ -75,6 +86,15 @@ export const defaultPropsMap: Record<string, Record<string, unknown>> = {
   },
   dropdown: {
     defaultOpen: false,
+    placement: 'bottom-start',
+  },
+  table: {
+    hoverable: true,
+    compact: false,
+  },
+  datatable: {
+    bordered: false,
+    compact: false,
   },
   card: {
     variant: 'default',
@@ -145,9 +165,27 @@ export const propDefsMap: Record<string, PropDefs> = {
     texts: [],
   },
   dropdown: {
-    toggles: [],
+    toggles: [
+      { key: 'placement', label: 'placement', options: ['bottom-start', 'bottom-end', 'top-start', 'top-end'] },
+    ],
     booleans: [
       { key: 'defaultOpen', label: 'defaultOpen' },
+    ],
+    texts: [],
+  },
+  table: {
+    toggles: [],
+    booleans: [
+      { key: 'hoverable', label: 'hoverable' },
+      { key: 'compact', label: 'compact' },
+    ],
+    texts: [],
+  },
+  datatable: {
+    toggles: [],
+    booleans: [
+      { key: 'bordered', label: 'bordered' },
+      { key: 'compact', label: 'compact' },
     ],
     texts: [],
   },

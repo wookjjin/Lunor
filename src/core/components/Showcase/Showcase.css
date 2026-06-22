@@ -11,7 +11,7 @@
   flex-direction: column;
   gap: var(--space-6);
   width: 100%;
-  max-width: 48rem; /* 768px — 쇼케이스 최대 너비 */
+  max-width: var(--layout-showcase-max-width-sm); /* 1024px — 쇼케이스 최대 너비 */
 }
 
 /* ── 페이지 헤더 ── */
@@ -44,33 +44,37 @@
 /* 태블릿: 2열 */
 @media (min-width: 768px) {
   .showcase {
-    max-width: 64rem; /* 1024px */
+    max-width: var(--layout-showcase-max-width-md); /* 1152px */
   }
 }
 
-/* 데스크톱: 2열 유지 */
+/* 데스크톱: 4열 */
 @media (min-width: 1024px) {
   .showcase {
-    max-width: 72rem; /* 1152px */
+    max-width: var(--layout-showcase-max-width-lg); /* 1280px */
   }
 }
 
 /* ── 버튼 행 (2개 나란히) ── */
+/* 모바일 기본: 세로 정렬 */
 .showcase__row {
   display: flex;
-  gap: var(--space-4);
+  flex-direction: column;
+  gap: var(--space-3);
   width: 100%;
 }
 
-.showcase__row > * {
+.showcase__row > .button,
+.showcase__row > button {
   flex: 1;
 }
 
 /* ── 인터랙티비티 프리뷰 ── */
+/* 모바일 기본: 축소 높이 */
 .showcase__preview {
   border-radius: var(--radius-xl);
   overflow: hidden;
-  height: var(--space-40);
+  height: var(--space-32);
   position: relative;
   border: 1px solid var(--color-primary-glow-subtle);
   margin-top: var(--space-2);
@@ -96,7 +100,7 @@
   color: var(--color-interactive-default);
   opacity: 0.8;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--letter-spacing-ultrawide);
   margin: 0;
 }
 
@@ -106,14 +110,14 @@
   margin: var(--space-1) 0 0;
 }
 
-/* ── 반응형: 모바일 패딩 축소 ── */
-@media (max-width: 639px) {
+/* ── 반응형: 태블릿 이상 가로 정렬 ── */
+@media (min-width: 640px) {
   .showcase__row {
-    flex-direction: column;
-    gap: var(--space-3);
+    flex-direction: row;
+    gap: var(--space-4);
   }
 
   .showcase__preview {
-    height: var(--space-32);
+    height: var(--space-40);
   }
 }

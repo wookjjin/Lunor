@@ -121,6 +121,10 @@
   --color-bg-glass-default: rgba(15, 21, 36, 0.6);
   --color-bg-glass-elevated: rgba(15, 21, 36, 0.75);
 
+  /* Semantic — Default & Hover (Table, DataTable 등 범용 배경) */
+  --color-bg-default: var(--color-bg-base);
+  --color-bg-hover: var(--color-bg-subtle);
+
   /* Semantic — Surface */
   --color-surface-default: var(--color-neutral-900);
   --color-surface-raised: var(--color-neutral-600);
@@ -247,6 +251,10 @@
   --color-bg-overlay-strong: rgba(10, 14, 26, 0.48);
   --color-bg-glass-default: rgba(255, 255, 255, 0.6);
   --color-bg-glass-elevated: rgba(255, 255, 255, 0.75);
+
+  /* Semantic — Default & Hover (Light Mode) */
+  --color-bg-default: var(--color-bg-base);
+  --color-bg-hover: var(--color-bg-subtle);
 
   /* ---------------------------------------------------------------------------
      Semantic — Surface (Light Mode)

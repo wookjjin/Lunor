@@ -8,9 +8,9 @@
   /* ---------------------------------------------------------------------------
     Primitive Scale
     --------------------------------------------------------------------------- */
-  --z-index-hide: -1;    /* 요소를 뒤로 숨김 */
-  --z-index-base: 0;    /* 기본 흐름 */
-  --z-index-raised: 1;    /* 약간 위 (포지션 없는 형제 위) */
+  --z-index-hide: -1; /* 요소를 뒤로 숨김 */
+  --z-index-base: 0; /* 기본 흐름 */
+  --z-index-raised: 1; /* 약간 위 (포지션 없는 형제 위) */
 
   /* ===========================================================================
     Semantic — Layer Stack
@@ -23,12 +23,12 @@
   --z-index-sticky: 100;
 
   /* 레이아웃 고정 요소 */
-  --z-index-header: 200;   /* 상단 GNB / AppBar */
-  --z-index-sidebar: 200;   /* 사이드 내비게이션 */
-  --z-index-footer: 200;   /* 하단 탭바 */
+  --z-index-header: 200; /* 상단 GNB / AppBar */
+  --z-index-sidebar: 200; /* 사이드 내비게이션 */
+  --z-index-footer: 200; /* 하단 탭바 */
 
   /* 플로팅 요소 */
-  --z-index-fab: 300;   /* Floating Action Button */
+  --z-index-fab: 300; /* Floating Action Button */
   --z-index-back-to-top: 300;
 
   /* 드롭다운 / 셀렉트 패널 */
@@ -44,7 +44,7 @@
   --z-index-overlay: 700;
 
   /* 모달 · 다이얼로그 */
-  --z-index-modal:  800;
+  --z-index-modal: 800;
 
   /* 드로어 · 사이드시트 (모달과 동일 계층) */
   --z-index-drawer: 800;

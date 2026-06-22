@@ -11,9 +11,9 @@
   color: var(--color-text-primary);
 
   transition:
-    border-color 150ms,
-    background-color 150ms,
-    box-shadow 150ms;
+    border-color var(--duration-150),
+    background-color var(--duration-150),
+    box-shadow var(--duration-150);
 
   appearance: none;
 }
@@ -76,24 +76,24 @@
 
 /* Size */
 .input--sm {
-  min-height: 32px;
+  min-height: var(--space-8);
   padding: 0 var(--space-3);
 
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 }
 
 .input--md {
-  min-height: 40px;
+  min-height: var(--space-10);
   padding: 0 var(--space-4);
 
-  font-size: 1rem;
+  font-size: var(--font-size-md);
 }
 
 .input--lg {
-  min-height: 48px;
+  min-height: var(--space-12);
   padding: 0 var(--space-5);
 
-  font-size: 1.125rem;
+  font-size: var(--font-size-lg);
 }
 
 /* Width */

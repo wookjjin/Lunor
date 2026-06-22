@@ -63,6 +63,7 @@
     =========================================================================== */
   --shadow-card: var(--shadow-sm);
   --shadow-card-hover: var(--shadow-md);
+  --shadow-card-glow: 0 0 var(--space-5) var(--color-primary-glow-subtle);
   --shadow-dropdown: var(--shadow-md);
   --shadow-popover: var(--shadow-lg);
   --shadow-modal: var(--shadow-xl);

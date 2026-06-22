@@ -6,6 +6,7 @@
 /* ── flex 아이템 (카드) ── */
 .showcase__item {
   flex: 1 1 100%;
+  min-width: 0;
 }
 
 /* 태블릿: 2열 */
@@ -23,14 +24,15 @@
 }
 
 /* ── 쇼케이스 카드 ── */
+/* 모바일 기본: 축소 패딩 */
 .showcase__item {
   border-radius: var(--radius-xl);
-  padding: var(--space-6);
+  padding: var(--space-4);
   transition: var(--transition-base);
 }
 
 .showcase__item:hover {
-  box-shadow: 0 0 var(--space-5) var(--color-primary-glow-subtle);
+  box-shadow: var(--shadow-card-glow);
 }
 
 /* ── 카드 헤더 ── */
@@ -38,7 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
 }
 
 .showcase__item-label {
@@ -82,24 +84,35 @@
 }
 
 /* ── 카드 바디 ── */
+/* align-items: stretch로 테이블이 카드 너비를 넘지 않게 하고,
+   넓은 콘텐츠는 내부 overflow-x로 스크롤 처리 */
 .showcase__item-body {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-6);
+  align-items: stretch;
+  gap: var(--space-4);
+  width: 100%;
 }
 
-/* ── 반응형: 모바일 패딩 축소 ── */
-@media (max-width: 639px) {
+/* 버튼 등 인라인 요소는 중앙 정렬 유지 */
+.showcase__item-body > .button,
+.showcase__item-body > button {
+  align-self: center;
+}
+
+/* showcase__row 내부의 버튼은 stretch 후 flex로 균등 분배되므로 그대로 둠 */
+
+/* ── 반응형: 태블릿 이상 기본 패딩 ── */
+@media (min-width: 640px) {
   .showcase__item {
-    padding: var(--space-4);
+    padding: var(--space-6);
   }
 
   .showcase__item-header {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
   }
 
   .showcase__item-body {
-    gap: var(--space-4);
+    gap: var(--space-6);
   }
 }

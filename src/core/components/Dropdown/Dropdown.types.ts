@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react'
-import type { ButtonProps } from '@/core/components/Button/Button.types'
+import type { MouseEvent, ReactNode } from 'react'
 
 export type DropdownPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'
 
@@ -16,8 +15,12 @@ export interface DropdownContentProps {
   className?: string
 }
 
-export interface DropdownTriggerProps extends ButtonProps {
+export interface DropdownTriggerProps {
   children: ReactNode
+  className?: string
+  asChild?: boolean
+  disabled?: boolean
+  onClick?: (event: MouseEvent) => void
 }
 
 export interface DropdownItemProps {

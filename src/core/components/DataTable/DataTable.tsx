@@ -40,6 +40,26 @@ export function DataTable<T extends object>({
     return () => el.removeEventListener('scroll', handleScroll)
   }, [virtual, handleScroll])
 
+  // 가상 스크롤 활성화 시 계산 (모든 Hook는 조건부 return 이전에 호출되어야 함)
+  const totalHeight = data.length * rowHeight
+  const visibleCount = Math.ceil(height / rowHeight)
+  const startIndex = Math.max(0, Math.floor(scrollTop / rowHeight) - overscan)
+  const endIndex = Math.min(
+    data.length,
+    Math.floor(scrollTop / rowHeight) + visibleCount + overscan,
+  )
+
+  const visibleData = useMemo(
+    () => (virtual ? data.slice(startIndex, endIndex) : data),
+    [virtual, data, startIndex, endIndex],
+  )
+
+  const offsetY = startIndex * rowHeight
+
+  const containerClasses = ['data-table', 'data-table--virtual', className]
+    .filter(Boolean)
+    .join(' ')
+
   // 가상 스크롤이 활성화되지 않은 경우: 일반 Table 렌더링
   if (!virtual) {
     if (data.length === 0 && emptyContent) {
@@ -76,26 +96,6 @@ export function DataTable<T extends object>({
       </div>
     )
   }
-
-  // 가상 스크롤 활성화 시 계산
-  const totalHeight = data.length * rowHeight
-  const visibleCount = Math.ceil(height / rowHeight)
-  const startIndex = Math.max(0, Math.floor(scrollTop / rowHeight) - overscan)
-  const endIndex = Math.min(
-    data.length,
-    Math.floor(scrollTop / rowHeight) + visibleCount + overscan,
-  )
-
-  const visibleData = useMemo(
-    () => data.slice(startIndex, endIndex),
-    [data, startIndex, endIndex],
-  )
-
-  const offsetY = startIndex * rowHeight
-
-  const containerClasses = ['data-table', 'data-table--virtual', className]
-    .filter(Boolean)
-    .join(' ')
 
   if (data.length === 0 && emptyContent) {
     return (

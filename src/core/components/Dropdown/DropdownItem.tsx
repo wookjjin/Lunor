@@ -1,3 +1,4 @@
+import type { KeyboardEvent } from 'react'
 import type { DropdownItemProps } from '@/core/components/Dropdown/Dropdown.types'
 import { useDropdownContext } from '@/core/components/Dropdown/Dropdown.context'
 
@@ -9,26 +10,38 @@ export function DropdownItem({
 }: DropdownItemProps) {
   const { setOpen } = useDropdownContext()
 
+  const handleSelect = () => {
+    if (disabled)
+      return
+
+    onSelect?.()
+    setOpen(false)
+  }
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (disabled)
+      return
+    if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+      event.preventDefault()
+      handleSelect()
+    }
+  }
+
   return (
-    <button
-      type="button"
+    <div
       role="menuitem"
-      disabled={disabled}
+      tabIndex={disabled ? -1 : 0}
+      aria-disabled={disabled || undefined}
       className={[
         'dropdown__item',
         danger && 'dropdown__item--danger',
       ]
         .filter(Boolean)
         .join(' ')}
-      onClick={() => {
-        if (disabled)
-          return
-
-        onSelect?.()
-        setOpen(false)
-      }}
+      onClick={handleSelect}
+      onKeyDown={handleKeyDown}
     >
       {children}
-    </button>
+    </div>
   )
 }
