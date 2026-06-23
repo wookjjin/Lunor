@@ -88,7 +88,7 @@ export default function TablePage() {
       description="A flexible table component for displaying tabular data with hover, border, and compact modes."
     >
       {/* Default */}
-      <ShowcaseItem label="Default" variant="primary" badge="Active" className="glacier-glass">
+      <ShowcaseItem label="Default" variant="primary" badge="Active" className="glacier-glass showcase__item--wide">
         <Table
           columns={columns}
           data={users}
@@ -99,7 +99,7 @@ export default function TablePage() {
       </ShowcaseItem>
 
       {/* Bordered */}
-      <ShowcaseItem label="Bordered" variant="secondary" className="glacier-glass">
+      <ShowcaseItem label="Bordered" variant="secondary" className="glacier-glass showcase__item--wide">
         <Table
           columns={columns}
           data={users}
@@ -111,7 +111,7 @@ export default function TablePage() {
       </ShowcaseItem>
 
       {/* Row Click (interactive) */}
-      <ShowcaseItem label="Row Click" variant="ghost" className="glacier-glass">
+      <ShowcaseItem label="Row Click" variant="ghost" className="glacier-glass showcase__item--wide">
         <Table
           columns={columns}
           data={users}
@@ -143,7 +143,7 @@ export default function TablePage() {
       </ShowcaseItem>
 
       {/* Empty */}
-      <ShowcaseItem label="Empty" variant="ghost" className="glacier-glass">
+      <ShowcaseItem label="Empty" variant="ghost" className="glacier-glass showcase__item--wide">
         <Table
           columns={columns}
           data={[]}

@@ -90,6 +90,11 @@ export const sidebarNavGroups: NavGroup[] = [
         path: '/components/dropdown',
         icon: 'arrow_drop_down',
       },
+      {
+        label: 'Pagination',
+        path: '/components/pagination',
+        icon: 'more_horiz',
+      },
     ],
   },
   {

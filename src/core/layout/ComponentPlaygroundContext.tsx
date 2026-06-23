@@ -50,6 +50,15 @@ export interface CardPlaygroundProps {
   children: string
 }
 
+export interface PaginationPlaygroundProps {
+  variant: 'full' | 'simple'
+  size: 'sm' | 'md' | 'lg'
+  showFirstLast: boolean
+  disabled: boolean
+  currentPage: number
+  totalPages: number
+}
+
 // ---- Outlet Context 타입 ----
 
 export interface PlaygroundOutletContext {
@@ -100,6 +109,14 @@ export const defaultPropsMap: Record<string, Record<string, unknown>> = {
     variant: 'default',
     padding: 'md',
     children: 'Card content',
+  },
+  pagination: {
+    variant: 'full',
+    size: 'md',
+    showFirstLast: false,
+    disabled: false,
+    currentPage: 5,
+    totalPages: 10,
   },
 }
 
@@ -197,6 +214,20 @@ export const propDefsMap: Record<string, PropDefs> = {
     booleans: [],
     texts: [
       { key: 'children', label: 'content' },
+    ],
+  },
+  pagination: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['full', 'simple'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [
+      { key: 'showFirstLast', label: 'showFirstLast' },
+      { key: 'disabled', label: 'disabled' },
+    ],
+    texts: [
+      { key: 'currentPage', label: 'currentPage' },
+      { key: 'totalPages', label: 'totalPages' },
     ],
   },
 }

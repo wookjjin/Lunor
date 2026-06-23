@@ -89,7 +89,7 @@ export default function DataTablePage() {
       description="A data table component with optional virtual scrolling for rendering large datasets efficiently."
     >
       {/* 기본 (가상 스크롤 미사용) */}
-      <ShowcaseItem label="Default" variant="primary" badge="8 rows" className="glacier-glass">
+      <ShowcaseItem label="Default" variant="primary" badge="8 rows" className="glacier-glass showcase__item--wide">
         <DataTable
           columns={columns}
           data={smallData}
@@ -100,7 +100,7 @@ export default function DataTablePage() {
       </ShowcaseItem>
 
       {/* 가상 스크롤 */}
-      <ShowcaseItem label="Virtual Scroll" variant="secondary" badge="5,000 rows" className="glacier-glass">
+      <ShowcaseItem label="Virtual Scroll" variant="secondary" badge="5,000 rows" className="glacier-glass showcase__item--wide">
         <DataTable
           columns={columns}
           data={largeData}
@@ -115,7 +115,7 @@ export default function DataTablePage() {
       </ShowcaseItem>
 
       {/* 행 클릭 인터랙션 */}
-      <ShowcaseItem label="Row Click" variant="ghost" className="glacier-glass">
+      <ShowcaseItem label="Row Click" variant="ghost" className="glacier-glass showcase__item--wide">
         <DataTable
           columns={columns}
           data={smallData}
@@ -152,7 +152,7 @@ export default function DataTablePage() {
       </ShowcaseItem>
 
       {/* 빈 상태 */}
-      <ShowcaseItem label="Empty" variant="ghost" className="glacier-glass">
+      <ShowcaseItem label="Empty" variant="ghost" className="glacier-glass showcase__item--wide">
         <DataTable
           columns={columns}
           data={[]}

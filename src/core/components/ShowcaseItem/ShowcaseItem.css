@@ -21,6 +21,11 @@
   .showcase__item {
     flex: 1 1 calc(25% - var(--space-6) * 3 / 4);
   }
+
+  /* Wide modifier — 넓은 콘텐츠(Pagination 등)를 위한 2열 확장 */
+  .showcase__item--wide {
+    flex: 1 1 calc(50% - var(--space-6) / 2);
+  }
 }
 
 /* ── 쇼케이스 카드 ── */
@@ -92,6 +97,7 @@
   align-items: stretch;
   gap: var(--space-4);
   width: 100%;
+  overflow-x: auto;
 }
 
 /* 버튼 등 인라인 요소는 중앙 정렬 유지 */

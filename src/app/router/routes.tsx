@@ -54,6 +54,13 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: 'pagination',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Pagination')
+          return { Component }
+        },
+      },
+      {
         path: 'table',
         lazy: async () => {
           const { default: Component } = await import('@/core/pages/Table')

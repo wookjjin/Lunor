@@ -1,0 +1,131 @@
+/* =============================================================================
+   Pagination
+   ============================================================================= */
+
+.pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-xs);
+}
+
+/* ---- Items container (full 모드) ---- */
+.pagination__items {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-xs);
+}
+
+/* ---- Button 공통 ---- */
+.pagination__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: var(--space-8);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+
+  transition:
+    background-color var(--duration-150) var(--ease-out),
+    border-color var(--duration-150) var(--ease-out),
+    color var(--duration-150) var(--ease-out),
+    opacity var(--duration-150) var(--ease-out);
+}
+
+.pagination__button:hover:not(:disabled) {
+  background: var(--color-bg-subtle);
+}
+
+.pagination__button:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.pagination__button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ---- 현재 페이지 강조 ---- */
+.pagination__button--page[aria-current='page'] {
+  background: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+  border-color: var(--color-interactive-default);
+}
+
+.pagination__button--page[aria-current='page']:hover:not(:disabled) {
+  background: var(--color-interactive-hover);
+  color: var(--color-primary-400);
+}
+
+/* ---- Ellipsis ---- */
+.pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: var(--space-8);
+
+  color: var(--color-text-secondary);
+  user-select: none;
+}
+
+/* ---- Simple 모드 정보 텍스트 ---- */
+.pagination__info {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0 var(--space-2);
+
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* =============================================================================
+   Size
+   ============================================================================= */
+.pagination--sm .pagination__button {
+  min-height: var(--space-8);
+  padding: 0 var(--space-3);
+
+  font-size: var(--font-size-sm);
+}
+
+.pagination--md .pagination__button {
+  min-height: var(--space-10);
+  padding: 0 var(--space-4);
+
+  font-size: var(--font-size-md);
+}
+
+.pagination--lg .pagination__button {
+  min-height: var(--space-12);
+  padding: 0 var(--space-5);
+
+  font-size: var(--font-size-lg);
+}
+
+.pagination--sm .pagination__ellipsis {
+  min-height: var(--space-8);
+  font-size: var(--font-size-sm);
+}
+
+.pagination--md .pagination__ellipsis {
+  min-height: var(--space-10);
+  font-size: var(--font-size-md);
+}
+
+.pagination--lg .pagination__ellipsis {
+  min-height: var(--space-12);
+  font-size: var(--font-size-lg);
+}
