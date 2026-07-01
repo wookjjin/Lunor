@@ -19,6 +19,8 @@
   /* outline-variant */
   --color-neutral-400: #202c42;
   /* surface-container-highest */
+  --color-neutral-500: #1c2838;
+  /* surface-container-high */
   --color-neutral-600: #1a2438;
   /* surface-bright / surface-variant / container-high */
   --color-neutral-900: #0f1524;
@@ -53,7 +55,9 @@
   /* secondary-container */
   --color-secondary-400: #0d1f2b;
   /* on-secondary-fixed */
-  --color-secondary-900: #001f2e;
+  --color-secondary-800: #001824;
+  /* secondary-surface */
+  --color-secondary-900: #001824;
   /* on-secondary */
 
   /* ---------------------------------------------------------------------------
@@ -79,6 +83,10 @@
   /* error */
   --color-danger-200: #3d1414;
   /* error-container */
+  --color-danger-300: #5a1a1a;
+  /* error-container hover */
+  --color-danger-400: #e05555;
+  /* danger hover (alias) */
   --color-danger-500: #ff6b6b;
   /* danger 메인 (인터랙티브 배경·보더) */
   --color-danger-600: #e05555;
@@ -117,7 +125,7 @@
   --color-bg-inverse: var(--color-neutral-0);
   /* #ffffff */
   --color-bg-overlay: rgba(15, 21, 36, 0.48);
-  --color-bg-overlay-strong: rgba(15, 21, 36, 0.5);
+  --color-bg-overlay-strong: rgba(15, 21, 36, 0.8);
   --color-bg-glass-default: rgba(15, 21, 36, 0.6);
   --color-bg-glass-elevated: rgba(15, 21, 36, 0.75);
 
@@ -248,7 +256,7 @@
   --color-bg-inverse: var(--color-neutral-950);
   /* #0a0e1a: 반전 텍스트 배경 */
   --color-bg-overlay: rgba(10, 14, 26, 0.32);
-  --color-bg-overlay-strong: rgba(10, 14, 26, 0.48);
+  --color-bg-overlay-strong: rgba(10, 14, 26, 0.8);
   --color-bg-glass-default: rgba(255, 255, 255, 0.6);
   --color-bg-glass-elevated: rgba(255, 255, 255, 0.75);
 

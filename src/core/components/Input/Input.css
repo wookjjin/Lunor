@@ -11,9 +11,9 @@
   color: var(--color-text-primary);
 
   transition:
-    border-color var(--duration-150),
-    background-color var(--duration-150),
-    box-shadow var(--duration-150);
+    border-color var(--duration-150) var(--ease-out),
+    background-color var(--duration-150) var(--ease-out),
+    box-shadow var(--duration-150) var(--ease-out);
 
   appearance: none;
 }

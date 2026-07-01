@@ -30,13 +30,13 @@ a:focus-visible,
   box-shadow: var(--shadow-focus-primary);
 }
 
-/* 인풋·셀렉트는 내부 포커스 스타일 우선 */
+/* 인풋·셀렉트는 base.css에서 이미 border-color + box-shadow로 포커스 표시하므로
+   여기서는 outline만 추가 (box-shadow 중복 방지) */
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: 0;
-  box-shadow: var(--shadow-focus-primary);
 }
 
 /* ---------------------------------------------------------------------------
@@ -162,6 +162,8 @@ select:focus-visible {
 
 /* ---------------------------------------------------------------------------
   9. 터치 타겟 크기 (WCAG 2.5.5 — 최소 44×44px)
+     모바일 환경에서 터치 타겟을 보장하되, 작은 UI 요소(인라인 링크, 아이콘 버튼,
+     토글 버튼 등)는 레이아웃 파괴를 방지하기 위해 예외 처리
   --------------------------------------------------------------------------- */
 button,
 [role='button'],
@@ -178,6 +180,17 @@ select {
 p a,
 li a,
 .prose a {
+  min-width: unset;
+  min-height: unset;
+}
+
+/* 아이콘 전용 버튼, 토글 버튼, 사이드바 네비 아이템 등 작은 인터랙티브 요소 해제 */
+.appbar-action-btn,
+.appbar-menu-btn,
+.sidebar-nav-item,
+.props-toggle-btn,
+.props-tab,
+.bottomsheet-close-btn {
   min-width: unset;
   min-height: unset;
 }

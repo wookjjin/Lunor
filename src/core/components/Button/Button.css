@@ -15,10 +15,10 @@
   user-select: none;
 
   transition:
-    background-color var(--duration-150),
-    border-color var(--duration-150),
-    color var(--duration-150),
-    opacity var(--duration-150);
+    background-color var(--duration-150) var(--ease-out),
+    border-color var(--duration-150) var(--ease-out),
+    color var(--duration-150) var(--ease-out),
+    opacity var(--duration-150) var(--ease-out);
 }
 
 .button:focus-visible {

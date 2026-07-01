@@ -11,6 +11,8 @@ export type {
 } from '@/core/components/Dropdown/Dropdown.types'
 export { Input } from '@/core/components/Input/Input'
 export { Modal } from '@/core/components/Modal/Modal'
+export { NoData } from '@/core/components/NoData/NoData'
+export type { NoDataProps, NoDataSize } from '@/core/components/NoData/NoData.types'
 export { Table } from '@/core/components/Table/Table'
 export type { Column, TableProps } from '@/core/components/Table/Table.types'
 

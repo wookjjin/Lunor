@@ -1,0 +1,55 @@
+/* =============================================================================
+   Home — Stats & Footer
+   통계 바 + 푸터
+   ============================================================================= */
+
+/* ── Stats 바 ── */
+.home-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-gap-md);
+  padding: var(--spacing-section-md) var(--layout-page-gutter-mobile);
+  max-width: var(--layout-content-max-width);
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .home-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.home-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-gap-xs);
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-glass-default);
+  border: 1px solid var(--color-border-muted-alpha);
+  text-align: center;
+}
+
+.home-stat-number {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-interactive-default);
+  font-variant-numeric: tabular-nums;
+}
+
+.home-stat-label {
+  font-size: var(--text-body-sm-size);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* ── Footer ── */
+.home-footer {
+  padding: var(--spacing-section-sm) var(--layout-page-gutter-mobile);
+  text-align: center;
+  border-top: 1px solid var(--color-border-muted-alpha);
+  color: var(--color-text-tertiary);
+  font-size: var(--text-body-sm-size);
+}

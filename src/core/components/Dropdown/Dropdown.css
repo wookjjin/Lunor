@@ -84,9 +84,3 @@
   height: 1px;
   background: var(--color-border-default);
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .dropdown__item {
-    transition: none;
-  }
-}

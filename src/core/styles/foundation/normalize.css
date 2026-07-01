@@ -21,8 +21,7 @@ summary {
   display: block;
 }
 
-/* 2. HTML5 숨김 속성 */
-[hidden],
+/* 2. HTML5 숨김 속성 — reset.css에서 [hidden] 처리를 이미 하므로 여기서는 template만 */
 template {
   display: none;
 }

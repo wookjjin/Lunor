@@ -1,0 +1,170 @@
+/* =============================================================================
+   Home — Showcase Section
+   컴포넌트 쇼케이스 그리드 + 카드 아이템 (3D tilt)
+   ============================================================================= */
+
+/* ── 컴포넌트 쇼케이스 그리드 ── */
+.home-showcase {
+  padding: var(--spacing-section-lg) var(--layout-page-gutter-mobile);
+  max-width: var(--layout-content-max-width);
+  margin: 0 auto;
+}
+
+.home-showcase-header {
+  text-align: center;
+  margin-bottom: var(--spacing-section-sm);
+}
+
+.home-showcase-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-gap-xs);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background: var(--color-primary-glow-subtle);
+  color: var(--color-interactive-default);
+  font-size: var(--text-body-sm-size);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-4);
+}
+
+.home-showcase-title {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.home-showcase-description {
+  color: var(--color-text-secondary);
+  max-width: 36rem;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ── 카드 그리드 ── */
+.home-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-gap-md);
+}
+
+@media (min-width: 640px) {
+  .home-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .home-card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ── 카드 아이템 (3D tilt 포함) ── */
+.home-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-md);
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-glass-default);
+  border: 1px solid var(--color-border-muted-alpha);
+  backdrop-filter: blur(12px);
+  transition:
+    var(--transition-base),
+    transform var(--duration-300) var(--ease-out);
+  cursor: pointer;
+  text-decoration: none;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  overflow: hidden;
+}
+
+.home-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--color-primary-glow-subtle) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--duration-300) var(--ease-out);
+}
+
+.home-card:hover {
+  border-color: var(--color-border-strong-alpha);
+  box-shadow:
+    0 8px 32px var(--color-shadow-subtle),
+    0 0 16px var(--color-primary-glow-default);
+}
+
+.home-card:hover::before {
+  opacity: 1;
+}
+
+.home-card:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.home-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-glow-subtle);
+  color: var(--color-interactive-default);
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.home-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-gap-xs);
+  position: relative;
+  z-index: 1;
+}
+
+.home-card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.home-card-description {
+  font-size: var(--text-body-sm-size);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+.home-card-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary-glow-subtle);
+  color: var(--color-interactive-default);
+  transition: var(--transition-base);
+  position: relative;
+  z-index: 1;
+}
+
+.home-card:hover .home-card-arrow {
+  background: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+  transform: translateX(2px);
+}

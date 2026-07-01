@@ -3,10 +3,13 @@
    Showcase.css에서 showcase__item / header / label / badge / body 관련 스타일을 이전
    ============================================================================= */
 
-/* ── flex 아이템 (카드) ── */
+/* ── 카드 아이템 (flex + 비주얼 통합) ── */
 .showcase__item {
   flex: 1 1 100%;
   min-width: 0;
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  transition: var(--transition-base);
 }
 
 /* 태블릿: 2열 */
@@ -26,14 +29,6 @@
   .showcase__item--wide {
     flex: 1 1 calc(50% - var(--space-6) / 2);
   }
-}
-
-/* ── 쇼케이스 카드 ── */
-/* 모바일 기본: 축소 패딩 */
-.showcase__item {
-  border-radius: var(--radius-xl);
-  padding: var(--space-4);
-  transition: var(--transition-base);
 }
 
 .showcase__item:hover {

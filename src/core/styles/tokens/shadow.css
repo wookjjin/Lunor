@@ -4,35 +4,34 @@
   - Semantic Aliases
   - Inner Shadow (inset)
   - Focus Ring (접근성)
+  - Dark Mode 기본 (:root = Dark, [data-theme="light"] = Light override)
   ============================================================================= */
 
 :root {
-  /* ---------------------------------------------------------------------------
-    Primitive — Elevation Scale
-    낮을수록 미세한 그림자, 높을수록 떠 있는 느낌
+  /* ---------------------------------------------------------------------------    Primitive — Elevation Scale (Dark Mode 기본)
+    어두운 배경에서는 opacity를 높여야 그림자가 보임
     --------------------------------------------------------------------------- */
   --shadow-none: none;
 
   /* elevation-1 : 카드, 드롭다운 기본 상태 */
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
 
   /* elevation-2 : 호버된 카드, 패널 */
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
 
   /* elevation-3 : 드롭다운, 팝오버 */
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
 
   /* elevation-4 : 모달, 다이얼로그 */
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
 
   /* elevation-5 : 사이드 패널, 드로어 */
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.55), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
 
   /* elevation-6 : 풀스크린 오버레이 위에 뜨는 요소 */
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
 
-  /* ---------------------------------------------------------------------------
-    Inner Shadow (Inset)
+  /* ---------------------------------------------------------------------------    Inner Shadow (Inset)
     --------------------------------------------------------------------------- */
   --shadow-inner-sm: inset 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 
@@ -40,26 +39,23 @@
 
   --shadow-inner-lg: inset 0 4px 8px 0 rgba(0, 0, 0, 0.15);
 
-  /* ---------------------------------------------------------------------------
-    Focus Ring — 접근성 필수
+  /* ---------------------------------------------------------------------------    Focus Ring — 접근성 필수 (Dark Mode 기본)
     --------------------------------------------------------------------------- */
-  --shadow-focus-primary: 0 0 0 3px rgba(125, 211, 252, 0.4); /* primary-100 @ 40% */
+  --shadow-focus-primary: 0 0 0 3px rgba(125, 211, 252, 0.5); /* primary-100 @ 50% */
 
-  --shadow-focus-danger: 0 0 0 3px rgba(255, 107, 107, 0.4); /* danger-500  @ 40% */
+  --shadow-focus-danger: 0 0 0 3px rgba(255, 107, 107, 0.5); /* danger-500  @ 50% */
 
-  --shadow-focus-success: 0 0 0 3px rgba(125, 220, 171, 0.4); /* success-200 @ 40% */
+  --shadow-focus-success: 0 0 0 3px rgba(125, 220, 171, 0.5); /* success-200 @ 50% */
 
-  --shadow-focus-neutral: 0 0 0 3px rgba(74, 96, 112, 0.4); /* neutral-200 @ 40% */
+  --shadow-focus-neutral: 0 0 0 3px rgba(160, 180, 196, 0.5); /* neutral-100 @ 50% */
 
-  /* ---------------------------------------------------------------------------
-    Colored / Tinted Shadows (강조 컴포넌트용)
+  /* ---------------------------------------------------------------------------    Colored / Tinted Shadows (강조 컴포넌트용 — Dark Mode 기본)
     --------------------------------------------------------------------------- */
   --shadow-primary-sm: 0 1px 3px 0 rgba(125, 211, 252, 0.2), 0 1px 2px -1px rgba(125, 211, 252, 0.2);
 
   --shadow-primary-md: 0 4px 6px -1px rgba(125, 211, 252, 0.2), 0 2px 4px -2px rgba(125, 211, 252, 0.2);
 
-  /* ===========================================================================
-    Semantic — Component Aliases
+  /* ===========================================================================    Semantic — Component Aliases
     =========================================================================== */
   --shadow-card: var(--shadow-sm);
   --shadow-card-hover: var(--shadow-md);
@@ -73,38 +69,26 @@
   --shadow-input: var(--shadow-inner-sm);
 }
 
-/* =============================================================================
-  Dark Mode — 그림자 불투명도 조정
-  (어두운 배경에서는 opacity를 높여야 그림자가 보임)
-  data-theme 속성으로 다크/라이트 전환
-   ============================================================================= */
-[data-theme='dark'] {
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
-
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
-
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
-
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.55), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
-
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-
-  /* Dark Mode — Focus Ring 색상 보정 (밝은 배경에서 더 진한 색상 필요) */
-  --shadow-focus-primary: 0 0 0 3px rgba(125, 211, 252, 0.5);
-
-  --shadow-focus-danger: 0 0 0 3px rgba(255, 107, 107, 0.5);
-
-  --shadow-focus-success: 0 0 0 3px rgba(125, 220, 171, 0.5);
-
-  --shadow-focus-neutral: 0 0 0 3px rgba(160, 180, 196, 0.5);
-}
-
+/* ===========================================================================  Semantic — Light Mode Override
+  어두운 배경용 opacity → 밝은 배경용 opacity로 전환
+  ========================================================================== */
 [data-theme='light'] {
-  /* Light Mode — 그림자는 기본값(:root)을 그대로 사용하므로 오버라이드 불필요 */
+  /* ---------------------------------------------------------------------------    Elevation Scale (Light Mode)
+    --------------------------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 
-  /* Focus Ring — 라이트 배경에서 더 진한 색상으로 가시성 확보 */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* ---------------------------------------------------------------------------    Focus Ring (Light Mode) — 더 진한 색상으로 가시성 확보
+    --------------------------------------------------------------------------- */
   --shadow-focus-primary: 0 0 0 3px rgba(14, 77, 110, 0.35);
 
   --shadow-focus-danger: 0 0 0 3px rgba(224, 85, 85, 0.35);
@@ -113,7 +97,8 @@
 
   --shadow-focus-neutral: 0 0 0 3px rgba(74, 96, 112, 0.35);
 
-  /* Colored / Tinted Shadows — 라이트 배경에서 더 미세하게 */
+  /* ---------------------------------------------------------------------------    Colored / Tinted Shadows (Light Mode)
+    --------------------------------------------------------------------------- */
   --shadow-primary-sm: 0 1px 3px 0 rgba(14, 77, 110, 0.1), 0 1px 2px -1px rgba(14, 77, 110, 0.1);
 
   --shadow-primary-md: 0 4px 6px -1px rgba(14, 77, 110, 0.1), 0 2px 4px -2px rgba(14, 77, 110, 0.1);

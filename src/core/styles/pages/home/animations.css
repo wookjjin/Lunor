@@ -1,0 +1,72 @@
+/* =============================================================================
+   Home — Animations & Accessibility
+   Keyframes + prefers-reduced-motion
+   ============================================================================= */
+
+/* ── 애니메이션 ── */
+@keyframes home-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 스크롤 인디케이터 전용 — translateX(-50%) 중앙 정렬을 유지하면서 fade-in-up */
+@keyframes home-fade-in-up-centered {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes home-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes home-scroll-wheel {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+  }
+}
+
+/* ── 접근성: 모션 감소 ── */
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-badge,
+  .home-hero-title,
+  .home-hero-subtitle,
+  .home-hero-actions,
+  .home-scroll-indicator {
+    animation: none;
+  }
+
+  .home-hero-badge-dot {
+    animation: none;
+  }
+
+  .home-scroll-mouse::after {
+    animation: none;
+  }
+
+  .home-card {
+    transition: none;
+  }
+}

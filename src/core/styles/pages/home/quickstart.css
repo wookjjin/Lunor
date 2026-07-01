@@ -1,0 +1,89 @@
+/* =============================================================================
+   Home — Quick Start Section
+   코드 블록 + 복사 버튼
+   ============================================================================= */
+
+/* ── Quick Start 섹션 ── */
+.home-quickstart {
+  padding: var(--spacing-section-lg) var(--layout-page-gutter-mobile);
+  max-width: var(--layout-content-max-width);
+  margin: 0 auto;
+}
+
+.home-quickstart-header {
+  text-align: center;
+  margin-bottom: var(--spacing-section-sm);
+}
+
+.home-quickstart-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.home-quickstart-description {
+  color: var(--color-text-secondary);
+  max-width: 36rem;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ── 코드 블록 ── */
+.home-code-block {
+  position: relative;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border-muted-alpha);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin-top: var(--space-8);
+  overflow-x: auto;
+}
+
+.home-code-block pre {
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+  color: var(--color-text-primary);
+}
+
+.home-code-block .code-keyword {
+  color: var(--color-tertiary-100);
+}
+
+.home-code-block .code-string {
+  color: var(--color-success-200);
+}
+
+.home-code-block .code-comment {
+  color: var(--color-text-tertiary);
+}
+
+/* ── 복사 버튼 ── */
+.home-code-copy-btn {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-card-rest);
+  border: 1px solid var(--color-border-muted-alpha);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.home-code-copy-btn:hover {
+  background: var(--color-surface-card-hover);
+  color: var(--color-text-primary);
+}
+
+.home-code-copy-btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}

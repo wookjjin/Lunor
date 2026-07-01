@@ -2,7 +2,6 @@
 .table__scroll {
   width: 100%;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* Base */
@@ -24,7 +23,7 @@
 
 .table__row {
   border-bottom: 1px solid var(--color-border-subtle);
-  transition: background-color var(--duration-100);
+  transition: background-color var(--duration-100) var(--ease-out);
 }
 
 .table__header,

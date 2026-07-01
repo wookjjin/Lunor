@@ -1,0 +1,96 @@
+/* =============================================================================
+   NoData — Empty State Component
+   테이블, 리스트, 카드 등 범용 빈 상태 표시
+   ============================================================================= */
+
+.no-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-2);
+  padding: var(--space-8) var(--space-4);
+  color: var(--color-text-tertiary);
+}
+
+/* ── Icon ── */
+.no-data__icon {
+  font-size: var(--font-size-5xl);
+  color: var(--color-text-tertiary-alpha);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+  opacity: 0.6;
+}
+
+/* ── Title ── */
+.no-data__title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ── Description ── */
+.no-data__description {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-relaxed);
+  max-width: 32rem;
+  margin: 0;
+}
+
+/* ── Action ── */
+.no-data__action {
+  margin-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+/* ===========================================================================    Size
+    =========================================================================== */
+.no-data--sm {
+  padding: var(--space-4) var(--space-2);
+  gap: var(--space-1);
+}
+
+.no-data--sm .no-data__icon {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-1);
+}
+
+.no-data--sm .no-data__title {
+  font-size: var(--font-size-xs);
+}
+
+.no-data--sm .no-data__description {
+  font-size: var(--font-size-2xs);
+}
+
+.no-data--sm .no-data__action {
+  margin-top: var(--space-2);
+}
+
+.no-data--lg {
+  padding: var(--space-16) var(--space-6);
+  gap: var(--space-3);
+}
+
+.no-data--lg .no-data__icon {
+  font-size: var(--font-size-6xl);
+  margin-bottom: var(--space-3);
+}
+
+.no-data--lg .no-data__title {
+  font-size: var(--font-size-lg);
+}
+
+.no-data--lg .no-data__description {
+  font-size: var(--font-size-sm);
+}
+
+.no-data--lg .no-data__action {
+  margin-top: var(--space-6);
+}

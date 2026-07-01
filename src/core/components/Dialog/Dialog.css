@@ -10,7 +10,7 @@
 
   background: var(--color-bg-overlay);
 
-  z-index: var(--z-index-dialog);
+  z-index: var(--z-index-modal);
 }
 
 .dialog {
