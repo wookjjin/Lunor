@@ -1,0 +1,173 @@
+/* =============================================================================
+   FileInput — File Upload Component
+   네이티브 file input을 숨기고 드래그&드롭 + 클릭 업로드 영역 제공
+   ============================================================================= */
+
+/* ── Label Wrapper (드래그 영역) ── */
+.file-input {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px dashed var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-default);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    border-color var(--duration-150) var(--ease-out),
+    background-color var(--duration-150) var(--ease-out),
+    box-shadow var(--duration-150) var(--ease-out);
+}
+
+/* ── Native Input (시각적 숨김) ── */
+.file-input__native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Icon ── */
+.file-input__icon {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+  transition: color var(--duration-150) var(--ease-out);
+}
+
+/* ── Text ── */
+.file-input__text {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Browse Button ── */
+.file-input__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-muted);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+  transition:
+    background-color var(--duration-150) var(--ease-out),
+    color var(--duration-150) var(--ease-out);
+}
+
+/* ===========================================================================    States — hover
+    =========================================================================== */
+.file-input:hover:not(.file-input--disabled) {
+  border-color: var(--color-interactive-default);
+}
+
+.file-input:hover:not(.file-input--disabled) .file-input__icon {
+  color: var(--color-interactive-default);
+}
+
+.file-input:hover:not(.file-input--disabled) .file-input__button {
+  background: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+}
+
+/* ===========================================================================    States — dragging
+    =========================================================================== */
+.file-input--dragging {
+  border-color: var(--color-interactive-default);
+  background: var(--color-primary-glow-subtle);
+  box-shadow: var(--shadow-focus-primary);
+}
+
+.file-input--dragging .file-input__icon {
+  color: var(--color-interactive-default);
+}
+
+/* ===========================================================================    States — focus
+    =========================================================================== */
+.file-input:has(.file-input__native:focus-visible) {
+  box-shadow: var(--shadow-focus-primary);
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ===========================================================================    States — disabled
+    =========================================================================== */
+.file-input--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===========================================================================    Variant — filled
+    =========================================================================== */
+.file-input--filled {
+  border-style: solid;
+  border-color: transparent;
+  background: var(--color-bg-subtle);
+}
+
+.file-input--filled:hover:not(.file-input--disabled) {
+  background: var(--color-bg-muted);
+}
+
+.file-input--filled.file-input--dragging {
+  background: var(--color-primary-glow-subtle);
+}
+
+/* ===========================================================================    Size
+    =========================================================================== */
+.file-input--sm {
+  padding: var(--space-1-5) var(--space-3);
+  min-height: var(--space-8);
+}
+
+.file-input--sm .file-input__icon {
+  font-size: var(--font-size-lg);
+}
+
+.file-input--sm .file-input__text {
+  font-size: var(--font-size-xs);
+}
+
+.file-input--sm .file-input__button {
+  padding: 0 var(--space-2);
+  font-size: var(--font-size-2xs);
+}
+
+.file-input--md {
+  padding: var(--space-2) var(--space-4);
+  min-height: var(--space-10);
+}
+
+.file-input--lg {
+  padding: var(--space-3) var(--space-5);
+  min-height: var(--space-12);
+}
+
+.file-input--lg .file-input__icon {
+  font-size: var(--font-size-2xl);
+}
+
+.file-input--lg .file-input__text {
+  font-size: var(--font-size-md);
+}
+
+.file-input--lg .file-input__button {
+  padding: 0 var(--space-4);
+  font-size: var(--font-size-sm);
+}
+
+/* ===========================================================================    Full Width
+    =========================================================================== */
+.file-input--full-width {
+  width: 100%;
+}

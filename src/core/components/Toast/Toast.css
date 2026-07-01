@@ -1,0 +1,145 @@
+/* =============================================================================
+   Toast — Non-blocking Notification
+   info / success / warning / danger 변형 + 전역 컨테이너
+   ============================================================================= */
+
+/* ── Container (전역, fixed) ── */
+.toast-container {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: var(--z-index-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  pointer-events: none;
+}
+
+/* ── Toast Item ── */
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  width: 20rem;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-default);
+  border-left: 3px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-default);
+  box-shadow: var(--shadow-toast);
+  pointer-events: auto;
+  animation: toast-slide-in var(--duration-300) var(--ease-emphasized-decel) both;
+}
+
+/* ── Icon ── */
+.toast__icon {
+  font-size: var(--font-size-xl);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ── Content ── */
+.toast__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0-5);
+  min-width: 0;
+}
+
+.toast__title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--line-height-snug);
+}
+
+.toast__description {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+/* ── Close Button ── */
+.toast__close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-6);
+  height: var(--space-6);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-150) var(--ease-out),
+    color var(--duration-150) var(--ease-out);
+}
+
+.toast__close:hover {
+  background: var(--color-bg-muted);
+  color: var(--color-text-primary);
+}
+
+.toast__close .material-symbols-outlined {
+  font-size: var(--font-size-lg);
+}
+
+/* ===========================================================================    Variant
+    =========================================================================== */
+.toast--info {
+  border-left-color: var(--color-info-border);
+}
+
+.toast--info .toast__icon {
+  color: var(--color-info-border);
+}
+
+.toast--success {
+  border-left-color: var(--color-success-border);
+}
+
+.toast--success .toast__icon {
+  color: var(--color-success-border);
+}
+
+.toast--warning {
+  border-left-color: var(--color-warning-border);
+}
+
+.toast--warning .toast__icon {
+  color: var(--color-warning-border);
+}
+
+.toast--danger {
+  border-left-color: var(--color-danger-border);
+}
+
+.toast--danger .toast__icon {
+  color: var(--color-danger-border);
+}
+
+/* ===========================================================================    Animation
+    =========================================================================== */
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===========================================================================    prefers-reduced-motion
+    =========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+}

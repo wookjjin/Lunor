@@ -1,0 +1,129 @@
+/* =============================================================================
+   Alert — Inline Alert Banner
+   info / success / warning / danger 변형, 페이지 내 고정 위치 알림
+   ============================================================================= */
+
+/* ── Base ── */
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-default);
+  border-left: 3px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-default);
+}
+
+/* ── Icon ── */
+.alert__icon {
+  font-size: var(--font-size-xl);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ── Content ── */
+.alert__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0-5);
+  min-width: 0;
+}
+
+.alert__title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--line-height-snug);
+}
+
+.alert__description {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+/* ── Action ── */
+.alert__action {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Close Button ── */
+.alert__close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-6);
+  height: var(--space-6);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-150) var(--ease-out),
+    color var(--duration-150) var(--ease-out);
+}
+
+.alert__close:hover {
+  background: var(--color-bg-muted);
+  color: var(--color-text-primary);
+}
+
+.alert__close .material-symbols-outlined {
+  font-size: var(--font-size-lg);
+}
+
+/* ===========================================================================    Variant
+    =========================================================================== */
+.alert--info {
+  border-left-color: var(--color-info-border);
+  background: var(--color-info-bg);
+}
+
+.alert--info .alert__icon {
+  color: var(--color-info-border);
+}
+
+.alert--success {
+  border-left-color: var(--color-success-border);
+  background: var(--color-success-bg);
+}
+
+.alert--success .alert__icon {
+  color: var(--color-success-border);
+}
+
+.alert--warning {
+  border-left-color: var(--color-warning-border);
+  background: var(--color-warning-bg);
+}
+
+.alert--warning .alert__icon {
+  color: var(--color-warning-border);
+}
+
+.alert--danger {
+  border-left-color: var(--color-danger-border);
+  background: var(--color-danger-surface);
+}
+
+.alert--danger .alert__icon {
+  color: var(--color-danger-border);
+}
+
+/* ── Danger: 어두운 배경에서 텍스트 가독성 확보 ── */
+.alert--danger .alert__title {
+  color: var(--color-danger-text);
+}
+
+.alert--danger .alert__description {
+  color: var(--color-danger-50);
+}

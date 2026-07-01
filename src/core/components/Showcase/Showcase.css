@@ -41,6 +41,13 @@
   gap: var(--space-6);
 }
 
+/* ── 3열 배치 모드 — 와이드 데스크톱에서 3열 유지 ── */
+@media (min-width: 1280px) {
+  .showcase--cols-3 .showcase__item {
+    flex: 1 1 calc(33.333% - var(--space-6) * 2 / 3);
+  }
+}
+
 /* 태블릿: 2열 */
 @media (min-width: 768px) {
   .showcase {

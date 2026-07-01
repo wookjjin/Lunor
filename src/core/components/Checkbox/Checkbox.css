@@ -1,0 +1,168 @@
+/* =============================================================================
+   Checkbox — Form Checkbox Component
+   reset.css의 appearance: none 대응으로 네이티브 박스를 숨기고 커스텀 박스 렌더링
+   ============================================================================= */
+
+/* ── Label Wrapper ── */
+.checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+}
+
+/* ── Native Input (시각적 숨김, 접근성 유지) ── */
+.checkbox__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Custom Box ── */
+.checkbox__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  transition:
+    border-color var(--duration-150) var(--ease-out),
+    background-color var(--duration-150) var(--ease-out),
+    box-shadow var(--duration-150) var(--ease-out);
+}
+
+/* ── Check Icon ── */
+.checkbox__icon {
+  font-size: inherit;
+  line-height: 1;
+  color: var(--color-text-inverse);
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 700,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+/* ── Text Area ── */
+.checkbox__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0-5);
+  line-height: var(--line-height-snug);
+}
+
+.checkbox__description {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-normal);
+}
+
+/* ===========================================================================    Size
+    =========================================================================== */
+.checkbox--sm .checkbox__box {
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox--sm .checkbox__icon {
+  font-size: 14px;
+}
+
+.checkbox--sm .checkbox__text {
+  font-size: var(--font-size-xs);
+  padding-top: 0;
+}
+
+.checkbox--md .checkbox__box {
+  width: 20px;
+  height: 20px;
+}
+
+.checkbox--md .checkbox__icon {
+  font-size: 16px;
+}
+
+.checkbox--md .checkbox__text {
+  font-size: var(--font-size-sm);
+  padding-top: var(--space-0-5);
+}
+
+.checkbox--lg .checkbox__box {
+  width: 24px;
+  height: 24px;
+}
+
+.checkbox--lg .checkbox__icon {
+  font-size: 20px;
+}
+
+.checkbox--lg .checkbox__text {
+  font-size: var(--font-size-md);
+  padding-top: var(--space-1);
+}
+
+/* ===========================================================================    States — checked / indeterminate
+    =========================================================================== */
+.checkbox__input:checked + .checkbox__box,
+.checkbox--indeterminate .checkbox__box {
+  border-color: var(--color-interactive-default);
+  background: var(--color-interactive-default);
+}
+
+/* ===========================================================================    States — focus
+    =========================================================================== */
+.checkbox__input:focus-visible + .checkbox__box {
+  box-shadow: var(--shadow-focus-primary);
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ===========================================================================    States — disabled
+    =========================================================================== */
+.checkbox--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ===========================================================================    States — hover
+    =========================================================================== */
+.checkbox:not(.checkbox--disabled):hover .checkbox__box {
+  border-color: var(--color-interactive-default);
+}
+
+/* ===========================================================================    Variant — card (배경 카드형)
+    =========================================================================== */
+.checkbox--card {
+  padding: var(--space-3);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-default);
+  transition:
+    border-color var(--duration-150) var(--ease-out),
+    background-color var(--duration-150) var(--ease-out);
+}
+
+.checkbox--card:hover:not(.checkbox--disabled) {
+  border-color: var(--color-border-strong);
+}
+
+.checkbox__input:checked ~ .checkbox__box {
+  /* box는 sibling이므로 별도 처리 불필요 — 위에서 이미 처리 */
+}
+
+/* card variant에서 checked 시 카드 전체 강조 */
+.checkbox--card:has(.checkbox__input:checked) {
+  border-color: var(--color-interactive-default);
+  background: var(--color-primary-glow-subtle);
+}
+
+.checkbox--card:has(.checkbox__input:focus-visible) {
+  box-shadow: var(--shadow-focus-primary);
+}

@@ -1,0 +1,184 @@
+/* =============================================================================
+   Radio — Form Radio Component
+   RadioGroup + Radio 조합으로 사용
+   reset.css의 appearance: none 대응으로 네이티브를 숨기고 커스텀 렌더링
+   ============================================================================= */
+
+/* ── RadioGroup ── */
+.radio-group {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.radio-group--vertical {
+  flex-direction: column;
+}
+
+.radio-group--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ── Label Wrapper ── */
+.radio {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+}
+
+/* ── Native Input (시각적 숨김, 접근성 유지) ── */
+.radio__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Custom Box ── */
+.radio__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  background: transparent;
+  transition:
+    border-color var(--duration-150) var(--ease-out),
+    background-color var(--duration-150) var(--ease-out),
+    box-shadow var(--duration-150) var(--ease-out);
+}
+
+/* ── Inner Dot ── */
+.radio__dot {
+  display: block;
+  border-radius: var(--radius-full);
+  background: var(--color-text-inverse);
+  transform: scale(0);
+  transition: transform var(--duration-150) var(--ease-out);
+}
+
+/* ── Text Area ── */
+.radio__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0-5);
+  line-height: var(--line-height-snug);
+}
+
+.radio__description {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-normal);
+}
+
+/* ===========================================================================    Size
+    =========================================================================== */
+.radio--sm .radio__box {
+  width: 16px;
+  height: 16px;
+}
+
+.radio--sm .radio__dot {
+  width: 8px;
+  height: 8px;
+}
+
+.radio--sm .radio__text {
+  font-size: var(--font-size-xs);
+  padding-top: 0;
+}
+
+.radio--md .radio__box {
+  width: 20px;
+  height: 20px;
+}
+
+.radio--md .radio__dot {
+  width: 10px;
+  height: 10px;
+}
+
+.radio--md .radio__text {
+  font-size: var(--font-size-sm);
+  padding-top: var(--space-0-5);
+}
+
+.radio--lg .radio__box {
+  width: 24px;
+  height: 24px;
+}
+
+.radio--lg .radio__dot {
+  width: 12px;
+  height: 12px;
+}
+
+.radio--lg .radio__text {
+  font-size: var(--font-size-md);
+  padding-top: var(--space-1);
+}
+
+/* ===========================================================================    States — checked
+    =========================================================================== */
+.radio--checked .radio__box {
+  border-color: var(--color-interactive-default);
+  background: var(--color-interactive-default);
+}
+
+.radio--checked .radio__dot {
+  transform: scale(1);
+}
+
+/* ===========================================================================    States — focus
+    =========================================================================== */
+.radio__input:focus-visible + .radio__box {
+  box-shadow: var(--shadow-focus-primary);
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ===========================================================================    States — disabled
+    =========================================================================== */
+.radio--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ===========================================================================    States — hover
+    =========================================================================== */
+.radio:not(.radio--disabled):hover .radio__box {
+  border-color: var(--color-interactive-default);
+}
+
+/* ===========================================================================    Variant — card (배경 카드형)
+    =========================================================================== */
+.radio--card {
+  padding: var(--space-3);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-default);
+  transition:
+    border-color var(--duration-150) var(--ease-out),
+    background-color var(--duration-150) var(--ease-out);
+}
+
+.radio--card:hover:not(.radio--disabled) {
+  border-color: var(--color-border-strong);
+}
+
+/* card variant에서 checked 시 카드 전체 강조 */
+.radio--card.radio--checked {
+  border-color: var(--color-interactive-default);
+  background: var(--color-primary-glow-subtle);
+}
+
+.radio--card:has(.radio__input:focus-visible) {
+  box-shadow: var(--shadow-focus-primary);
+}

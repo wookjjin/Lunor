@@ -71,6 +71,46 @@ export const sidebarNavGroups: NavGroup[] = [
         icon: 'rectangle',
       },
       {
+        label: 'Checkbox',
+        path: '/components/checkbox',
+        icon: 'check_box',
+      },
+      {
+        label: 'Radio',
+        path: '/components/radio',
+        icon: 'radio_button_checked',
+      },
+      {
+        label: 'Switch',
+        path: '/components/switch',
+        icon: 'toggle_on',
+      },
+      {
+        label: 'Select',
+        path: '/components/select',
+        icon: 'arrow_drop_down_circle',
+      },
+      {
+        label: 'Textarea',
+        path: '/components/textarea',
+        icon: 'edit_note',
+      },
+      {
+        label: 'Slider',
+        path: '/components/slider',
+        icon: 'tune',
+      },
+      {
+        label: 'FileInput',
+        path: '/components/file-input',
+        icon: 'upload_file',
+      },
+      {
+        label: 'InputGroup',
+        path: '/components/input-group',
+        icon: 'text_fields',
+      },
+      {
         label: 'Badge',
         path: '/components/badge',
         icon: 'sell',
@@ -104,6 +144,16 @@ export const sidebarNavGroups: NavGroup[] = [
         label: 'Toast',
         path: '/components/toast',
         icon: 'notification_important',
+      },
+      {
+        label: 'Spinner',
+        path: '/components/spinner',
+        icon: 'progress_activity',
+      },
+      {
+        label: 'Skeleton',
+        path: '/components/skeleton',
+        icon: 'skeleton',
       },
       {
         label: 'Alert',

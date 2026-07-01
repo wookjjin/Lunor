@@ -1,3 +1,4 @@
+import { ToastProvider as CoreToastProvider } from '@/core/components/Toast/ToastProvider'
 import type { ReactNode } from 'react'
 
 interface ToastProviderProps {
@@ -5,6 +6,5 @@ interface ToastProviderProps {
 }
 
 export function ToastProvider({ children }: ToastProviderProps) {
-  // TODO: 토스트 컨텍스트 구현
-  return <>{children}</>
+  return <CoreToastProvider>{children}</CoreToastProvider>
 }

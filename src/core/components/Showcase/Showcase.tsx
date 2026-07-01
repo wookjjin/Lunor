@@ -13,12 +13,14 @@ export function Showcase({
   description,
   children,
   previewText = 'Real-time state monitoring active',
+  cols = 4,
   className,
 }: ShowcaseProps) {
   return (
     <div
       className={[
         'showcase',
+        cols === 3 && 'showcase--cols-3',
         className,
       ]
         .filter(Boolean)

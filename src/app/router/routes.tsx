@@ -26,9 +26,72 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: 'badge',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Badge')
+          return { Component }
+        },
+      },
+      {
         path: 'card',
         lazy: async () => {
           const { default: Component } = await import('@/core/pages/Card')
+          return { Component }
+        },
+      },
+      {
+        path: 'checkbox',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Checkbox')
+          return { Component }
+        },
+      },
+      {
+        path: 'radio',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Radio')
+          return { Component }
+        },
+      },
+      {
+        path: 'switch',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Switch')
+          return { Component }
+        },
+      },
+      {
+        path: 'select',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Select')
+          return { Component }
+        },
+      },
+      {
+        path: 'textarea',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Textarea')
+          return { Component }
+        },
+      },
+      {
+        path: 'slider',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Slider')
+          return { Component }
+        },
+      },
+      {
+        path: 'file-input',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/FileInput')
+          return { Component }
+        },
+      },
+      {
+        path: 'input-group',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/InputGroup')
           return { Component }
         },
       },
@@ -57,6 +120,34 @@ const router = createBrowserRouter([
         path: 'pagination',
         lazy: async () => {
           const { default: Component } = await import('@/core/pages/Pagination')
+          return { Component }
+        },
+      },
+      {
+        path: 'toast',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Toast')
+          return { Component }
+        },
+      },
+      {
+        path: 'spinner',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Spinner')
+          return { Component }
+        },
+      },
+      {
+        path: 'skeleton',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Skeleton')
+          return { Component }
+        },
+      },
+      {
+        path: 'alert',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Alert')
           return { Component }
         },
       },

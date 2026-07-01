@@ -1,0 +1,216 @@
+/* =============================================================================
+   InputGroup — Input with Prefix/Suffix/Icon
+   Input 요소에 아이콘, addon(접두사/접미사)을 조합할 수 있는 래퍼
+   children으로 전달된 Input/Select 등의 요소를 감싸서 스타일 적용
+   ============================================================================= */
+
+/* ── Wrapper ── */
+.input-group {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font: inherit;
+  color: var(--color-text-primary);
+  background: var(--color-surface-default);
+  transition:
+    border-color var(--duration-150) var(--ease-out),
+    background-color var(--duration-150) var(--ease-out),
+    box-shadow var(--duration-150) var(--ease-out);
+}
+
+/* ── Field (Input 컨테이너) ── */
+.input-group__field {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  align-self: stretch;
+}
+
+.input-group__field > input,
+.input-group__field > select,
+.input-group__field > textarea {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  appearance: none;
+  box-shadow: none;
+}
+
+.input-group__field > input:focus-visible,
+.input-group__field > select:focus-visible,
+.input-group__field > textarea:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ── Icon ── */
+.input-group__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-tertiary);
+  transition: color var(--duration-150) var(--ease-out);
+}
+
+.input-group:hover:not(.input-group--disabled) .input-group__icon {
+  color: var(--color-text-secondary);
+}
+
+.input-group:focus-within .input-group__icon {
+  color: var(--color-interactive-default);
+}
+
+/* ── Addon (prefix/suffix) ── */
+.input-group__addon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-muted);
+  white-space: nowrap;
+}
+
+.input-group__addon--left {
+  border-right: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.input-group__addon--right {
+  border-left: 1px solid var(--color-border-default);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* ===========================================================================    Variant
+    =========================================================================== */
+.input-group--outline {
+  border-color: var(--color-border-default);
+  background: var(--color-surface-default);
+}
+
+.input-group--outline:hover:not(.input-group--disabled) {
+  border-color: var(--color-border-strong);
+}
+
+.input-group--outline:focus-within {
+  border-color: var(--color-interactive-default);
+  box-shadow: var(--shadow-focus-primary);
+}
+
+.input-group--filled {
+  border-color: transparent;
+  background: var(--color-bg-subtle);
+}
+
+.input-group--filled:hover:not(.input-group--disabled) {
+  background: var(--color-bg-muted);
+}
+
+.input-group--filled:focus-within {
+  border-color: var(--color-interactive-default);
+  box-shadow: var(--shadow-focus-primary);
+}
+
+/* ===========================================================================    Size
+    =========================================================================== */
+.input-group--sm {
+  min-height: var(--space-8);
+}
+
+.input-group--sm .input-group__icon {
+  padding: 0 var(--space-2);
+  font-size: var(--font-size-lg);
+}
+
+.input-group--sm .input-group__addon {
+  padding: 0 var(--space-2);
+  font-size: var(--font-size-xs);
+}
+
+.input-group--sm .input-group__field > input,
+.input-group--sm .input-group__field > select,
+.input-group--sm .input-group__field > textarea {
+  padding: 0 var(--space-2);
+  font-size: var(--font-size-sm);
+}
+
+.input-group--md {
+  min-height: var(--space-10);
+}
+
+.input-group--md .input-group__icon {
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-xl);
+}
+
+.input-group--md .input-group__addon {
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-sm);
+}
+
+.input-group--md .input-group__field > input,
+.input-group--md .input-group__field > select,
+.input-group--md .input-group__field > textarea {
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-md);
+}
+
+.input-group--lg {
+  min-height: var(--space-12);
+}
+
+.input-group--lg .input-group__icon {
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-2xl);
+}
+
+.input-group--lg .input-group__addon {
+  padding: 0 var(--space-4);
+  font-size: var(--font-size-md);
+}
+
+.input-group--lg .input-group__field > input,
+.input-group--lg .input-group__field > select,
+.input-group--lg .input-group__field > textarea {
+  padding: 0 var(--space-4);
+  font-size: var(--font-size-lg);
+}
+
+/* ===========================================================================    States — invalid
+    =========================================================================== */
+.input-group--invalid {
+  border-color: var(--color-danger-border);
+}
+
+.input-group--invalid:focus-within {
+  border-color: var(--color-danger-border);
+  box-shadow: var(--shadow-focus-danger);
+}
+
+/* ===========================================================================    States — disabled
+    =========================================================================== */
+.input-group--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input-group--disabled .input-group__field > input,
+.input-group--disabled .input-group__field > select,
+.input-group--disabled .input-group__field > textarea {
+  cursor: not-allowed;
+}
+
+/* ===========================================================================    Full Width
+    =========================================================================== */
+.input-group--full-width {
+  width: 100%;
+}

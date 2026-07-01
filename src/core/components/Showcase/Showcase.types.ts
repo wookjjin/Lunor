@@ -9,6 +9,8 @@ export interface ShowcaseProps {
   children: ReactNode
   /** 인터랙티비티 프리뷰 하단 텍스트 (기본값: 'Real-time state monitoring active') */
   previewText?: string
+  /** 데스크톱 컬럼 수 (기본값: 4) */
+  cols?: 3 | 4
   /** 추가 className */
   className?: string
 }

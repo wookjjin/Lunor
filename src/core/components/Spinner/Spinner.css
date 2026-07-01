@@ -1,0 +1,123 @@
+/* =============================================================================
+   Spinner — Loading Spinner Component
+   SVG 기반 회전 스피너, variant별 색상 + size별 크기
+   ============================================================================= */
+
+/* ── Wrapper ── */
+.spinner-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.spinner-wrapper--sm {
+  gap: var(--space-1);
+}
+
+.spinner-wrapper--lg {
+  gap: var(--space-3);
+}
+
+/* ── SVG ── */
+.spinner {
+  animation: spinner-rotate var(--duration-700) var(--ease-linear) infinite;
+}
+
+/* ── Track (배경 원) ── */
+.spinner__track {
+  stroke: var(--color-border-default);
+  opacity: 0.3;
+}
+
+/* ── Head (회전하는 호) ── */
+.spinner__head {
+  stroke: var(--color-text-secondary);
+  stroke-dasharray: 75 100;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+}
+
+/* ── Label ── */
+.spinner__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* ===========================================================================    Size
+    =========================================================================== */
+.spinner--sm {
+  width: 16px;
+  height: 16px;
+}
+
+.spinner--md {
+  width: 24px;
+  height: 24px;
+}
+
+.spinner--lg {
+  width: 36px;
+  height: 36px;
+}
+
+.spinner-wrapper--sm .spinner__label {
+  font-size: var(--font-size-xs);
+}
+
+.spinner-wrapper--lg .spinner__label {
+  font-size: var(--font-size-md);
+}
+
+/* ===========================================================================    Variant
+    =========================================================================== */
+.spinner--primary .spinner__head {
+  stroke: var(--color-interactive-default);
+}
+
+.spinner--primary .spinner__track {
+  stroke: var(--color-primary-glow-strong);
+}
+
+.spinner--danger .spinner__head {
+  stroke: var(--color-danger-border);
+}
+
+.spinner--danger .spinner__track {
+  stroke: var(--color-danger-900);
+  opacity: 0.3;
+}
+
+.spinner--success .spinner__head {
+  stroke: var(--color-success-border);
+}
+
+.spinner--success .spinner__track {
+  stroke: var(--color-success-900);
+  opacity: 0.3;
+}
+
+.spinner--warning .spinner__head {
+  stroke: var(--color-warning-border);
+}
+
+.spinner--warning .spinner__track {
+  stroke: var(--color-warning-900);
+  opacity: 0.3;
+}
+
+/* ===========================================================================    Animation
+    =========================================================================== */
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===========================================================================    prefers-reduced-motion
+    =========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2s;
+  }
+}

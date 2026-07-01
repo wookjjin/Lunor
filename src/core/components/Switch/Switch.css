@@ -1,0 +1,185 @@
+/* =============================================================================
+   Switch — Toggle Switch Component
+   ON/OFF 상태를 토글하는 스위치 (checkbox 기반, role="switch")
+   ============================================================================= */
+
+/* ── Label Wrapper ── */
+.switch {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+}
+
+/* ── Native Input (시각적 숨김, 접근성 유지) ── */
+.switch__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Track (외형 영역) ── */
+.switch__track {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  background: transparent;
+  transition:
+    border-color var(--duration-150) var(--ease-out),
+    background-color var(--duration-150) var(--ease-out),
+    box-shadow var(--duration-150) var(--ease-out);
+}
+
+/* ── Thumb (내부 원형) ── */
+.switch__thumb {
+  display: block;
+  border-radius: var(--radius-full);
+  background: var(--color-border-strong);
+  transition:
+    transform var(--duration-150) var(--ease-out),
+    background-color var(--duration-150) var(--ease-out);
+}
+
+/* ── Text Area ── */
+.switch__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0-5);
+  line-height: var(--line-height-snug);
+}
+
+.switch__description {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-normal);
+}
+
+/* ===========================================================================    Size
+    =========================================================================== */
+.switch--sm .switch__track {
+  width: 32px;
+  height: 18px;
+  padding: 0;
+}
+
+.switch--sm .switch__thumb {
+  width: 10px;
+  height: 10px;
+  margin: 0 1px;
+}
+
+.switch--sm.switch--checked .switch__thumb {
+  transform: translateX(14px);
+}
+
+.switch--sm .switch__text {
+  font-size: var(--font-size-xs);
+  padding-top: 0;
+}
+
+.switch--md .switch__track {
+  width: 40px;
+  height: 22px;
+  padding: 0;
+}
+
+.switch--md .switch__thumb {
+  width: 12px;
+  height: 12px;
+  margin: 0 1px;
+}
+
+.switch--md.switch--checked .switch__thumb {
+  transform: translateX(16px);
+}
+
+.switch--md .switch__text {
+  font-size: var(--font-size-sm);
+  padding-top: var(--space-0-5);
+}
+
+.switch--lg .switch__track {
+  width: 48px;
+  height: 26px;
+  padding: 0;
+}
+
+.switch--lg .switch__thumb {
+  width: 14px;
+  height: 14px;
+  margin: 0 1px;
+}
+
+.switch--lg.switch--checked .switch__thumb {
+  transform: translateX(20px);
+}
+
+.switch--lg .switch__text {
+  font-size: var(--font-size-md);
+  padding-top: var(--space-1);
+}
+
+/* ===========================================================================    States — checked
+    =========================================================================== */
+.switch--checked .switch__track {
+  border-color: var(--color-interactive-default);
+  background: var(--color-interactive-default);
+}
+
+.switch--checked .switch__thumb {
+  background: var(--color-text-inverse);
+}
+
+/* ===========================================================================    States — focus
+    =========================================================================== */
+.switch__input:focus-visible + .switch__track {
+  box-shadow: var(--shadow-focus-primary);
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ===========================================================================    States — disabled
+    =========================================================================== */
+.switch--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ===========================================================================    States — hover
+    =========================================================================== */
+.switch:not(.switch--disabled):hover .switch__track {
+  border-color: var(--color-interactive-default);
+}
+
+/* ===========================================================================    Variant — card
+    =========================================================================== */
+.switch--card {
+  padding: var(--space-3);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-default);
+  transition:
+    border-color var(--duration-150) var(--ease-out),
+    background-color var(--duration-150) var(--ease-out);
+}
+
+.switch--card:hover:not(.switch--disabled) {
+  border-color: var(--color-border-strong);
+}
+
+/* card variant에서 checked 시 카드 전체 강조 */
+.switch--card.switch--checked {
+  border-color: var(--color-interactive-default);
+  background: var(--color-primary-glow-subtle);
+}
+
+.switch--card:has(.switch__input:focus-visible) {
+  box-shadow: var(--shadow-focus-primary);
+}

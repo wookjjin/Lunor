@@ -84,15 +84,16 @@
 }
 
 /* ── 카드 바디 ── */
-/* align-items: stretch로 테이블이 카드 너비를 넘지 않게 하고,
-   넓은 콘텐츠는 내부 overflow-x로 스크롤 처리 */
+/* overflow-x: clip 사용 — overflow-y는 visible로 유지되어
+   드롭다운 등 absolute 자손이 카드를 벗어나 표시될 수 있음.
+   넓은 콘텐츠는 가로 방향으로만 클립 처리 */
 .showcase__item-body {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: var(--space-4);
   width: 100%;
-  overflow-x: auto;
+  overflow-x: clip;
 }
 
 /* 버튼 등 인라인 요소는 중앙 정렬 유지 */

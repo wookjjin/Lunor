@@ -1,0 +1,95 @@
+/* =============================================================================
+   Skeleton — Loading Placeholder
+   콘텐츠 로딩 중 플레이스홀더 표시, shimmer 애니메이션
+   ============================================================================= */
+
+/* ── Base ── */
+.skeleton {
+  display: block;
+  background: var(--color-bg-muted);
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Shimmer Effect ── */
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-primary-glow-subtle) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: skeleton-shimmer var(--duration-1000) var(--ease-in-out) infinite;
+}
+
+/* ── Group (여러 줄 text) ── */
+.skeleton-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+/* ===========================================================================    Variant
+    =========================================================================== */
+.skeleton--text {
+  height: var(--font-size-sm);
+  width: 100%;
+  border-radius: var(--radius-xs);
+}
+
+.skeleton--text-last {
+  width: 60%;
+}
+
+.skeleton--rect {
+  height: 2.5rem;
+  width: 100%;
+}
+
+.skeleton--card {
+  height: 8rem;
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
+/* ===========================================================================    Modifiers
+    =========================================================================== */
+.skeleton--rounded {
+  border-radius: var(--radius-full);
+}
+
+.skeleton--circle {
+  border-radius: var(--radius-full);
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+/* ===========================================================================    Animation
+    =========================================================================== */
+@keyframes skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ===========================================================================    prefers-reduced-motion
+    =========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .skeleton {
+    background: var(--color-bg-muted);
+  }
+}

@@ -1,0 +1,171 @@
+/* =============================================================================
+   Slider — Range Input Component
+   reset.css의 appearance: none 대응으로 네이티브 슬라이더를 커스텀 스타일링
+   --slider-percent CSS 변수로 track 채움 영역 제어
+   ============================================================================= */
+
+/* ── Wrapper ── */
+.slider {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+/* ── Native Input ── */
+.slider__input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: var(--slider-track-height, 6px);
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    to right,
+    var(--color-interactive-default) 0%,
+    var(--color-interactive-default) var(--slider-percent, 0%),
+    var(--color-border-default) var(--slider-percent, 0%),
+    var(--color-border-default) 100%
+  );
+  outline: none;
+  cursor: pointer;
+  transition: background var(--duration-150) var(--ease-out);
+}
+
+/* ── Value Display ── */
+.slider__value {
+  flex-shrink: 0;
+  min-width: 2rem;
+  text-align: right;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===========================================================================    Thumb — WebKit
+    =========================================================================== */
+.slider__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--slider-thumb-size, 16px);
+  height: var(--slider-thumb-size, 16px);
+  border-radius: var(--radius-full);
+  background: var(--color-interactive-default);
+  border: 2px solid var(--color-text-inverse);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition:
+    transform var(--duration-150) var(--ease-out),
+    box-shadow var(--duration-150) var(--ease-out);
+}
+
+.slider__input::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: var(--shadow-md);
+}
+
+.slider__input::-webkit-slider-thumb:active {
+  transform: scale(1.25);
+}
+
+/* ── Thumb — Firefox ── */
+.slider__input::-moz-range-thumb {
+  width: var(--slider-thumb-size, 16px);
+  height: var(--slider-thumb-size, 16px);
+  border-radius: var(--radius-full);
+  background: var(--color-interactive-default);
+  border: 2px solid var(--color-text-inverse);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition:
+    transform var(--duration-150) var(--ease-out),
+    box-shadow var(--duration-150) var(--ease-out);
+}
+
+.slider__input::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: var(--shadow-md);
+}
+
+.slider__input::-moz-range-thumb:active {
+  transform: scale(1.25);
+}
+
+/* ── Track — Firefox ── */
+.slider__input::-moz-range-track {
+  height: var(--slider-track-height, 6px);
+  border-radius: var(--radius-full);
+  background: transparent;
+}
+
+/* ===========================================================================    Focus
+    =========================================================================== */
+.slider__input:focus-visible {
+  box-shadow: var(--shadow-focus-primary);
+}
+
+.slider__input:focus-visible::-webkit-slider-thumb {
+  box-shadow: var(--shadow-focus-primary);
+}
+
+.slider__input:focus-visible::-moz-range-thumb {
+  box-shadow: var(--shadow-focus-primary);
+}
+
+/* ===========================================================================    Size
+    =========================================================================== */
+.slider--sm {
+  --slider-track-height: 4px;
+  --slider-thumb-size: 12px;
+}
+
+.slider--sm .slider__value {
+  font-size: var(--font-size-xs);
+}
+
+.slider--md {
+  --slider-track-height: 6px;
+  --slider-thumb-size: 16px;
+}
+
+.slider--lg {
+  --slider-track-height: 8px;
+  --slider-thumb-size: 20px;
+}
+
+.slider--lg .slider__value {
+  font-size: var(--font-size-md);
+}
+
+/* ===========================================================================    Variant — filled (배경 카드형)
+    =========================================================================== */
+.slider--filled {
+  padding: var(--space-3);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-default);
+  transition: border-color var(--duration-150) var(--ease-out);
+}
+
+.slider--filled:hover:not(.slider--disabled) {
+  border-color: var(--color-border-strong);
+}
+
+/* ===========================================================================    States — disabled
+    =========================================================================== */
+.slider--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.slider--disabled .slider__input {
+  cursor: not-allowed;
+}
+
+.slider--disabled .slider__input::-webkit-slider-thumb {
+  cursor: not-allowed;
+}
+
+.slider--disabled .slider__input::-moz-range-thumb {
+  cursor: not-allowed;
+}

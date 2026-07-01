@@ -50,6 +50,83 @@ export interface CardPlaygroundProps {
   children: string
 }
 
+export interface BadgePlaygroundProps {
+  size: 'sm' | 'md' | 'lg'
+  dot: boolean
+  label: string
+}
+
+export interface CheckboxPlaygroundProps {
+  variant: 'default' | 'card'
+  size: 'sm' | 'md' | 'lg'
+  label: string
+  description: string
+}
+
+export interface RadioPlaygroundProps {
+  variant: 'default' | 'card'
+  size: 'sm' | 'md' | 'lg'
+  orientation: 'vertical' | 'horizontal'
+}
+
+export interface SwitchPlaygroundProps {
+  variant: 'default' | 'card'
+  size: 'sm' | 'md' | 'lg'
+  label: string
+  description: string
+}
+
+export interface SelectPlaygroundProps {
+  variant: 'outline' | 'filled'
+  size: 'sm' | 'md' | 'lg'
+  fullWidth: boolean
+  invalid: boolean
+  disabled: boolean
+}
+
+export interface TextareaPlaygroundProps {
+  variant: 'outline' | 'filled'
+  size: 'sm' | 'md' | 'lg'
+  resize: 'none' | 'vertical' | 'horizontal' | 'both'
+  fullWidth: boolean
+  invalid: boolean
+  disabled: boolean
+}
+
+export interface SliderPlaygroundProps {
+  variant: 'default' | 'filled'
+  size: 'sm' | 'md' | 'lg'
+  showValue: boolean
+  disabled: boolean
+}
+
+export interface FileInputPlaygroundProps {
+  variant: 'default' | 'filled'
+  size: 'sm' | 'md' | 'lg'
+  fullWidth: boolean
+  disabled: boolean
+}
+
+export interface InputGroupPlaygroundProps {
+  variant: 'outline' | 'filled'
+  size: 'sm' | 'md' | 'lg'
+  fullWidth: boolean
+  disabled: boolean
+}
+
+export interface SpinnerPlaygroundProps {
+  variant: 'default' | 'primary' | 'danger' | 'success' | 'warning'
+  size: 'sm' | 'md' | 'lg'
+  showLabel: boolean
+}
+
+export interface AlertPlaygroundProps {
+  variant: 'info' | 'success' | 'warning' | 'danger'
+  closable: boolean
+  title: string
+  description: string
+}
+
 export interface PaginationPlaygroundProps {
   variant: 'full' | 'simple'
   size: 'sm' | 'md' | 'lg'
@@ -109,6 +186,72 @@ export const defaultPropsMap: Record<string, Record<string, unknown>> = {
     variant: 'default',
     padding: 'md',
     children: 'Card content',
+  },
+  badge: {
+    size: 'md',
+    dot: false,
+    label: 'Badge',
+  },
+  checkbox: {
+    variant: 'default',
+    size: 'md',
+    label: 'Accept terms',
+    description: 'You agree to our Terms of Service',
+  },
+  radio: {
+    variant: 'default',
+    size: 'md',
+    orientation: 'vertical',
+  },
+  switch: {
+    variant: 'default',
+    size: 'md',
+    label: 'Notifications',
+    description: 'Receive push notifications',
+  },
+  select: {
+    variant: 'outline',
+    size: 'md',
+    fullWidth: false,
+    invalid: false,
+    disabled: false,
+  },
+  textarea: {
+    variant: 'outline',
+    size: 'md',
+    resize: 'vertical',
+    fullWidth: false,
+    invalid: false,
+    disabled: false,
+  },
+  slider: {
+    variant: 'default',
+    size: 'md',
+    showValue: false,
+    disabled: false,
+  },
+  'file-input': {
+    variant: 'default',
+    size: 'md',
+    fullWidth: false,
+    disabled: false,
+  },
+  'input-group': {
+    variant: 'outline',
+    size: 'md',
+    fullWidth: false,
+    disabled: false,
+  },
+  spinner: {
+    variant: 'default',
+    size: 'md',
+    showLabel: false,
+  },
+  alert: {
+    variant: 'info',
+    closable: false,
+    title: 'Alert title',
+    description: 'Alert description text',
   },
   pagination: {
     variant: 'full',
@@ -214,6 +357,128 @@ export const propDefsMap: Record<string, PropDefs> = {
     booleans: [],
     texts: [
       { key: 'children', label: 'content' },
+    ],
+  },
+  badge: {
+    toggles: [
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [
+      { key: 'dot', label: 'dot' },
+    ],
+    texts: [
+      { key: 'label', label: 'label' },
+    ],
+  },
+  checkbox: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'card'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [],
+    texts: [
+      { key: 'label', label: 'label' },
+      { key: 'description', label: 'description' },
+    ],
+  },
+  radio: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'card'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+      { key: 'orientation', label: 'orientation', options: ['vertical', 'horizontal'] },
+    ],
+    booleans: [],
+    texts: [],
+  },
+  switch: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'card'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [],
+    texts: [
+      { key: 'label', label: 'label' },
+      { key: 'description', label: 'description' },
+    ],
+  },
+  select: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['outline', 'filled'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [
+      { key: 'fullWidth', label: 'fullWidth' },
+      { key: 'invalid', label: 'invalid' },
+      { key: 'disabled', label: 'disabled' },
+    ],
+    texts: [],
+  },
+  textarea: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['outline', 'filled'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+      { key: 'resize', label: 'resize', options: ['none', 'vertical', 'horizontal', 'both'] },
+    ],
+    booleans: [
+      { key: 'fullWidth', label: 'fullWidth' },
+      { key: 'invalid', label: 'invalid' },
+      { key: 'disabled', label: 'disabled' },
+    ],
+    texts: [],
+  },
+  slider: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'filled'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [
+      { key: 'showValue', label: 'showValue' },
+      { key: 'disabled', label: 'disabled' },
+    ],
+    texts: [],
+  },
+  'file-input': {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'filled'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [
+      { key: 'fullWidth', label: 'fullWidth' },
+      { key: 'disabled', label: 'disabled' },
+    ],
+    texts: [],
+  },
+  'input-group': {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['outline', 'filled'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [
+      { key: 'fullWidth', label: 'fullWidth' },
+      { key: 'disabled', label: 'disabled' },
+    ],
+    texts: [],
+  },
+  spinner: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'primary', 'danger', 'success', 'warning'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [
+      { key: 'showLabel', label: 'showLabel' },
+    ],
+    texts: [],
+  },
+  alert: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['info', 'success', 'warning', 'danger'] },
+    ],
+    booleans: [
+      { key: 'closable', label: 'closable' },
+    ],
+    texts: [
+      { key: 'title', label: 'title' },
+      { key: 'description', label: 'description' },
     ],
   },
   pagination: {
