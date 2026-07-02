@@ -1,0 +1,161 @@
+/* =============================================================================
+   List — Styled List Container + Items
+   ul/li 기반, variant/size/density 조합, interactive item 지원
+   ============================================================================= */
+
+/* ── Container ── */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===========================================================================    Variant
+    =========================================================================== */
+.list--default {
+  padding-left: var(--space-6);
+  list-style: disc;
+}
+
+.list--default.list--no-marker {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* ordered list */
+ol.list--default {
+  list-style: decimal;
+}
+
+ol.list--default.list--no-marker {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list--nav {
+  list-style: none;
+  padding: 0;
+  gap: var(--space-0-5);
+}
+
+.list--plain {
+  list-style: none;
+  padding: 0;
+}
+
+/* ===========================================================================    Size
+    =========================================================================== */
+.list--sm .list__item {
+  font-size: var(--font-size-sm);
+}
+
+.list--md .list__item {
+  font-size: var(--font-size-sm);
+}
+
+.list--lg .list__item {
+  font-size: var(--font-size-md);
+}
+
+/* ===========================================================================    Density
+    =========================================================================== */
+.list--comfortable .list__item {
+  padding: var(--space-2) var(--space-3);
+}
+
+.list--compact .list__item {
+  padding: var(--space-1) var(--space-3);
+}
+
+/* ===========================================================================    List Item
+    =========================================================================== */
+.list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md);
+  line-height: var(--line-height-snug);
+}
+
+/* ── Icon ── */
+.list__item-icon {
+  font-size: inherit;
+  line-height: 1;
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+
+.list--sm .list__item-icon {
+  font-size: var(--font-size-lg);
+}
+
+.list--md .list__item-icon {
+  font-size: var(--font-size-xl);
+}
+
+.list--lg .list__item-icon {
+  font-size: var(--font-size-xl);
+}
+
+/* ── Content ── */
+.list__item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Trailing ── */
+.list__item-trailing {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* ===========================================================================    Interactive
+    =========================================================================== */
+.list__item--interactive {
+  cursor: pointer;
+  transition:
+    background-color var(--duration-150) var(--ease-out),
+    color var(--duration-150) var(--ease-out);
+}
+
+.list__item--interactive:hover {
+  background: var(--color-surface-card-hover);
+}
+
+.list__item--interactive:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: -2px;
+}
+
+/* ===========================================================================    Selected
+    =========================================================================== */
+.list__item--selected {
+  background: var(--color-surface-active);
+  color: var(--color-interactive-default);
+  font-weight: var(--font-weight-medium);
+}
+
+.list__item--selected .list__item-icon {
+  color: var(--color-interactive-default);
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+/* ===========================================================================    Disabled
+    =========================================================================== */
+.list__item--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.list__item--disabled.list__item--interactive {
+  pointer-events: none;
+}

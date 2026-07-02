@@ -1,0 +1,84 @@
+/* =============================================================================
+   Divider — Horizontal / Vertical Separator
+   라벨 포함 분리선, 방향/색상 변형 지원
+   ============================================================================= */
+
+/* ── Horizontal (hr) ── */
+.divider {
+  border: none;
+  width: 100%;
+  margin: 0;
+}
+
+.divider--default {
+  border-top: 1px solid var(--color-border-default);
+}
+
+.divider--subtle {
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.divider--strong {
+  border-top: 1px solid var(--color-border-strong);
+}
+
+/* ── Vertical ── */
+.divider--vertical {
+  width: 1px;
+  height: 100%;
+  align-self: stretch;
+  border: none;
+  border-left: 1px solid var(--color-border-default);
+}
+
+.divider--vertical.divider--subtle {
+  border-left-color: var(--color-border-subtle);
+}
+
+.divider--vertical.divider--strong {
+  border-left-color: var(--color-border-strong);
+}
+
+/* ── With Label ── */
+.divider--with-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  border: none;
+}
+
+.divider__line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-default);
+}
+
+.divider__label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.divider__label--start {
+  order: -1;
+}
+
+.divider__label--center {
+  order: 0;
+}
+
+.divider__label--end {
+  order: 1;
+}
+
+/* 라벨 start/end일 때 한쪽 라인만 표시 */
+.divider--with-label:has(.divider__label--start) .divider__line:first-child {
+  display: none;
+}
+
+.divider--with-label:has(.divider__label--end) .divider__line:last-child {
+  display: none;
+}

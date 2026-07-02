@@ -96,6 +96,69 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: 'stack',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Stack')
+          return { Component }
+        },
+      },
+      {
+        path: 'divider',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Divider')
+          return { Component }
+        },
+      },
+      {
+        path: 'spacer',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Spacer')
+          return { Component }
+        },
+      },
+      {
+        path: 'container',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Container')
+          return { Component }
+        },
+      },
+      {
+        path: 'avatar',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Avatar')
+          return { Component }
+        },
+      },
+      {
+        path: 'chip',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Chip')
+          return { Component }
+        },
+      },
+      {
+        path: 'list',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/List')
+          return { Component }
+        },
+      },
+      {
+        path: 'accordion',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Accordion')
+          return { Component }
+        },
+      },
+      {
+        path: 'tabs',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Tabs')
+          return { Component }
+        },
+      },
+      {
         path: 'input',
         lazy: async () => {
           const { default: Component } = await import('@/core/pages/Input')
@@ -120,6 +183,13 @@ const router = createBrowserRouter([
         path: 'pagination',
         lazy: async () => {
           const { default: Component } = await import('@/core/pages/Pagination')
+          return { Component }
+        },
+      },
+      {
+        path: 'progress-bar',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/ProgressBar')
           return { Component }
         },
       },

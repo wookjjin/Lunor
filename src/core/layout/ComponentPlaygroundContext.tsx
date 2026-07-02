@@ -127,6 +127,49 @@ export interface AlertPlaygroundProps {
   description: string
 }
 
+export interface ProgressBarPlaygroundProps {
+  variant: 'default' | 'primary' | 'success' | 'warning' | 'danger'
+  size: 'sm' | 'md' | 'lg'
+  showValue: boolean
+  striped: boolean
+  animated: boolean
+}
+
+export interface StackPlaygroundProps {
+  direction: 'column' | 'row'
+  gap: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  align: 'start' | 'center' | 'end' | 'stretch'
+  justify: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
+}
+
+export interface DividerPlaygroundProps {
+  variant: 'default' | 'subtle' | 'strong'
+  labelPosition: 'start' | 'center' | 'end'
+}
+
+export interface AvatarPlaygroundProps {
+  size: 'sm' | 'md' | 'lg' | 'xl'
+  variant: 'default' | 'primary' | 'danger' | 'success' | 'warning'
+  ring: boolean
+  square: boolean
+}
+
+export interface ChipPlaygroundProps {
+  variant: 'default' | 'primary' | 'secondary' | 'danger' | 'success' | 'warning'
+  size: 'sm' | 'md' | 'lg'
+  removable: boolean
+}
+
+export interface ListPlaygroundProps {
+  variant: 'default' | 'nav' | 'plain'
+  size: 'sm' | 'md' | 'lg'
+  density: 'comfortable' | 'compact'
+}
+
+export interface TabsPlaygroundProps {
+  variant: 'default' | 'pills' | 'underline'
+}
+
 export interface PaginationPlaygroundProps {
   variant: 'full' | 'simple'
   size: 'sm' | 'md' | 'lg'
@@ -252,6 +295,42 @@ export const defaultPropsMap: Record<string, Record<string, unknown>> = {
     closable: false,
     title: 'Alert title',
     description: 'Alert description text',
+  },
+  'progress-bar': {
+    variant: 'default',
+    size: 'md',
+    showValue: false,
+    striped: false,
+    animated: false,
+  },
+  stack: {
+    direction: 'column',
+    gap: 'md',
+    align: 'start',
+    justify: 'start',
+  },
+  divider: {
+    variant: 'default',
+    labelPosition: 'center',
+  },
+  avatar: {
+    size: 'md',
+    variant: 'default',
+    ring: false,
+    square: false,
+  },
+  chip: {
+    variant: 'default',
+    size: 'md',
+    removable: false,
+  },
+  list: {
+    variant: 'nav',
+    size: 'md',
+    density: 'comfortable',
+  },
+  tabs: {
+    variant: 'default',
   },
   pagination: {
     variant: 'full',
@@ -480,6 +559,73 @@ export const propDefsMap: Record<string, PropDefs> = {
       { key: 'title', label: 'title' },
       { key: 'description', label: 'description' },
     ],
+  },
+  'progress-bar': {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'primary', 'success', 'warning', 'danger'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [
+      { key: 'showValue', label: 'showValue' },
+      { key: 'striped', label: 'striped' },
+      { key: 'animated', label: 'animated' },
+    ],
+    texts: [],
+  },
+  stack: {
+    toggles: [
+      { key: 'direction', label: 'direction', options: ['column', 'row'] },
+      { key: 'gap', label: 'gap', options: ['none', 'xs', 'sm', 'md', 'lg', 'xl'] },
+      { key: 'align', label: 'align', options: ['start', 'center', 'end', 'stretch'] },
+      { key: 'justify', label: 'justify', options: ['start', 'center', 'end', 'between', 'around', 'evenly'] },
+    ],
+    booleans: [],
+    texts: [],
+  },
+  divider: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'subtle', 'strong'] },
+      { key: 'labelPosition', label: 'labelPosition', options: ['start', 'center', 'end'] },
+    ],
+    booleans: [],
+    texts: [],
+  },
+  avatar: {
+    toggles: [
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg', 'xl'] },
+      { key: 'variant', label: 'variant', options: ['default', 'primary', 'danger', 'success', 'warning'] },
+    ],
+    booleans: [
+      { key: 'ring', label: 'ring' },
+      { key: 'square', label: 'square' },
+    ],
+    texts: [],
+  },
+  chip: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'primary', 'secondary', 'danger', 'success', 'warning'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [
+      { key: 'removable', label: 'removable' },
+    ],
+    texts: [],
+  },
+  list: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'nav', 'plain'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+      { key: 'density', label: 'density', options: ['comfortable', 'compact'] },
+    ],
+    booleans: [],
+    texts: [],
+  },
+  tabs: {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'pills', 'underline'] },
+    ],
+    booleans: [],
+    texts: [],
   },
   pagination: {
     toggles: [

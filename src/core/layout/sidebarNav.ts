@@ -49,6 +49,26 @@ export const sidebarNavGroups: NavGroup[] = [
         path: '/components/shadows',
         icon: 'layers',
       },
+      {
+        label: 'Stack',
+        path: '/components/stack',
+        icon: 'view_stream',
+      },
+      {
+        label: 'Divider',
+        path: '/components/divider',
+        icon: 'horizontal_rule',
+      },
+      {
+        label: 'Spacer',
+        path: '/components/spacer',
+        icon: 'space_bar',
+      },
+      {
+        label: 'Container',
+        path: '/components/container',
+        icon: 'crop_landscape',
+      },
     ],
   },
   {
@@ -69,6 +89,11 @@ export const sidebarNavGroups: NavGroup[] = [
         label: 'Card',
         path: '/components/card',
         icon: 'rectangle',
+      },
+      {
+        label: 'Avatar',
+        path: '/components/avatar',
+        icon: 'account_circle',
       },
       {
         label: 'Checkbox',
@@ -116,6 +141,26 @@ export const sidebarNavGroups: NavGroup[] = [
         icon: 'sell',
       },
       {
+        label: 'Chip',
+        path: '/components/chip',
+        icon: 'label',
+      },
+      {
+        label: 'List',
+        path: '/components/list',
+        icon: 'list',
+      },
+      {
+        label: 'Accordion',
+        path: '/components/accordion',
+        icon: 'expand_more',
+      },
+      {
+        label: 'Tabs',
+        path: '/components/tabs',
+        icon: 'tab',
+      },
+      {
         label: 'Table',
         path: '/components/table',
         icon: 'table',
@@ -149,6 +194,11 @@ export const sidebarNavGroups: NavGroup[] = [
         label: 'Spinner',
         path: '/components/spinner',
         icon: 'progress_activity',
+      },
+      {
+        label: 'ProgressBar',
+        path: '/components/progress-bar',
+        icon: 'linear_scale',
       },
       {
         label: 'Skeleton',

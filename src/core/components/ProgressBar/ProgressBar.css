@@ -1,0 +1,126 @@
+/* =============================================================================
+   ProgressBar — Linear Progress Indicator
+   진행률을 시각적으로 표시, variant별 색상 + striped 애니메이션
+   ============================================================================= */
+
+/* ── Wrapper ── */
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+}
+
+/* ── Header (label + value) ── */
+.progress-bar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-bar__label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.progress-bar__value {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Track ── */
+.progress-bar__track {
+  width: 100%;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-muted);
+  overflow: hidden;
+}
+
+/* ── Fill ── */
+.progress-bar__fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--duration-300) var(--ease-out);
+}
+
+/* ===========================================================================    Size
+    =========================================================================== */
+.progress-bar--sm .progress-bar__track {
+  height: 4px;
+}
+
+.progress-bar--md .progress-bar__track {
+  height: 6px;
+}
+
+.progress-bar--lg .progress-bar__track {
+  height: 10px;
+}
+
+/* ===========================================================================    Variant
+    =========================================================================== */
+.progress-bar__fill--default {
+  background: var(--color-interactive-default);
+}
+
+.progress-bar__fill--primary {
+  background: var(--color-interactive-default);
+}
+
+.progress-bar__fill--success {
+  background: var(--color-success-border);
+}
+
+.progress-bar__fill--warning {
+  background: var(--color-warning-border);
+}
+
+.progress-bar__fill--danger {
+  background: var(--color-danger-border);
+}
+
+/* ===========================================================================    Striped
+    =========================================================================== */
+.progress-bar__fill--striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+/* ===========================================================================    Animated Striped
+    =========================================================================== */
+.progress-bar__fill--animated {
+  animation: progress-bar-stripes var(--duration-700) var(--ease-linear) infinite;
+}
+
+@keyframes progress-bar-stripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1rem 0;
+  }
+}
+
+/* ===========================================================================    prefers-reduced-motion
+    =========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar__fill {
+    transition: none;
+  }
+
+  .progress-bar__fill--animated {
+    animation: none;
+  }
+}

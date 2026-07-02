@@ -1,0 +1,96 @@
+/* =============================================================================
+   Stack — Flex Layout Helper
+   direction, gap, align, justify, wrap을 조합한 flex 컨테이너
+   VStack / HStack 패턴을 하나의 컴포넌트로 통합
+   ============================================================================= */
+
+.stack {
+  display: flex;
+  min-width: 0;
+}
+
+/* ===========================================================================    Direction
+    =========================================================================== */
+.stack--column {
+  flex-direction: column;
+}
+
+.stack--row {
+  flex-direction: row;
+}
+
+/* ===========================================================================    Gap
+    =========================================================================== */
+.stack--gap-none {
+  gap: 0;
+}
+
+.stack--gap-xs {
+  gap: var(--space-1);
+}
+
+.stack--gap-sm {
+  gap: var(--space-2);
+}
+
+.stack--gap-md {
+  gap: var(--space-3);
+}
+
+.stack--gap-lg {
+  gap: var(--space-4);
+}
+
+.stack--gap-xl {
+  gap: var(--space-6);
+}
+
+/* ===========================================================================    Align (교차축)
+    =========================================================================== */
+.stack--align-start {
+  align-items: flex-start;
+}
+
+.stack--align-center {
+  align-items: center;
+}
+
+.stack--align-end {
+  align-items: flex-end;
+}
+
+.stack--align-stretch {
+  align-items: stretch;
+}
+
+/* ===========================================================================    Justify (주축)
+    =========================================================================== */
+.stack--justify-start {
+  justify-content: flex-start;
+}
+
+.stack--justify-center {
+  justify-content: center;
+}
+
+.stack--justify-end {
+  justify-content: flex-end;
+}
+
+.stack--justify-between {
+  justify-content: space-between;
+}
+
+.stack--justify-around {
+  justify-content: space-around;
+}
+
+.stack--justify-evenly {
+  justify-content: space-evenly;
+}
+
+/* ===========================================================================    Wrap
+    =========================================================================== */
+.stack--wrap {
+  flex-wrap: wrap;
+}

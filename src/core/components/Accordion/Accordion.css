@@ -1,0 +1,127 @@
+/* =============================================================================
+   Accordion — Collapsible Sections
+   단일/다중 확장, context 기반 상태 관리
+   ============================================================================= */
+
+/* ── Container ── */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+}
+
+/* ── Item ── */
+.accordion__item {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-default);
+  overflow: hidden;
+  transition: border-color var(--duration-150) var(--ease-out);
+}
+
+.accordion__item--open {
+  border-color: var(--color-border-strong);
+}
+
+.accordion__item--disabled {
+  opacity: 0.5;
+}
+
+/* ── Header ── */
+.accordion__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: none;
+  border: none;
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background-color var(--duration-150) var(--ease-out),
+    color var(--duration-150) var(--ease-out);
+}
+
+.accordion__header:hover:not(:disabled) {
+  background: var(--color-surface-card-hover);
+}
+
+.accordion__header:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: -2px;
+}
+
+.accordion__header:disabled {
+  cursor: not-allowed;
+}
+
+/* ── Icon ── */
+.accordion__icon {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ── Title ── */
+.accordion__title {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  min-width: 0;
+}
+
+/* ── Chevron ── */
+.accordion__chevron {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+  line-height: 1;
+  transition: transform var(--duration-150) var(--ease-out);
+}
+
+/* ── Panel ── */
+.accordion__panel {
+  border-top: 1px solid var(--color-border-default);
+}
+
+.accordion__item--open .accordion__panel {
+  animation: accordion-expand var(--duration-200) var(--ease-out);
+}
+
+/* ── Content ── */
+.accordion__content {
+  padding: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ===========================================================================    Animation
+    =========================================================================== */
+@keyframes accordion-expand {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================================================================    prefers-reduced-motion
+    =========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .accordion__item--open .accordion__panel {
+    animation: none;
+  }
+
+  .accordion__chevron {
+    transition: none;
+  }
+}

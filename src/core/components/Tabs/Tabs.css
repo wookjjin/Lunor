@@ -1,0 +1,157 @@
+/* =============================================================================
+   Tabs — Tab Navigation + Panel
+   default / pills / underline variant
+   ============================================================================= */
+
+/* ── Container ── */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+/* ── Tab List ── */
+.tabs__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* ===========================================================================    Tab Base
+    =========================================================================== */
+.tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-150) var(--ease-out),
+    color var(--duration-150) var(--ease-out),
+    border-color var(--duration-150) var(--ease-out);
+}
+
+.tabs__tab-icon {
+  font-size: var(--font-size-lg);
+  line-height: 1;
+}
+
+.tabs__tab-label {
+  line-height: 1;
+}
+
+.tabs__tab--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tabs__tab:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ===========================================================================    Variant — default (카드형)
+    =========================================================================== */
+.tabs--default .tabs__list {
+  gap: var(--space-1);
+  padding: var(--space-0-5);
+  background: var(--color-bg-muted);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-default);
+}
+
+.tabs__tab--default {
+  padding: var(--space-1-5) var(--space-4);
+  border-radius: var(--radius-md);
+}
+
+.tabs__tab--default:hover:not(.tabs__tab--disabled):not(.tabs__tab--active) {
+  color: var(--color-text-primary);
+  background: var(--color-surface-card-rest);
+}
+
+.tabs__tab--default.tabs__tab--active {
+  background: var(--color-surface-default);
+  color: var(--color-interactive-default);
+  box-shadow: var(--shadow-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ===========================================================================    Variant — pills
+    =========================================================================== */
+.tabs--pills .tabs__list {
+  gap: var(--space-2);
+}
+
+.tabs__tab--pills {
+  padding: var(--space-1-5) var(--space-4);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-full);
+}
+
+.tabs__tab--pills:hover:not(.tabs__tab--disabled):not(.tabs__tab--active) {
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+}
+
+.tabs__tab--pills.tabs__tab--active {
+  background: var(--color-interactive-default);
+  color: var(--color-text-inverse);
+  border-color: var(--color-interactive-default);
+}
+
+/* ===========================================================================    Variant — underline
+    =========================================================================== */
+.tabs--underline .tabs__list {
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.tabs__tab--underline {
+  padding: var(--space-2) 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  margin-bottom: -1px;
+}
+
+.tabs__tab--underline:hover:not(.tabs__tab--disabled):not(.tabs__tab--active) {
+  color: var(--color-text-primary);
+}
+
+.tabs__tab--underline.tabs__tab--active {
+  color: var(--color-interactive-default);
+  border-bottom-color: var(--color-interactive-default);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ===========================================================================    Panel
+    =========================================================================== */
+.tabs__panel {
+  padding: var(--space-4) 0;
+  animation: tabs-fade-in var(--duration-200) var(--ease-out);
+}
+
+@keyframes tabs-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabs__panel {
+    animation: none;
+  }
+}

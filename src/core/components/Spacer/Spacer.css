@@ -1,0 +1,44 @@
+/* =============================================================================
+   Spacer — Flexible Whitespace
+   flex 레이아웃에서 여백을 주입하는 빈 요소
+   ============================================================================= */
+
+.spacer {
+  display: block;
+}
+
+/* ── 고정 크기 ── */
+.spacer--xs {
+  width: var(--space-1);
+  height: var(--space-1);
+}
+
+.spacer--sm {
+  width: var(--space-2);
+  height: var(--space-2);
+}
+
+.spacer--md {
+  width: var(--space-4);
+  height: var(--space-4);
+}
+
+.spacer--lg {
+  width: var(--space-6);
+  height: var(--space-6);
+}
+
+.spacer--xl {
+  width: var(--space-12);
+  height: var(--space-12);
+}
+
+/* ── Flex grow ── */
+.spacer--grow {
+  flex: 1;
+}
+
+/* ── Flex shrink ── */
+.spacer--shrink {
+  flex-shrink: 1;
+}
