@@ -1,0 +1,233 @@
+/* =============================================================================
+   Drawer — Side Slide Panel
+   left/right/top/bottom 방향, overlay + Escape 닫기
+   ============================================================================= */
+
+/* ── Root ── */
+.drawer-root {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-drawer);
+  display: flex;
+}
+
+/* ── Overlay ── */
+.drawer__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg-overlay-strong);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: drawer-overlay-fade var(--duration-200) var(--ease-in-out);
+}
+
+/* ── Panel ── */
+.drawer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface-default);
+  box-shadow: var(--shadow-drawer);
+  animation: drawer-slide-in var(--duration-300) var(--ease-emphasized-decel);
+}
+
+/* ── Side ── */
+.drawer--right {
+  margin-left: auto;
+  height: 100%;
+}
+
+.drawer--left {
+  margin-right: auto;
+  height: 100%;
+}
+
+.drawer--top {
+  margin-bottom: auto;
+  width: 100%;
+  flex-direction: column;
+}
+
+.drawer--bottom {
+  margin-top: auto;
+  width: 100%;
+  flex-direction: column;
+}
+
+/* ── Size (left/right) ── */
+.drawer--sm.drawer--right,
+.drawer--sm.drawer--left {
+  width: 20rem;
+}
+
+.drawer--md.drawer--right,
+.drawer--md.drawer--left {
+  width: 28rem;
+}
+
+.drawer--lg.drawer--right,
+.drawer--lg.drawer--left {
+  width: 36rem;
+}
+
+/* ── Size (top/bottom) ── */
+.drawer--sm.drawer--top,
+.drawer--sm.drawer--bottom {
+  height: 20rem;
+}
+
+.drawer--md.drawer--top,
+.drawer--md.drawer--bottom {
+  height: 28rem;
+}
+
+.drawer--lg.drawer--top,
+.drawer--lg.drawer--bottom {
+  height: 40rem;
+}
+
+/* ── Header ── */
+.drawer__header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border-default);
+  flex-shrink: 0;
+}
+
+.drawer__title {
+  flex: 1;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.drawer__description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin: var(--space-1) 0 0;
+}
+
+/* ── Close ── */
+.drawer__close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-7);
+  height: var(--space-7);
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-150) var(--ease-out),
+    color var(--duration-150) var(--ease-out);
+}
+
+.drawer__close:hover {
+  background: var(--color-bg-muted);
+  color: var(--color-text-primary);
+}
+
+.drawer__close .material-symbols-outlined {
+  font-size: var(--font-size-xl);
+}
+
+/* ── Body ── */
+.drawer__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+}
+
+/* ── Footer ── */
+.drawer__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-top: 1px solid var(--color-border-default);
+  flex-shrink: 0;
+}
+
+/* ── Animations ── */
+@keyframes drawer-overlay-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drawer-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.drawer--left {
+  animation-name: drawer-slide-in-left;
+}
+
+@keyframes drawer-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.drawer--top {
+  animation-name: drawer-slide-in-top;
+}
+
+@keyframes drawer-slide-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.drawer--bottom {
+  animation-name: drawer-slide-in-bottom;
+}
+
+@keyframes drawer-slide-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer__overlay {
+    animation: none;
+  }
+
+  .drawer {
+    animation: none;
+  }
+}

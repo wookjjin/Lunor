@@ -1,0 +1,95 @@
+/* =============================================================================
+   MenuItem — Context Menu / Dropdown Action Item
+   Dropdown Item과 다름 — 컨텍스트 메뉴, 우클릭 메뉴 등 범용 액션 아이템
+   ============================================================================= */
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: var(--space-10);
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-150) var(--ease-out),
+    color var(--duration-150) var(--ease-out);
+}
+
+.menu-item:hover:not(.menu-item--disabled) {
+  background: var(--color-bg-subtle);
+}
+
+.menu-item:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: -2px;
+}
+
+/* ── Icon ── */
+.menu-item__icon {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.menu-item:hover:not(.menu-item--disabled) .menu-item__icon {
+  color: var(--color-text-secondary);
+}
+
+/* ── Label ── */
+.menu-item__label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Trailing ── */
+.menu-item__trailing {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* ===========================================================================    Selected
+    =========================================================================== */
+.menu-item--selected {
+  background: var(--color-surface-active);
+  color: var(--color-interactive-default);
+  font-weight: var(--font-weight-medium);
+}
+
+.menu-item--selected .menu-item__icon {
+  color: var(--color-interactive-default);
+}
+
+/* ===========================================================================    Disabled
+    =========================================================================== */
+.menu-item--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===========================================================================    Danger
+    =========================================================================== */
+.menu-item--danger {
+  color: var(--color-danger-text);
+}
+
+.menu-item--danger .menu-item__icon {
+  color: var(--color-danger-text);
+}
+
+.menu-item--danger:hover:not(.menu-item--disabled) {
+  background: var(--color-danger-surface);
+}

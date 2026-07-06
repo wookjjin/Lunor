@@ -1,0 +1,147 @@
+/* =============================================================================
+   ConfirmDialog — Confirmation / Alert Dialog
+   Dialog + Button 조합, variant별 아이콘 + 색상
+   ============================================================================= */
+
+/* ── Root ── */
+.confirm-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+/* ── Overlay ── */
+.confirm-dialog__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg-overlay-strong);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: confirm-dialog-overlay-fade var(--duration-200) var(--ease-in-out);
+}
+
+/* ── Panel ── */
+.confirm-dialog__panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-5);
+  border-radius: var(--radius-2xl);
+  background: var(--color-surface-default);
+  box-shadow: var(--shadow-modal);
+  animation: confirm-dialog-scale-in var(--duration-200) var(--ease-emphasized-decel);
+}
+
+/* ── Size ── */
+.confirm-dialog--sm .confirm-dialog__panel {
+  max-width: 24rem;
+}
+
+.confirm-dialog--md .confirm-dialog__panel {
+  max-width: 32rem;
+}
+
+.confirm-dialog--lg .confirm-dialog__panel {
+  max-width: 40rem;
+}
+
+/* ── Icon ── */
+.confirm-dialog__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-10);
+  height: var(--space-10);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-muted);
+}
+
+.confirm-dialog__icon {
+  font-size: var(--font-size-3xl);
+  line-height: 1;
+}
+
+/* ── Variant Icons ── */
+.confirm-dialog--default .confirm-dialog__icon {
+  color: var(--color-interactive-default);
+}
+
+.confirm-dialog--warning .confirm-dialog__icon-wrapper {
+  background: var(--color-warning-bg);
+}
+
+.confirm-dialog--warning .confirm-dialog__icon {
+  color: var(--color-warning-border);
+}
+
+.confirm-dialog--danger .confirm-dialog__icon-wrapper {
+  background: var(--color-danger-surface);
+}
+
+.confirm-dialog--danger .confirm-dialog__icon {
+  color: var(--color-danger-border);
+}
+
+/* ── Content ── */
+.confirm-dialog__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.confirm-dialog__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.confirm-dialog__description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* ── Actions ── */
+.confirm-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+/* ── Animations ── */
+@keyframes confirm-dialog-overlay-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes confirm-dialog-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confirm-dialog__overlay,
+  .confirm-dialog__panel {
+    animation: none;
+  }
+}

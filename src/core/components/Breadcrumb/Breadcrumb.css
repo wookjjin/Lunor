@@ -1,0 +1,103 @@
+/* =============================================================================
+   Breadcrumb — Navigation Path Indicator
+   ============================================================================= */
+
+.breadcrumb {
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumb__list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+/* ── Item ── */
+.breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.breadcrumb__item:not(:last-child)::after {
+  content: var(--breadcrumb-separator, '/');
+  display: inline-block;
+  margin: 0 var(--space-2);
+  color: var(--color-text-tertiary-alpha);
+  font-size: var(--font-size-xs);
+  user-select: none;
+}
+
+/* ── Link (a / button / span) ── */
+.breadcrumb__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  border: none;
+  background: none;
+  font: inherit;
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--duration-150) var(--ease-out);
+}
+
+.breadcrumb__link:hover:not(.breadcrumb__item--current .breadcrumb__link) {
+  color: var(--color-interactive-default);
+}
+
+.breadcrumb__link:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Current Item ── */
+.breadcrumb__item--current .breadcrumb__link {
+  color: var(--color-interactive-default);
+  font-weight: var(--font-weight-semibold);
+  cursor: default;
+}
+
+/* ── Icon ── */
+.breadcrumb__item-icon {
+  font-size: inherit;
+  line-height: 1;
+}
+
+/* ── Label ── */
+.breadcrumb__item-label {
+  line-height: var(--line-height-snug);
+}
+
+/* ===========================================================================    Size
+    =========================================================================== */
+.breadcrumb--sm .breadcrumb__link {
+  font-size: var(--font-size-xs);
+}
+
+.breadcrumb--sm .breadcrumb__item-icon {
+  font-size: var(--font-size-sm);
+}
+
+.breadcrumb--md .breadcrumb__link {
+  font-size: var(--font-size-sm);
+}
+
+.breadcrumb--md .breadcrumb__item-icon {
+  font-size: var(--font-size-lg);
+}
+
+.breadcrumb--lg .breadcrumb__link {
+  font-size: var(--font-size-md);
+}
+
+.breadcrumb--lg .breadcrumb__item-icon {
+  font-size: var(--font-size-xl);
+}
