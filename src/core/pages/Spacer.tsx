@@ -1,8 +1,8 @@
-import { Spacer } from '@/core/components/Spacer/Spacer'
-import { Stack } from '@/core/components/Stack/Stack'
 import { Badge } from '@/core/components/Badge/Badge'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
+import { Spacer } from '@/core/components/Spacer/Spacer'
+import { Stack } from '@/core/components/Stack/Stack'
 
 /* =============================================================================
    SpacerPage — Glacier UI 스타일 Spacer 쇼케이스

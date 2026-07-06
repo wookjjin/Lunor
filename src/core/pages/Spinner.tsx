@@ -1,7 +1,7 @@
 import { Button } from '@/core/components/Button/Button'
-import { Spinner } from '@/core/components/Spinner/Spinner'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
+import { Spinner } from '@/core/components/Spinner/Spinner'
 import { usePlaygroundContext } from '@/core/layout/ComponentPlaygroundContext'
 
 /* =============================================================================

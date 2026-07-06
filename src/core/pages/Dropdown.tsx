@@ -89,6 +89,21 @@ export default function DropdownPage() {
         </Dropdown>
       </ShowcaseItem>
 
+      {/* asChild Trigger */}
+      <ShowcaseItem label="asChild" variant="primary" className="glacier-glass">
+        <Dropdown placement={placement}>
+          <Dropdown.Trigger asChild>
+            <Button variant="solid" size="md" iconRight="arrow_drop_down">Actions</Button>
+          </Dropdown.Trigger>
+          <Dropdown.Content>
+            <Dropdown.Item onSelect={() => {}} icon="person">Profile</Dropdown.Item>
+            <Dropdown.Item onSelect={() => {}} icon="settings">Settings</Dropdown.Item>
+            <Dropdown.Separator />
+            <Dropdown.Item onSelect={() => {}} icon="logout" danger>Logout</Dropdown.Item>
+          </Dropdown.Content>
+        </Dropdown>
+      </ShowcaseItem>
+
       {/* Controlled */}
       <ShowcaseItem label="Controlled" variant="ghost" className="glacier-glass">
         <Dropdown

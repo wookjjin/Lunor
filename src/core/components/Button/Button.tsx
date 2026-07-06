@@ -5,7 +5,10 @@ export function Button({
   variant = 'solid',
   size = 'md',
   fullWidth = false,
+  icon,
+  iconRight,
   type = 'button',
+  children,
   ...props
 }: ButtonProps) {
   return (
@@ -21,6 +24,18 @@ export function Button({
         .filter(Boolean)
         .join(' ')}
       {...props}
-    />
+    >
+      {icon && (
+        <span className="button__icon material-symbols-outlined" aria-hidden="true">
+          {icon}
+        </span>
+      )}
+      {children}
+      {iconRight && (
+        <span className="button__icon button__icon--right material-symbols-outlined" aria-hidden="true">
+          {iconRight}
+        </span>
+      )}
+    </button>
   )
 }

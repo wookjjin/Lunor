@@ -72,7 +72,9 @@ export default function RadioPage() {
         </RadioGroup>
         <div className="showcase__row">
           <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)' }}>
-            Selected: {selected}
+            Selected:
+            {' '}
+            {selected}
           </span>
         </div>
       </ShowcaseItem>

@@ -1,6 +1,8 @@
 import type { Column } from '@/core/components/DataTable/DataTable.types'
 import { useMemo, useState } from 'react'
+import { Badge } from '@/core/components/Badge/Badge'
 import { DataTable } from '@/core/components/DataTable/DataTable'
+import { NoData } from '@/core/components/NoData/NoData'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
 import { usePlaygroundContext } from '@/core/layout/ComponentPlaygroundContext'
@@ -35,6 +37,13 @@ function generateData(count: number): OrderRow[] {
   })
 }
 
+const statusVariantMap: Record<OrderRow['status'], 'warning' | 'primary' | 'success' | 'danger'> = {
+  Pending: 'warning',
+  Shipped: 'primary',
+  Delivered: 'success',
+  Cancelled: 'danger',
+}
+
 const columns: Column<OrderRow>[] = [
   { key: 'orderNo', header: 'Order No', width: 140 },
   { key: 'customer', header: 'Customer', width: 160 },
@@ -52,23 +61,7 @@ const columns: Column<OrderRow>[] = [
     align: 'center',
     render: (value) => {
       const status = value as OrderRow['status']
-      const colorMap: Record<OrderRow['status'], string> = {
-        Pending: '#f59e0b',
-        Shipped: '#3b82f6',
-        Delivered: '#16a34a',
-        Cancelled: '#ef4444',
-      }
-      return (
-        <span
-          style={{
-            color: colorMap[status],
-            fontWeight: 600,
-            fontSize: 13,
-          }}
-        >
-          {status}
-        </span>
-      )
+      return <Badge variant={statusVariantMap[status]} size="sm">{status}</Badge>
     },
   },
   { key: 'date', header: 'Date', width: 140, align: 'right' },
@@ -128,21 +121,20 @@ export default function DataTablePage() {
           onRowClick={row => setSelected(row)}
         />
         {selected && (
-          <div
-            style={{
-              marginTop: 12,
-              padding: '10px 14px',
-              borderRadius: 10,
-              background: 'var(--glacier-surface, rgba(255,255,255,0.06))',
-              fontSize: 13,
-            }}
+          <div style={{
+            marginTop: 'var(--space-3)',
+            padding: 'var(--space-2) var(--space-3)',
+            borderRadius: 'var(--radius-md)',
+            background: 'var(--color-bg-subtle)',
+            fontSize: 'var(--font-size-sm)',
+            color: 'var(--color-text-secondary)',
+          }}
           >
-            선택된 주문:
+            Selected:
             {' '}
-            <strong>{selected.orderNo}</strong>
+            <strong style={{ color: 'var(--color-text-primary)' }}>{selected.orderNo}</strong>
             {' '}
             —
-            {' '}
             {selected.customer}
             {' '}
             · $
@@ -151,7 +143,7 @@ export default function DataTablePage() {
         )}
       </ShowcaseItem>
 
-      {/* 빈 상태 */}
+      {/* 빈 상태 (NoData 사용) */}
       <ShowcaseItem label="Empty" variant="ghost" className="glacier-glass showcase__item--wide">
         <DataTable
           columns={columns}
@@ -160,9 +152,12 @@ export default function DataTablePage() {
           bordered={bordered}
           compact={compact}
           emptyContent={(
-            <div style={{ padding: 24, textAlign: 'center', color: '#94a3b8' }}>
-              데이터가 없습니다.
-            </div>
+            <NoData
+              size="md"
+              title="No orders"
+              description="Orders will appear here once created."
+              icon="table_rows"
+            />
           )}
         />
       </ShowcaseItem>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Slider } from '@/core/components/Slider/Slider'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
+import { Slider } from '@/core/components/Slider/Slider'
 import { usePlaygroundContext } from '@/core/layout/ComponentPlaygroundContext'
 
 /* =============================================================================
@@ -59,7 +59,9 @@ export default function SliderPage() {
         />
         <div className="showcase__row">
           <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)' }}>
-            Value: {controlled}
+            Value:
+            {' '}
+            {controlled}
           </span>
         </div>
       </ShowcaseItem>

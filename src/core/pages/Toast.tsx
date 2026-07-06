@@ -1,8 +1,8 @@
 import { Button } from '@/core/components/Button/Button'
-import { Toast } from '@/core/components/Toast/Toast'
-import { useToast } from '@/core/components/Toast/ToastProvider'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
+import { Toast } from '@/core/components/Toast/Toast'
+import { useToast } from '@/core/components/Toast/useToast'
 
 /* =============================================================================
    ToastPage — Glacier UI 스타일 Toast 쇼케이스

@@ -1,6 +1,6 @@
+import type { ReactNode } from 'react'
 import type { TabPanelProps, TabProps, TabsProps } from '@/core/components/Tabs/Tabs.types'
 import { createContext, use, useId, useState } from 'react'
-import type { ReactNode } from 'react'
 
 /* =============================================================================
    Tabs — Tab Navigation + Panel

@@ -16,4 +16,8 @@ export interface ButtonProps
   variant?: ButtonVariant
   size?: ButtonSize
   fullWidth?: boolean
+  /** 선행 아이콘 (Material Symbols 이름) */
+  icon?: string
+  /** 후행 아이콘 (Material Symbols 이름) */
+  iconRight?: string
 }

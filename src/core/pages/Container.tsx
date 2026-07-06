@@ -18,7 +18,9 @@ export default function ContainerPage() {
         {(['sm', 'md', 'lg', 'xl', 'full'] as const).map(size => (
           <Container key={size} size={size} padding="sm" className="container-demo">
             <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)' }}>
-              {size.toUpperCase()} — max-width
+              {size.toUpperCase()}
+              {' '}
+              — max-width
             </span>
           </Container>
         ))}
@@ -29,7 +31,9 @@ export default function ContainerPage() {
         {(['none', 'sm', 'md', 'lg'] as const).map(pad => (
           <Container key={pad} size="sm" padding={pad} className="container-demo">
             <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)' }}>
-              padding: {pad}
+              padding:
+              {' '}
+              {pad}
             </span>
           </Container>
         ))}

@@ -1,6 +1,11 @@
 import type { ReactNode } from 'react'
-import { Button } from '@/core/components/Button/Button'
+import { Dialog } from '@/core/components/Dialog/Dialog'
 
+/**
+ * Modal — Dialog의 레거시 alias
+ * Dialog 컴포넌트에 위임하여 동일한 동작을 보장.
+ * 기존 `isOpen` → `open`, `title` → `title` 매핑.
+ */
 interface ModalProps {
   children: ReactNode
   isOpen: boolean
@@ -9,19 +14,13 @@ interface ModalProps {
 }
 
 export function Modal({ children, isOpen, onClose, title }: ModalProps) {
-  if (!isOpen)
-    return null
-
   return (
-    <div role="dialog" aria-modal="true">
-      <div onClick={onClose} />
-      <div>
-        {title && <h2>{title}</h2>}
-        <Button variant="ghost" size="sm" onClick={onClose} aria-label="Close">
-          ✕
-        </Button>
-        {children}
-      </div>
-    </div>
+    <Dialog
+      open={isOpen}
+      title={title}
+      onClose={onClose}
+    >
+      {children}
+    </Dialog>
   )
 }

@@ -1,6 +1,6 @@
+import type { ReactNode } from 'react'
 import type { AccordionItemProps, AccordionProps } from '@/core/components/Accordion/Accordion.types'
 import { createContext, use, useCallback, useId, useState } from 'react'
-import type { ReactNode } from 'react'
 
 /* =============================================================================
    Accordion — Collapsible Sections
@@ -29,7 +29,7 @@ export function Accordion({
   children,
   ...props
 }: AccordionProps) {
-  const [openItems, setOpenItems] = useState<Set<string>>(new Set(defaultOpen))
+  const [openItems, setOpenItems] = useState<Set<string>>(() => new Set(defaultOpen))
 
   const toggle = useCallback((id: string) => {
     setOpenItems((prev) => {
@@ -70,7 +70,8 @@ export function AccordionItem({
   ...props
 }: AccordionItemProps) {
   const { openItems, toggle } = useAccordionContext()
-  const itemId = id ?? `accordion-item-${useId()}`
+  const generatedId = useId()
+  const itemId = id ?? `accordion-item-${generatedId}`
   const isOpen = openItems.has(itemId)
 
   const handleClick = () => {

@@ -95,3 +95,22 @@
 .button--full-width {
   width: 100%;
 }
+
+/* Icon */
+.button__icon {
+  font-size: var(--font-size-lg);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.button--sm .button__icon {
+  font-size: var(--font-size-md);
+}
+
+.button--lg .button__icon {
+  font-size: var(--font-size-xl);
+}
+
+.button__icon--right {
+  margin-left: 0;
+}

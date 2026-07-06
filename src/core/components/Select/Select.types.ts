@@ -1,5 +1,4 @@
-import type { ChangeEvent, ReactNode } from 'react'
-import type { SelectHTMLAttributes } from 'react'
+import type { ChangeEvent, ReactNode, SelectHTMLAttributes } from 'react'
 
 export type SelectVariant
   = | 'outline'

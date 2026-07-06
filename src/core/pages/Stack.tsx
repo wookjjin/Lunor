@@ -1,7 +1,7 @@
 import { Badge } from '@/core/components/Badge/Badge'
-import { Stack } from '@/core/components/Stack/Stack'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
+import { Stack } from '@/core/components/Stack/Stack'
 import { usePlaygroundContext } from '@/core/layout/ComponentPlaygroundContext'
 
 /* =============================================================================
@@ -87,8 +87,8 @@ export default function StackPage() {
       {/* Wrap */}
       <ShowcaseItem label="Wrap" variant="ghost" className="glacier-glass">
         <Stack direction="row" gap="sm" wrap>
-          {Array.from({ length: 12 }).map((_, i) => (
-            <Badge key={i} variant="solid" size="sm">{i + 1}</Badge>
+          {Array.from({ length: 12 }, (_, i) => `badge-${i}`).map((key, i) => (
+            <Badge key={key} variant="solid" size="sm">{i + 1}</Badge>
           ))}
         </Stack>
       </ShowcaseItem>

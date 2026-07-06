@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Switch } from '@/core/components/Switch/Switch'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
+import { Switch } from '@/core/components/Switch/Switch'
 import { usePlaygroundContext } from '@/core/layout/ComponentPlaygroundContext'
 
 /* =============================================================================
@@ -91,7 +91,9 @@ export default function SwitchPage() {
         />
         <div className="showcase__row">
           <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)' }}>
-            State: {checked1 ? 'ON' : 'OFF'}
+            State:
+            {' '}
+            {checked1 ? 'ON' : 'OFF'}
           </span>
         </div>
       </ShowcaseItem>

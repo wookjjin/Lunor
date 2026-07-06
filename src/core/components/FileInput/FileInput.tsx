@@ -9,7 +9,7 @@ export function FileInput({
   multiple = false,
   accept,
   placeholder = 'Choose file...',
-  dragLabel = 'Drop files here or click to browse',
+  _dragLabel = 'Drop files here or click to browse',
   name,
   className,
   onChange,

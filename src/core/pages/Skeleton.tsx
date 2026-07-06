@@ -1,8 +1,8 @@
 import { Card } from '@/core/components/Card/Card'
-import { Skeleton } from '@/core/components/Skeleton/Skeleton'
-import { Spinner } from '@/core/components/Spinner/Spinner'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
+import { Skeleton } from '@/core/components/Skeleton/Skeleton'
+import { Spinner } from '@/core/components/Spinner/Spinner'
 
 /* =============================================================================
    SkeletonPage — Glacier UI 스타일 Skeleton 쇼케이스
@@ -59,8 +59,8 @@ export default function SkeletonPage() {
 
       {/* Table Placeholder */}
       <ShowcaseItem label="Table" variant="ghost" className="glacier-glass">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} style={{ display: 'flex', gap: 'var(--space-3)', alignItems: 'center' }}>
+        {Array.from({ length: 4 }, (_, i) => `row-${i}`).map(key => (
+          <div key={key} style={{ display: 'flex', gap: 'var(--space-3)', alignItems: 'center' }}>
             <Skeleton circle width="2rem" />
             <Skeleton variant="text" width="30%" />
             <Skeleton variant="text" width="20%" />

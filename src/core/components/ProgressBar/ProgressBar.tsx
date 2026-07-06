@@ -33,7 +33,12 @@ export function ProgressBar({
       {(label || showValue) && (
         <div className="progress-bar__header">
           {label && <span className="progress-bar__label">{label}</span>}
-          {showValue && <span className="progress-bar__value">{Math.round(percent)}%</span>}
+          {showValue && (
+            <span className="progress-bar__value">
+              {Math.round(percent)}
+              %
+            </span>
+          )}
         </div>
       )}
       <div className="progress-bar__track">

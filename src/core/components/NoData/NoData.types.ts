@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react'
-import type { HTMLAttributes } from 'react'
+import type { HTMLAttributes, ReactNode } from 'react'
 
 export type NoDataSize = 'sm' | 'md' | 'lg'
 

@@ -25,6 +25,8 @@ export interface DropdownTriggerProps {
 
 export interface DropdownItemProps {
   children: ReactNode
+  /** 선행 아이콘 (Material Symbols) */
+  icon?: string
   disabled?: boolean
   danger?: boolean
   onSelect?: () => void

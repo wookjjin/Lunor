@@ -1,5 +1,4 @@
-import type { ChangeEvent, ReactNode } from 'react'
-import type { InputHTMLAttributes } from 'react'
+import type { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react'
 
 export type CheckboxVariant
   = | 'default'

@@ -26,7 +26,7 @@ export default function SelectPage() {
     >
       {/* Outline Variant */}
       <ShowcaseItem label="Outline" variant="primary" badge="Active" className="glacier-glass">
-        <Select variant="outline" size={size} fullWidth={fullWidth} disabled={disabled} placeholder="Choose...">
+        <Select variant="outline" size={size} fullWidth={fullWidth} disabled={disabled} invalid={invalid} placeholder="Choose...">
           <option value="react">React</option>
           <option value="vue">Vue</option>
           <option value="svelte">Svelte</option>
@@ -43,7 +43,7 @@ export default function SelectPage() {
 
       {/* Filled Variant */}
       <ShowcaseItem label="Filled" variant="secondary" className="glacier-glass">
-        <Select variant="filled" size={size} fullWidth={fullWidth} disabled={disabled} placeholder="Choose...">
+        <Select variant="filled" size={size} fullWidth={fullWidth} disabled={disabled} invalid={invalid} placeholder="Choose...">
           <option value="light">Light</option>
           <option value="dark">Dark</option>
           <option value="auto">Auto</option>
@@ -91,7 +91,9 @@ export default function SelectPage() {
         </Select>
         <div className="showcase__row">
           <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)' }}>
-            Selected: {controlled || '(none)'}
+            Selected:
+            {' '}
+            {controlled || '(none)'}
           </span>
         </div>
       </ShowcaseItem>

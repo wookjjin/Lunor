@@ -1,8 +1,8 @@
-import { Tab, TabList, TabPanel, Tabs } from '@/core/components/Tabs/Tabs'
 import { Badge } from '@/core/components/Badge/Badge'
 import { Card } from '@/core/components/Card/Card'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
+import { Tab, TabList, TabPanel, Tabs } from '@/core/components/Tabs/Tabs'
 import { usePlaygroundContext } from '@/core/layout/ComponentPlaygroundContext'
 
 /* =============================================================================

@@ -283,24 +283,34 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
 }
 
 .props-label {
+  flex-shrink: 0;
   font-size: var(--font-size-xs);
   color: var(--color-text-tertiary);
 }
 
-/* Toggle Group */
+/* Toggle Group — CSS grid로 모든 버튼 동일 너비, 빈 여백 없음 */
 .props-toggle-group {
-  display: flex;
+  display: grid;
+  gap: var(--space-0-5);
   padding: var(--space-0-5);
   background: var(--color-surface-toggle-group);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border-hairline);
+  max-width: 100%;
 }
 
 .props-toggle-btn {
-  padding: var(--space-1) var(--space-3);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: var(--space-6);
+  padding: 0 var(--space-2);
   font-size: var(--font-size-2xs);
   color: var(--color-text-tertiary);
   background: none;

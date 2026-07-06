@@ -28,9 +28,9 @@ export function Skeleton({
   if (variant === 'text' && lines > 1) {
     return (
       <div className={['skeleton-group', className].filter(Boolean).join(' ')} aria-hidden="true" {...props}>
-        {Array.from({ length: lines }).map((_, i) => (
+        {Array.from({ length: lines }, (_, i) => `line-${i}`).map(key => (
           <div
-            key={i}
+            key={key}
             className={[
               'skeleton',
               'skeleton--text',

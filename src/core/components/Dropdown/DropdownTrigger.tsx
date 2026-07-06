@@ -1,13 +1,6 @@
-import type { KeyboardEvent, ReactElement } from 'react'
+import type { KeyboardEvent } from 'react'
 import type { DropdownTriggerProps } from '@/core/components/Dropdown/Dropdown.types'
-import { cloneElement, isValidElement } from 'react'
 import { useDropdownContext } from '@/core/components/Dropdown/Dropdown.context'
-
-interface TriggerChildProps {
-  'onClick'?: (event: React.MouseEvent) => void
-  'aria-expanded'?: boolean
-  'aria-haspopup'?: string
-}
 
 export function DropdownTrigger({ children, className, onClick, asChild = false, disabled = false, ...rest }: DropdownTriggerProps) {
   const { open, setOpen } = useDropdownContext()
@@ -28,13 +21,18 @@ export function DropdownTrigger({ children, className, onClick, asChild = false,
     }
   }
 
-  if (asChild && isValidElement(children)) {
-    const child = children as ReactElement<TriggerChildProps>
-    return cloneElement(child, {
-      'aria-expanded': open,
-      'aria-haspopup': 'menu',
-      'onClick': handleClick,
-    })
+  if (asChild) {
+    return (
+      <span
+        className="dropdown__trigger--as-child"
+        aria-expanded={open}
+        aria-haspopup="menu"
+        onClick={handleClick}
+        style={{ display: 'inline-flex', cursor: disabled ? 'not-allowed' : 'pointer' }}
+      >
+        {children}
+      </span>
+    )
   }
 
   return (

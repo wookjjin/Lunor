@@ -1,6 +1,5 @@
 import { Input } from '@/core/components/Input/Input'
 import { InputGroup } from '@/core/components/InputGroup/InputGroup'
-import { Select } from '@/core/components/Select/Select'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
 import { usePlaygroundContext } from '@/core/layout/ComponentPlaygroundContext'

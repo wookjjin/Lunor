@@ -17,12 +17,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--color-primary-glow-subtle) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, transparent 0%, var(--color-primary-glow-subtle) 50%, transparent 100%);
   transform: translateX(-100%);
   animation: skeleton-shimmer var(--duration-1000) var(--ease-in-out) infinite;
 }

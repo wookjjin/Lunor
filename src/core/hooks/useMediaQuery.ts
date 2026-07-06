@@ -1,4 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useSyncExternalStore } from 'react'
+
+function subscribe(query: string, callback: () => void): () => void {
+  const mediaQueryList = window.matchMedia(query)
+  mediaQueryList.addEventListener('change', callback)
+  return () => {
+    mediaQueryList.removeEventListener('change', callback)
+  }
+}
 
 /**
  * CSS 미디어 쿼리 매칭 상태를 실시간으로 감지하는 훅
@@ -10,30 +18,14 @@ import { useEffect, useState } from 'react'
  * const isTablet = useMediaQuery('(min-width: 768px)')
  */
 export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia(query).matches
-    }
-    return false
-  })
+  const getSnapshot = useCallback(() => window.matchMedia(query).matches, [query])
+  const getServerSnapshot = useCallback(() => false, [])
 
-  useEffect(() => {
-    const mediaQueryList = window.matchMedia(query)
-
-    // 초기 상태 동기화
-    setMatches(mediaQueryList.matches)
-
-    const handleChange = (event: MediaQueryListEvent) => {
-      setMatches(event.matches)
-    }
-
-    mediaQueryList.addEventListener('change', handleChange)
-    return () => {
-      mediaQueryList.removeEventListener('change', handleChange)
-    }
-  }, [query])
-
-  return matches
+  return useSyncExternalStore(
+    callback => subscribe(query, callback),
+    getSnapshot,
+    getServerSnapshot,
+  )
 }
 
 /**

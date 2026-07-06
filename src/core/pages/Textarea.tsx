@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Textarea } from '@/core/components/Textarea/Textarea'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
+import { Textarea } from '@/core/components/Textarea/Textarea'
 import { usePlaygroundContext } from '@/core/layout/ComponentPlaygroundContext'
 
 /* =============================================================================
@@ -33,6 +33,7 @@ export default function TextareaPage() {
           resize={resize}
           fullWidth={fullWidth}
           disabled={disabled}
+          invalid={invalid}
           placeholder="Write your message..."
         />
         <div className="showcase__row">
@@ -49,6 +50,7 @@ export default function TextareaPage() {
           resize={resize}
           fullWidth={fullWidth}
           disabled={disabled}
+          invalid={invalid}
           placeholder="Write your message..."
         />
         <div className="showcase__row">
@@ -85,7 +87,9 @@ export default function TextareaPage() {
         />
         <div className="showcase__row">
           <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-tertiary)' }}>
-            Length: {controlled.length}
+            Length:
+            {' '}
+            {controlled.length}
           </span>
         </div>
       </ShowcaseItem>

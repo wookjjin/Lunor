@@ -19,7 +19,10 @@ function ToggleGroup({ options, activeValue, onChange }: {
   onChange: (value: string) => void
 }) {
   return (
-    <div className="props-toggle-group">
+    <div
+      className="props-toggle-group"
+      style={{ gridTemplateColumns: `repeat(${options.length}, 1fr)` }}
+    >
       {options.map(opt => (
         <Button
           key={opt}
@@ -43,7 +46,7 @@ function BooleanToggle({ label, checked, onChange }: {
   return (
     <div className="props-row">
       <label className="props-label">{label}</label>
-      <div className="props-toggle-group">
+      <div className="props-toggle-group" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
         <Button
           variant="ghost"
           size="sm"

@@ -1,7 +1,9 @@
 import type { DialogProps } from '@/core/components/Dialog/Dialog.types'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { createPortal } from 'react-dom'
+
+import { useFocusTrap } from '@/core/hooks/useFocusTrap'
 
 import '@/core/components/Dialog/Dialog.css'
 
@@ -15,6 +17,8 @@ export function Dialog({
   closeOnEscape = true,
   onClose,
 }: DialogProps) {
+  const dialogRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     if (!open || !closeOnEscape) {
       return
@@ -59,6 +63,9 @@ export function Dialog({
     }
   }, [open])
 
+  // 포커스 트랩
+  useFocusTrap(dialogRef, open)
+
   if (!open) {
     return null
   }
@@ -73,6 +80,7 @@ export function Dialog({
       }}
     >
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="dialog-title"
@@ -92,6 +100,14 @@ export function Dialog({
             >
               {title}
             </h2>
+            <button
+              type="button"
+              className="dialog__close"
+              onClick={onClose}
+              aria-label="Close dialog"
+            >
+              <span className="material-symbols-outlined">close</span>
+            </button>
           </header>
         )}
 

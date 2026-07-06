@@ -170,6 +170,20 @@ export interface TabsPlaygroundProps {
   variant: 'default' | 'pills' | 'underline'
 }
 
+export interface BreadcrumbPlaygroundProps {
+  size: 'sm' | 'md' | 'lg'
+}
+
+export interface DrawerPlaygroundProps {
+  side: 'left' | 'right' | 'top' | 'bottom'
+  size: 'sm' | 'md' | 'lg'
+}
+
+export interface ConfirmDialogPlaygroundProps {
+  variant: 'default' | 'warning' | 'danger'
+  size: 'sm' | 'md' | 'lg'
+}
+
 export interface PaginationPlaygroundProps {
   variant: 'full' | 'simple'
   size: 'sm' | 'md' | 'lg'
@@ -194,72 +208,72 @@ export function usePlaygroundContext(): PlaygroundOutletContext {
 // ---- 컴포넌트별 기본 Props ----
 
 export const defaultPropsMap: Record<string, Record<string, unknown>> = {
-  button: {
+  'button': {
     variant: 'solid',
     size: 'md',
     fullWidth: false,
     disabled: false,
     children: 'Button',
   },
-  input: {
+  'input': {
     variant: 'outline',
     size: 'md',
     invalid: false,
     disabled: false,
     placeholder: 'Enter text...',
   },
-  dialog: {
+  'dialog': {
     size: 'md',
     closeOnOverlayClick: true,
     closeOnEscape: true,
   },
-  dropdown: {
+  'dropdown': {
     defaultOpen: false,
     placement: 'bottom-start',
   },
-  table: {
+  'table': {
     hoverable: true,
     compact: false,
   },
-  datatable: {
+  'datatable': {
     bordered: false,
     compact: false,
   },
-  card: {
+  'card': {
     variant: 'default',
     padding: 'md',
     children: 'Card content',
   },
-  badge: {
+  'badge': {
     size: 'md',
     dot: false,
     label: 'Badge',
   },
-  checkbox: {
+  'checkbox': {
     variant: 'default',
     size: 'md',
     label: 'Accept terms',
     description: 'You agree to our Terms of Service',
   },
-  radio: {
+  'radio': {
     variant: 'default',
     size: 'md',
     orientation: 'vertical',
   },
-  switch: {
+  'switch': {
     variant: 'default',
     size: 'md',
     label: 'Notifications',
     description: 'Receive push notifications',
   },
-  select: {
+  'select': {
     variant: 'outline',
     size: 'md',
     fullWidth: false,
     invalid: false,
     disabled: false,
   },
-  textarea: {
+  'textarea': {
     variant: 'outline',
     size: 'md',
     resize: 'vertical',
@@ -267,7 +281,7 @@ export const defaultPropsMap: Record<string, Record<string, unknown>> = {
     invalid: false,
     disabled: false,
   },
-  slider: {
+  'slider': {
     variant: 'default',
     size: 'md',
     showValue: false,
@@ -285,12 +299,12 @@ export const defaultPropsMap: Record<string, Record<string, unknown>> = {
     fullWidth: false,
     disabled: false,
   },
-  spinner: {
+  'spinner': {
     variant: 'default',
     size: 'md',
     showLabel: false,
   },
-  alert: {
+  'alert': {
     variant: 'info',
     closable: false,
     title: 'Alert title',
@@ -303,36 +317,47 @@ export const defaultPropsMap: Record<string, Record<string, unknown>> = {
     striped: false,
     animated: false,
   },
-  stack: {
+  'stack': {
     direction: 'column',
     gap: 'md',
     align: 'start',
     justify: 'start',
   },
-  divider: {
+  'divider': {
     variant: 'default',
     labelPosition: 'center',
   },
-  avatar: {
+  'avatar': {
     size: 'md',
     variant: 'default',
     ring: false,
     square: false,
   },
-  chip: {
+  'chip': {
     variant: 'default',
     size: 'md',
     removable: false,
   },
-  list: {
+  'list': {
     variant: 'nav',
     size: 'md',
     density: 'comfortable',
   },
-  tabs: {
+  'tabs': {
     variant: 'default',
   },
-  pagination: {
+  'breadcrumb': {
+    size: 'md',
+  },
+  'drawer': {
+    side: 'right',
+    size: 'md',
+  },
+  'confirm-dialog': {
+    variant: 'default',
+    size: 'sm',
+  },
+  'pagination': {
     variant: 'full',
     size: 'md',
     showFirstLast: false,
@@ -367,7 +392,7 @@ export interface PropDefs {
 }
 
 export const propDefsMap: Record<string, PropDefs> = {
-  button: {
+  'button': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['solid', 'secondary', 'ghost', 'danger'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
@@ -380,7 +405,7 @@ export const propDefsMap: Record<string, PropDefs> = {
       { key: 'children', label: 'label' },
     ],
   },
-  input: {
+  'input': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['outline', 'filled'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
@@ -393,7 +418,7 @@ export const propDefsMap: Record<string, PropDefs> = {
       { key: 'placeholder', label: 'placeholder' },
     ],
   },
-  dialog: {
+  'dialog': {
     toggles: [
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
     ],
@@ -403,7 +428,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     ],
     texts: [],
   },
-  dropdown: {
+  'dropdown': {
     toggles: [
       { key: 'placement', label: 'placement', options: ['bottom-start', 'bottom-end', 'top-start', 'top-end'] },
     ],
@@ -412,7 +437,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     ],
     texts: [],
   },
-  table: {
+  'table': {
     toggles: [],
     booleans: [
       { key: 'hoverable', label: 'hoverable' },
@@ -420,7 +445,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     ],
     texts: [],
   },
-  datatable: {
+  'datatable': {
     toggles: [],
     booleans: [
       { key: 'bordered', label: 'bordered' },
@@ -428,7 +453,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     ],
     texts: [],
   },
-  card: {
+  'card': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['default', 'outlined', 'elevated'] },
       { key: 'padding', label: 'padding', options: ['none', 'sm', 'md', 'lg'] },
@@ -438,7 +463,7 @@ export const propDefsMap: Record<string, PropDefs> = {
       { key: 'children', label: 'content' },
     ],
   },
-  badge: {
+  'badge': {
     toggles: [
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
     ],
@@ -449,7 +474,7 @@ export const propDefsMap: Record<string, PropDefs> = {
       { key: 'label', label: 'label' },
     ],
   },
-  checkbox: {
+  'checkbox': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['default', 'card'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
@@ -460,7 +485,7 @@ export const propDefsMap: Record<string, PropDefs> = {
       { key: 'description', label: 'description' },
     ],
   },
-  radio: {
+  'radio': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['default', 'card'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
@@ -469,7 +494,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     booleans: [],
     texts: [],
   },
-  switch: {
+  'switch': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['default', 'card'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
@@ -480,7 +505,7 @@ export const propDefsMap: Record<string, PropDefs> = {
       { key: 'description', label: 'description' },
     ],
   },
-  select: {
+  'select': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['outline', 'filled'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
@@ -492,7 +517,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     ],
     texts: [],
   },
-  textarea: {
+  'textarea': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['outline', 'filled'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
@@ -505,7 +530,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     ],
     texts: [],
   },
-  slider: {
+  'slider': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['default', 'filled'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
@@ -538,7 +563,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     ],
     texts: [],
   },
-  spinner: {
+  'spinner': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['default', 'primary', 'danger', 'success', 'warning'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
@@ -548,7 +573,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     ],
     texts: [],
   },
-  alert: {
+  'alert': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['info', 'success', 'warning', 'danger'] },
     ],
@@ -572,7 +597,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     ],
     texts: [],
   },
-  stack: {
+  'stack': {
     toggles: [
       { key: 'direction', label: 'direction', options: ['column', 'row'] },
       { key: 'gap', label: 'gap', options: ['none', 'xs', 'sm', 'md', 'lg', 'xl'] },
@@ -582,7 +607,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     booleans: [],
     texts: [],
   },
-  divider: {
+  'divider': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['default', 'subtle', 'strong'] },
       { key: 'labelPosition', label: 'labelPosition', options: ['start', 'center', 'end'] },
@@ -590,7 +615,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     booleans: [],
     texts: [],
   },
-  avatar: {
+  'avatar': {
     toggles: [
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg', 'xl'] },
       { key: 'variant', label: 'variant', options: ['default', 'primary', 'danger', 'success', 'warning'] },
@@ -601,7 +626,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     ],
     texts: [],
   },
-  chip: {
+  'chip': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['default', 'primary', 'secondary', 'danger', 'success', 'warning'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
@@ -611,7 +636,7 @@ export const propDefsMap: Record<string, PropDefs> = {
     ],
     texts: [],
   },
-  list: {
+  'list': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['default', 'nav', 'plain'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
@@ -620,14 +645,37 @@ export const propDefsMap: Record<string, PropDefs> = {
     booleans: [],
     texts: [],
   },
-  tabs: {
+  'tabs': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['default', 'pills', 'underline'] },
     ],
     booleans: [],
     texts: [],
   },
-  pagination: {
+  'breadcrumb': {
+    toggles: [
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [],
+    texts: [],
+  },
+  'drawer': {
+    toggles: [
+      { key: 'side', label: 'side', options: ['left', 'right', 'top', 'bottom'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [],
+    texts: [],
+  },
+  'confirm-dialog': {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'warning', 'danger'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [],
+    texts: [],
+  },
+  'pagination': {
     toggles: [
       { key: 'variant', label: 'variant', options: ['full', 'simple'] },
       { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },

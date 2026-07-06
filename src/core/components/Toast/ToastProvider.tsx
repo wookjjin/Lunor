@@ -1,7 +1,8 @@
-import { Toast } from '@/core/components/Toast/Toast'
-import type { ToastContextValue, ToastOptions } from '@/core/components/Toast/Toast.types'
-import { createContext, use, useCallback, useState } from 'react'
 import type { ReactNode } from 'react'
+import type { ToastOptions } from '@/core/components/Toast/Toast.types'
+import { useCallback, useState } from 'react'
+import { Toast } from '@/core/components/Toast/Toast'
+import { ToastContext } from '@/core/components/Toast/ToastContext'
 
 /* =============================================================================
    ToastProvider — 전역 Toast 상태 관리
@@ -11,8 +12,6 @@ import type { ReactNode } from 'react'
 interface ToastItem extends ToastOptions {
   id: string
 }
-
-const ToastContext = createContext<ToastContextValue | null>(null)
 
 let toastId = 0
 
@@ -40,7 +39,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
-  const value: ToastContextValue = { toast, dismiss, dismissAll }
+  const value = { toast, dismiss, dismissAll }
 
   return (
     <ToastContext value={value}>
@@ -63,11 +62,4 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       )}
     </ToastContext>
   )
-}
-
-export function useToast(): ToastContextValue {
-  const ctx = use(ToastContext)
-  if (!ctx)
-    throw new Error('useToast must be used within ToastProvider')
-  return ctx
 }

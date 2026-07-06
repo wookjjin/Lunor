@@ -19,6 +19,34 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: 'colors',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Colors')
+          return { Component }
+        },
+      },
+      {
+        path: 'hooks',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Hooks')
+          return { Component }
+        },
+      },
+      {
+        path: 'typography',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Typography')
+          return { Component }
+        },
+      },
+      {
+        path: 'shadows',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Shadows')
+          return { Component }
+        },
+      },
+      {
         path: 'button',
         lazy: async () => {
           const { default: Component } = await import('@/core/pages/Button')
@@ -155,6 +183,48 @@ const router = createBrowserRouter([
         path: 'tabs',
         lazy: async () => {
           const { default: Component } = await import('@/core/pages/Tabs')
+          return { Component }
+        },
+      },
+      {
+        path: 'breadcrumb',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Breadcrumb')
+          return { Component }
+        },
+      },
+      {
+        path: 'menu-item',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/MenuItem')
+          return { Component }
+        },
+      },
+      {
+        path: 'no-data',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/NoData')
+          return { Component }
+        },
+      },
+      {
+        path: 'popover',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Popover')
+          return { Component }
+        },
+      },
+      {
+        path: 'drawer',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Drawer')
+          return { Component }
+        },
+      },
+      {
+        path: 'confirm-dialog',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/ConfirmDialog')
           return { Component }
         },
       },

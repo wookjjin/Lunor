@@ -12,7 +12,7 @@ export function InputGroup({
   iconRight = false,
   className,
   children,
-  ...props
+  ..._props
 }: InputGroupProps) {
   return (
     <div

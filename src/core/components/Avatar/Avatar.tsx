@@ -47,8 +47,7 @@ export function Avatar({
               <span className="avatar__icon material-symbols-outlined" aria-hidden="true">
                 {icon}
               </span>
-            )
-      }
+            )}
     </div>
   )
 }

@@ -48,6 +48,7 @@ export function Textarea({
         .filter(Boolean)
         .join(' ')}
       placeholder={placeholder}
+      aria-invalid={invalid || undefined}
       value={isControlled ? value : undefined}
       defaultValue={isControlled ? undefined : value}
       disabled={disabled}

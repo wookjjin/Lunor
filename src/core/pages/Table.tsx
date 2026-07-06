@@ -1,5 +1,6 @@
 import type { Column } from '@/core/components/Table/Table.types'
 import { useState } from 'react'
+import { Badge } from '@/core/components/Badge/Badge'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
 import { Table } from '@/core/components/Table/Table'
@@ -35,12 +36,12 @@ const columns: Column<User>[] = [
     width: 120,
     render: (value) => {
       const role = value as User['role']
-      const colorMap: Record<User['role'], string> = {
-        Admin: 'var(--glacier-accent, #4f8cff)',
-        Editor: 'var(--glacier-secondary, #33b3a6)',
-        Viewer: 'var(--glacier-muted, #8a94a6)',
+      const variantMap: Record<User['role'], 'primary' | 'secondary' | 'ghost'> = {
+        Admin: 'primary',
+        Editor: 'secondary',
+        Viewer: 'ghost',
       }
-      return <span style={{ color: colorMap[role], fontWeight: 600 }}>{role}</span>
+      return <Badge variant={variantMap[role]} size="sm">{role}</Badge>
     },
   },
   {
@@ -50,25 +51,16 @@ const columns: Column<User>[] = [
     align: 'center',
     render: (value) => {
       const status = value as User['status']
+      const isActive = status === 'Active'
       return (
         <span
+          className="material-symbols-outlined"
           style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 6,
-            fontSize: 13,
-            color: status === 'Active' ? '#16a34a' : '#94a3b8',
+            fontSize: 'var(--font-size-sm)',
+            color: isActive ? 'var(--color-success-text)' : 'var(--color-text-tertiary)',
           }}
         >
-          <span
-            style={{
-              width: 8,
-              height: 8,
-              borderRadius: '50%',
-              background: status === 'Active' ? '#16a34a' : '#cbd5e1',
-            }}
-          />
-          {status}
+          {isActive ? 'check_circle' : 'cancel'}
         </span>
       )
     },
@@ -122,18 +114,18 @@ export default function TablePage() {
           onRowClick={row => setSelected(row)}
         />
         {selected && (
-          <div
-            style={{
-              marginTop: 12,
-              padding: '10px 14px',
-              borderRadius: 10,
-              background: 'var(--glacier-surface, rgba(255,255,255,0.06))',
-              fontSize: 13,
-            }}
+          <div style={{
+            marginTop: 'var(--space-3)',
+            padding: 'var(--space-2) var(--space-3)',
+            borderRadius: 'var(--radius-md)',
+            background: 'var(--color-bg-subtle)',
+            fontSize: 'var(--font-size-sm)',
+            color: 'var(--color-text-secondary)',
+          }}
           >
-            선택된 행:
+            Selected:
             {' '}
-            <strong>{selected.name}</strong>
+            <strong style={{ color: 'var(--color-text-primary)' }}>{selected.name}</strong>
             {' '}
             (
             {selected.email}

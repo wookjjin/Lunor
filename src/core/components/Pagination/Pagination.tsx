@@ -125,11 +125,11 @@ export function Pagination({
 
       {variant === 'full' && (
         <span className="pagination__items">
-          {items.map((item, index) => {
+          {items.map((item) => {
             if (item === 'ellipsis-start' || item === 'ellipsis-end') {
               return (
                 <span
-                  key={`${item}-${index}`}
+                  key={`ellipsis-${item}`}
                   className="pagination__ellipsis"
                   aria-hidden="true"
                 >

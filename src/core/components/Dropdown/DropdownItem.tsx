@@ -4,6 +4,7 @@ import { useDropdownContext } from '@/core/components/Dropdown/Dropdown.context'
 
 export function DropdownItem({
   children,
+  icon,
   disabled = false,
   danger = false,
   onSelect,
@@ -41,7 +42,12 @@ export function DropdownItem({
       onClick={handleSelect}
       onKeyDown={handleKeyDown}
     >
-      {children}
+      {icon && (
+        <span className="dropdown__item-icon material-symbols-outlined" aria-hidden="true">
+          {icon}
+        </span>
+      )}
+      <span className="dropdown__item-label">{children}</span>
     </div>
   )
 }

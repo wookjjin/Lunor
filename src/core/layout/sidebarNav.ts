@@ -69,6 +69,11 @@ export const sidebarNavGroups: NavGroup[] = [
         path: '/components/container',
         icon: 'crop_landscape',
       },
+      {
+        label: 'Hooks',
+        path: '/components/hooks',
+        icon: 'bolt',
+      },
     ],
   },
   {
@@ -171,6 +176,11 @@ export const sidebarNavGroups: NavGroup[] = [
         icon: 'table_chart',
       },
       {
+        label: 'NoData',
+        path: '/components/no-data',
+        icon: 'inbox',
+      },
+      {
         label: 'Dropdown',
         path: '/components/dropdown',
         icon: 'arrow_drop_down',
@@ -210,10 +220,45 @@ export const sidebarNavGroups: NavGroup[] = [
         path: '/components/alert',
         icon: 'warning',
       },
+    ],
+  },
+  {
+    groupLabel: 'Navigation',
+    items: [
+      {
+        label: 'Breadcrumb',
+        path: '/components/breadcrumb',
+        icon: 'chevron_right',
+      },
+      {
+        label: 'MenuItem',
+        path: '/components/menu-item',
+        icon: 'menu',
+      },
+    ],
+  },
+  {
+    groupLabel: 'Overlays',
+    items: [
       {
         label: 'Dialog',
         path: '/components/dialog',
         icon: 'chat_bubble',
+      },
+      {
+        label: 'ConfirmDialog',
+        path: '/components/confirm-dialog',
+        icon: 'check_circle',
+      },
+      {
+        label: 'Popover',
+        path: '/components/popover',
+        icon: 'sticky_note_2',
+      },
+      {
+        label: 'Drawer',
+        path: '/components/drawer',
+        icon: 'dock_to_right',
       },
     ],
   },
