@@ -6,7 +6,7 @@ export type ToastVariant
     | 'warning'
     | 'danger'
 
-export interface ToastProps extends HTMLAttributes<HTMLDivElement> {
+export interface ToastProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   /** 색상 변형 */
   variant?: ToastVariant
   /** 타이틀 */

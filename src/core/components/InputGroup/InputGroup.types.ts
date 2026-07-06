@@ -1,15 +1,10 @@
 import type { HTMLAttributes, ReactNode } from 'react'
 
-export type InputGroupVariant
-  = | 'outline'
-    | 'filled'
+export type InputGroupVariant = 'outline' | 'filled'
+export type InputGroupSize = 'sm' | 'md' | 'lg'
 
-export type InputGroupSize
-  = | 'sm'
-    | 'md'
-    | 'lg'
-
-export interface InputGroupProps extends HTMLAttributes<HTMLDivElement> {
+// HTMLAttributes에서 기존 'prefix' 속성을 제외해 줍니다.
+export interface InputGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'prefix'> {
   /** 색상 변형 */
   variant?: InputGroupVariant
   /** 크기 */
@@ -24,7 +19,7 @@ export interface InputGroupProps extends HTMLAttributes<HTMLDivElement> {
   icon?: string
   /** 아이콘을 우측에 배치 */
   iconRight?: boolean
-  /** 선행 addon 텍스트/요소 */
+  /** 선행 addon 텍스트/요소 (이제 ReactNode를 안전하게 사용할 수 있습니다!) */
   prefix?: ReactNode
   /** 후행 addon 텍스트/요소 */
   suffix?: ReactNode
