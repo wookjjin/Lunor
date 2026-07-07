@@ -13,17 +13,18 @@ export interface PropsControlsProps {
   componentType: string
 }
 
-function ToggleGroup({ options, activeValue, onChange }: {
+function ToggleGroup({ options, activeValue, onChange, optionLabels }: {
   options: string[]
   activeValue: string
   onChange: (value: string) => void
+  optionLabels?: string[]
 }) {
   return (
     <div
       className="props-toggle-group"
       style={{ gridTemplateColumns: `repeat(${options.length}, 1fr)` }}
     >
-      {options.map(opt => (
+      {options.map((opt, i) => (
         <Button
           key={opt}
           variant="ghost"
@@ -31,7 +32,7 @@ function ToggleGroup({ options, activeValue, onChange }: {
           className={`props-toggle-btn${opt === activeValue ? ' props-toggle-btn--active' : ''}`}
           onClick={() => onChange(opt)}
         >
-          {opt}
+          {optionLabels?.[i] ?? opt}
         </Button>
       ))}
     </div>
@@ -111,6 +112,7 @@ export default function PropsControls({ props, setProp, componentType }: PropsCo
                 <label className="props-label">{toggle.label}</label>
                 <ToggleGroup
                   options={toggle.options}
+                  optionLabels={toggle.optionLabels}
                   activeValue={String(props[toggle.key] ?? toggle.options[0])}
                   onChange={value => setProp(toggle.key, value)}
                 />

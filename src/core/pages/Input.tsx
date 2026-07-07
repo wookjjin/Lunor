@@ -5,7 +5,6 @@ import { usePlaygroundContext } from '@/core/layout/ComponentPlaygroundContext'
 
 /* =============================================================================
    InputPage — Glacier UI 스타일 Input 쇼케이스
-   반응형 flex: 모바일 1열 → 태블릿 2열 → 와이드 4열
    ============================================================================= */
 
 export default function InputPage() {
@@ -21,6 +20,7 @@ export default function InputPage() {
     <Showcase
       title="Input"
       description="The input component allows users to enter and edit text within a form or standalone context."
+      cols={3}
     >
       {/* Outline Variant */}
       <ShowcaseItem label="Outline" variant="primary" badge="Active" className="glacier-glass">
@@ -33,20 +33,8 @@ export default function InputPage() {
           fullWidth={fullWidth}
         />
         <div className="showcase__row">
-          <Input
-            variant="outline"
-            size={size}
-            placeholder={placeholder}
-            fullWidth
-            disabled
-          />
-          <Input
-            variant="outline"
-            size={size}
-            invalid
-            placeholder="Error state"
-            fullWidth={fullWidth}
-          />
+          <Input variant="outline" size={size} placeholder="Disabled" fullWidth disabled />
+          <Input variant="outline" size={size} invalid placeholder="Error state" fullWidth={fullWidth} />
         </div>
       </ShowcaseItem>
 
@@ -61,49 +49,40 @@ export default function InputPage() {
           fullWidth={fullWidth}
         />
         <div className="showcase__row">
-          <Input
-            variant="filled"
-            size={size}
-            placeholder={placeholder}
-            fullWidth
-            disabled
-          />
-          <Input
-            variant="filled"
-            size={size}
-            invalid
-            placeholder="Error state"
-            fullWidth={fullWidth}
-          />
+          <Input variant="filled" size={size} placeholder="Disabled" fullWidth disabled />
+          <Input variant="filled" size={size} invalid placeholder="Error state" fullWidth={fullWidth} />
         </div>
       </ShowcaseItem>
 
-      {/* Sizes Showcase */}
-      <ShowcaseItem label="Sizes" variant="ghost" className="glacier-glass">
+      {/* Playground */}
+      <ShowcaseItem label="Playground" variant="primary" className="glacier-glass">
         <Input
           variant={variant}
-          size="sm"
+          size={size}
           invalid={invalid}
           disabled={disabled}
-          placeholder="Small input"
+          placeholder={placeholder}
           fullWidth={fullWidth}
         />
-        <Input
-          variant={variant}
-          size="md"
-          invalid={invalid}
-          disabled={disabled}
-          placeholder="Medium input"
-          fullWidth={fullWidth}
-        />
-        <Input
-          variant={variant}
-          size="lg"
-          invalid={invalid}
-          disabled={disabled}
-          placeholder="Large input"
-          fullWidth={fullWidth}
-        />
+      </ShowcaseItem>
+
+      {/* Sizes */}
+      <ShowcaseItem label="Sizes" variant="secondary" className="glacier-glass">
+        <Input variant={variant} size="sm" placeholder="Small input" fullWidth />
+        <Input variant={variant} size="md" placeholder="Medium input" fullWidth />
+        <Input variant={variant} size="lg" placeholder="Large input" fullWidth />
+      </ShowcaseItem>
+
+      {/* States */}
+      <ShowcaseItem label="States" variant="ghost" className="glacier-glass">
+        <Input variant={variant} size={size} placeholder="Default" fullWidth />
+        <Input variant={variant} size={size} placeholder="Invalid" fullWidth invalid />
+        <Input variant={variant} size={size} placeholder="Disabled" fullWidth disabled />
+      </ShowcaseItem>
+
+      {/* Full Width */}
+      <ShowcaseItem label="Full Width" variant="ghost" className="glacier-glass">
+        <Input variant={variant} size={size} placeholder="Full width input" fullWidth />
       </ShowcaseItem>
     </Showcase>
   )

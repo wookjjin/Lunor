@@ -373,6 +373,8 @@ export interface PropToggleDef {
   key: string
   label: string
   options: string[]
+  /** 표시용 라벨 (미지정 시 options 값 사용) */
+  optionLabels?: string[]
 }
 
 export interface PropBooleanDef {
@@ -430,7 +432,7 @@ export const propDefsMap: Record<string, PropDefs> = {
   },
   'dropdown': {
     toggles: [
-      { key: 'placement', label: 'placement', options: ['bottom-start', 'bottom-end', 'top-start', 'top-end'] },
+      { key: 'placement', label: 'placement', options: ['bottom-start', 'bottom-end', 'top-start', 'top-end'], optionLabels: ['btm-start', 'btm-end', 'top-start', 'top-end'] },
     ],
     booleans: [
       { key: 'defaultOpen', label: 'defaultOpen' },

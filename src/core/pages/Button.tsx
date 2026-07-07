@@ -5,11 +5,11 @@ import { usePlaygroundContext } from '@/core/layout/ComponentPlaygroundContext'
 
 /* =============================================================================
    ButtonPage — Glacier UI 스타일 Button 쇼케이스
-   반응형 flex: 모바일 1열 → 태블릿 2열 → 와이드 4열
    ============================================================================= */
 
 export default function ButtonPage() {
   const { props } = usePlaygroundContext()
+  const variant = (props.variant ?? 'solid') as 'solid' | 'secondary' | 'ghost' | 'danger'
   const size = (props.size ?? 'md') as 'sm' | 'md' | 'lg'
   const fullWidth = Boolean(props.fullWidth)
   const disabled = Boolean(props.disabled)
@@ -19,69 +19,84 @@ export default function ButtonPage() {
     <Showcase
       title="Button"
       description="The button component is used to trigger actions or navigate through the application."
+      cols={3}
     >
-      {/* Primary Variant */}
-      <ShowcaseItem label="Primary" variant="primary" badge="Active" className="glacier-glass">
+      {/* Variants */}
+      <ShowcaseItem label="Variants" variant="primary" badge="Active" className="glacier-glass">
         <Button variant="solid" size={size} fullWidth={fullWidth} disabled={disabled}>
           {children}
         </Button>
-        <div className="showcase__row">
-          <Button variant="solid" size={size} fullWidth disabled>
-            Disabled
-          </Button>
-          <Button variant="solid" size={size} fullWidth={fullWidth} disabled={disabled}>
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>download</span>
-            Icon
-          </Button>
-        </div>
-      </ShowcaseItem>
-
-      {/* Secondary Variant */}
-      <ShowcaseItem label="Secondary" variant="secondary" className="glacier-glass">
         <Button variant="secondary" size={size} fullWidth={fullWidth} disabled={disabled}>
-          Secondary Action
+          Secondary
         </Button>
-        <div className="showcase__row">
-          <Button variant="secondary" size={size} fullWidth disabled>
-            Disabled
-          </Button>
-          <Button variant="secondary" size={size} fullWidth={fullWidth} disabled={disabled}>
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>upload</span>
-            Icon
-          </Button>
-        </div>
-      </ShowcaseItem>
-
-      {/* Ghost Variant */}
-      <ShowcaseItem label="Ghost" variant="ghost" className="glacier-glass">
         <Button variant="ghost" size={size} fullWidth={fullWidth} disabled={disabled}>
-          Ghost Action
+          Ghost
         </Button>
-        <div className="showcase__row">
-          <Button variant="ghost" size={size} fullWidth disabled>
-            Disabled
-          </Button>
-          <Button variant="ghost" size={size} fullWidth={fullWidth} disabled={disabled}>
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>link</span>
-            Icon
-          </Button>
-        </div>
+        <Button variant="danger" size={size} fullWidth={fullWidth} disabled={disabled}>
+          Danger
+        </Button>
       </ShowcaseItem>
 
-      {/* Danger Variant */}
-      <ShowcaseItem label="Danger" variant="danger" className="glacier-glass">
-        <Button variant="danger" size={size} fullWidth={fullWidth} disabled={disabled}>
-          Delete Action
+      {/* Playground */}
+      <ShowcaseItem label="Playground" variant="secondary" className="glacier-glass">
+        <Button variant={variant} size={size} fullWidth={fullWidth} disabled={disabled}>
+          {children}
         </Button>
-        <div className="showcase__row">
-          <Button variant="danger" size={size} fullWidth disabled>
-            Disabled
-          </Button>
-          <Button variant="danger" size={size} fullWidth={fullWidth} disabled={disabled}>
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>delete</span>
-            Icon
-          </Button>
-        </div>
+        <Button variant={variant} size={size} fullWidth disabled>
+          Disabled
+        </Button>
+      </ShowcaseItem>
+
+      {/* With Icon */}
+      <ShowcaseItem label="With Icon" variant="primary" className="glacier-glass">
+        <Button variant={variant} size={size} icon="download" disabled={disabled}>
+          Download
+        </Button>
+        <Button variant={variant} size={size} icon="upload" disabled={disabled}>
+          Upload
+        </Button>
+        <Button variant={variant} size={size} iconRight="arrow_forward" disabled={disabled}>
+          Next
+        </Button>
+        <Button variant={variant} size={size} icon="delete" iconRight="close" disabled={disabled}>
+          Both
+        </Button>
+      </ShowcaseItem>
+
+      {/* Sizes */}
+      <ShowcaseItem label="Sizes" variant="secondary" className="glacier-glass">
+        <Button variant={variant} size="sm" disabled={disabled}>
+          Small
+        </Button>
+        <Button variant={variant} size="md" disabled={disabled}>
+          Medium
+        </Button>
+        <Button variant={variant} size="lg" disabled={disabled}>
+          Large
+        </Button>
+      </ShowcaseItem>
+
+      {/* Full Width */}
+      <ShowcaseItem label="Full Width" variant="ghost" className="glacier-glass">
+        <Button variant={variant} size={size} fullWidth disabled={disabled}>
+          Full Width Button
+        </Button>
+        <Button variant={variant} size={size} fullWidth icon="rocket_launch" disabled={disabled}>
+          Launch
+        </Button>
+      </ShowcaseItem>
+
+      {/* States */}
+      <ShowcaseItem label="States" variant="ghost" className="glacier-glass">
+        <Button variant={variant} size={size}>
+          Default
+        </Button>
+        <Button variant={variant} size={size} disabled>
+          Disabled
+        </Button>
+        <Button variant={variant} size={size} icon="check" iconRight="expand_more">
+          With Icons
+        </Button>
       </ShowcaseItem>
     </Showcase>
   )
