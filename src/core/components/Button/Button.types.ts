@@ -5,6 +5,7 @@ export type ButtonVariant
     | 'secondary'
     | 'ghost'
     | 'danger'
+    | 'outline'
 
 export type ButtonSize
   = | 'sm'

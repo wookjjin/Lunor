@@ -2,6 +2,7 @@ import type { HTMLAttributes, ReactNode } from 'react'
 
 export type BadgeVariant
   = | 'solid'
+    | 'primary'
     | 'secondary'
     | 'ghost'
     | 'danger'

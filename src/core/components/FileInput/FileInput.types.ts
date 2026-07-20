@@ -25,7 +25,7 @@ export interface FileInputProps extends Omit<HTMLAttributes<HTMLLabelElement>, '
   /** 플레이스홀더 */
   placeholder?: string
   /** 드래그 영역 라벨 */
-  dragLabel?: string
+  _dragLabel?: string
   /** form name */
   name?: string
   /** onChange 핸들러 — File[] 전달 */

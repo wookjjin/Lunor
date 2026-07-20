@@ -1,5 +1,4 @@
 import type { BreadcrumbItemProps, BreadcrumbProps } from '@/core/components/Breadcrumb/Breadcrumb.types'
-import { useId } from 'react'
 
 /* =============================================================================
    Breadcrumb — Navigation Path Indicator
@@ -42,7 +41,6 @@ export function BreadcrumbItem({
   children,
   ...props
 }: BreadcrumbItemProps) {
-  const _itemId = useId()
   const content = (
     <>
       {icon && (
@@ -63,21 +61,22 @@ export function BreadcrumbItem({
       ]
         .filter(Boolean)
         .join(' ')}
+      {...props}
     >
       {current
         ? (
-            <span className="breadcrumb__link" aria-current="page" {...props}>
+            <span className="breadcrumb__link" aria-current="page">
               {content}
             </span>
           )
         : href
           ? (
-              <a href={href} className="breadcrumb__link" onClick={onClick} {...props}>
+              <a href={href} className="breadcrumb__link" onClick={onClick}>
                 {content}
               </a>
             )
           : (
-              <button type="button" className="breadcrumb__link" onClick={onClick} {...props}>
+              <button type="button" className="breadcrumb__link" onClick={onClick}>
                 {content}
               </button>
             )}

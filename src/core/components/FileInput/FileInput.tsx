@@ -80,6 +80,7 @@ export function FileInput({
       onDrop={handleDrop}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
+      {...props}
     >
       <input
         ref={inputRef}
@@ -92,7 +93,6 @@ export function FileInput({
         disabled={disabled}
         onChange={handleChange}
         onClick={e => e.stopPropagation()}
-        {...props}
       />
       <span className="file-input__icon material-symbols-outlined" aria-hidden="true">
         {isDragging ? 'file_download' : 'upload_file'}
