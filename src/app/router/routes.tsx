@@ -1,8 +1,9 @@
-import { createBrowserRouter } from 'react-router'
+import { createBrowserRouter, redirect } from 'react-router'
 
 const router = createBrowserRouter([
   {
     path: '/',
+    loader: () => { throw redirect('/components') },
   },
   {
     path: '/components',

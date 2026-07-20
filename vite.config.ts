@@ -34,5 +34,15 @@ export default defineConfig({
   build: {
     // 3. 빌드 시 CSS 압축(Minify) 도구로 Lightning CSS 지정
     cssMinify: 'lightningcss',
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks: (id: string) => {
+          if (id.includes('node_modules/three')) {
+            return 'three'
+          }
+        },
+      },
+    },
   },
 })

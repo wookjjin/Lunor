@@ -1,7 +1,8 @@
-import { useCallback, useRef, useState } from 'react'
+import { lazy, Suspense, useCallback, useState } from 'react'
 import { Link } from 'react-router'
-import { useThreeScene } from '@/core/hooks/useThreeScene'
 import '@/core/styles/pages/Home.css'
+
+const HomeHeroScene = lazy(() => import('@/core/pages/HomeHeroScene'))
 
 /* =============================================================================
    HomePage — Core UI 대시보드형 랜딩 페이지
@@ -132,10 +133,8 @@ function App() {
 }`
 
 export default function HomePage() {
-  const canvasRef = useRef<HTMLDivElement>(null)
   const [codeCopied, setCodeCopied] = useState(false)
   const [installCopied, setInstallCopied] = useState(false)
-  useThreeScene(canvasRef, { particleCount: 600, crystalSize: 1.2 })
 
   const handleCardMouseMove = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     const card = e.currentTarget
@@ -170,7 +169,9 @@ export default function HomePage() {
     <div className="home-page">
       {/* ── Hero Section ── */}
       <section className="home-hero">
-        <div className="home-hero-canvas" ref={canvasRef} aria-hidden="true" />
+        <Suspense fallback={<div className="home-hero-canvas" aria-hidden="true" />}>
+          <HomeHeroScene />
+        </Suspense>
         <div className="home-hero-overlay" />
         <div className="home-hero-content">
           <div className="home-hero-badge">
