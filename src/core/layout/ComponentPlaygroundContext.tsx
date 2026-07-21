@@ -193,6 +193,25 @@ export interface PaginationPlaygroundProps {
   totalPages: number
 }
 
+export interface IconPlaygroundProps {
+  size: 'sm' | 'md' | 'lg' | 'xl'
+  variant: 'default' | 'primary' | 'secondary' | 'muted'
+}
+
+export interface LinkPlaygroundProps {
+  variant: 'default' | 'subtle' | 'underline'
+  size: 'sm' | 'md' | 'lg'
+  external: boolean
+}
+
+export interface TooltipPlaygroundProps {
+  placement: 'top' | 'bottom' | 'left' | 'right'
+}
+
+export interface ModalPlaygroundProps {
+  size: 'sm' | 'md' | 'lg'
+}
+
 // ---- Outlet Context 타입 ----
 
 export interface PlaygroundOutletContext {
@@ -364,6 +383,21 @@ export const defaultPropsMap: Record<string, Record<string, unknown>> = {
     disabled: false,
     currentPage: 5,
     totalPages: 10,
+  },
+  'icon': {
+    size: 'md',
+    variant: 'default',
+  },
+  'link': {
+    variant: 'default',
+    size: 'md',
+    external: false,
+  },
+  'tooltip': {
+    placement: 'top',
+  },
+  'modal': {
+    size: 'md',
   },
 }
 
@@ -690,6 +724,38 @@ export const propDefsMap: Record<string, PropDefs> = {
       { key: 'currentPage', label: 'currentPage' },
       { key: 'totalPages', label: 'totalPages' },
     ],
+  },
+  'icon': {
+    toggles: [
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg', 'xl'] },
+      { key: 'variant', label: 'variant', options: ['default', 'primary', 'secondary', 'muted'] },
+    ],
+    booleans: [],
+    texts: [],
+  },
+  'link': {
+    toggles: [
+      { key: 'variant', label: 'variant', options: ['default', 'subtle', 'underline'] },
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [
+      { key: 'external', label: 'external' },
+    ],
+    texts: [],
+  },
+  'tooltip': {
+    toggles: [
+      { key: 'placement', label: 'placement', options: ['top', 'bottom', 'left', 'right'] },
+    ],
+    booleans: [],
+    texts: [],
+  },
+  'modal': {
+    toggles: [
+      { key: 'size', label: 'size', options: ['sm', 'md', 'lg'] },
+    ],
+    booleans: [],
+    texts: [],
   },
 }
 

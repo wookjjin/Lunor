@@ -1,0 +1,95 @@
+/* =============================================================================
+   Link — 내비게이션 링크
+   variant·size 토큰 기반 색상/크기 제어
+   ============================================================================= */
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+
+  transition:
+    color var(--duration-150) var(--ease-out),
+    text-decoration-color var(--duration-150) var(--ease-out);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Variant ── */
+.link--default {
+  color: var(--color-text-link);
+}
+
+.link--default:hover {
+  color: var(--color-text-link-hover);
+}
+
+.link--subtle {
+  color: var(--color-text-secondary);
+}
+
+.link--subtle:hover {
+  color: var(--color-text-link);
+}
+
+.link--underline {
+  color: var(--color-text-link);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-subtle-alpha);
+  text-underline-offset: var(--space-1);
+}
+
+.link--underline:hover {
+  color: var(--color-text-link-hover);
+  text-decoration-color: var(--color-interactive-default);
+}
+
+/* ── Size ── */
+.link--sm {
+  font-size: var(--font-size-sm);
+  min-height: var(--space-6);
+}
+
+.link--md {
+  font-size: var(--font-size-md);
+  min-height: var(--space-8);
+}
+
+.link--lg {
+  font-size: var(--font-size-lg);
+  min-height: var(--space-10);
+}
+
+/* ── Icon ── */
+.link__icon {
+  font-size: var(--font-size-lg);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.link--sm .link__icon {
+  font-size: var(--font-size-md);
+}
+
+.link--lg .link__icon {
+  font-size: var(--font-size-xl);
+}
+
+.link__icon--right {
+  margin-left: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+}

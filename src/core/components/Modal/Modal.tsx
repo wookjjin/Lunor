@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { ModalProps } from '@/core/components/Modal/Modal.types'
 import { Dialog } from '@/core/components/Dialog/Dialog'
 
 /**
@@ -6,17 +6,11 @@ import { Dialog } from '@/core/components/Dialog/Dialog'
  * Dialog 컴포넌트에 위임하여 동일한 동작을 보장.
  * 기존 `isOpen` → `open`, `title` → `title` 매핑.
  */
-interface ModalProps {
-  children: ReactNode
-  isOpen: boolean
-  onClose: () => void
-  title?: string
-}
-
-export function Modal({ children, isOpen, onClose, title }: ModalProps) {
+export function Modal({ children, isOpen, onClose, title, size }: ModalProps) {
   return (
     <Dialog
       open={isOpen}
+      size={size}
       title={title}
       onClose={onClose}
     >

@@ -1,0 +1,71 @@
+/* =============================================================================
+   Tooltip — 호버/포커스 기반 간소화된 툴팁
+   ============================================================================= */
+
+.tooltip {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ── Bubble ── */
+.tooltip__bubble {
+  position: absolute;
+  z-index: var(--z-index-tooltip);
+  width: max-content;
+  max-width: 16rem;
+
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-snug);
+  font-weight: var(--font-weight-regular);
+
+  box-shadow: var(--shadow-popover);
+  animation: tooltip-fade-in var(--duration-150) var(--ease-out);
+  pointer-events: none;
+}
+
+/* ── Placement ── */
+.tooltip__bubble--top {
+  bottom: calc(100% + var(--space-2));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip__bubble--bottom {
+  top: calc(100% + var(--space-2));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip__bubble--left {
+  right: calc(100% + var(--space-2));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tooltip__bubble--right {
+  left: calc(100% + var(--space-2));
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ── Animation ── */
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip__bubble {
+    animation: none;
+  }
+}

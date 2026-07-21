@@ -74,6 +74,11 @@ export const sidebarNavGroups: NavGroup[] = [
         path: '/components/hooks',
         icon: 'bolt',
       },
+      {
+        label: 'Icon',
+        path: '/components/icon',
+        icon: 'emoji_symbols',
+      },
     ],
   },
   {
@@ -114,11 +119,6 @@ export const sidebarNavGroups: NavGroup[] = [
         label: 'Switch',
         path: '/components/switch',
         icon: 'toggle_on',
-      },
-      {
-        label: 'Select',
-        path: '/components/select',
-        icon: 'arrow_drop_down_circle',
       },
       {
         label: 'Textarea',
@@ -235,6 +235,11 @@ export const sidebarNavGroups: NavGroup[] = [
         path: '/components/menu-item',
         icon: 'menu',
       },
+      {
+        label: 'Link',
+        path: '/components/link',
+        icon: 'link',
+      },
     ],
   },
   {
@@ -259,6 +264,16 @@ export const sidebarNavGroups: NavGroup[] = [
         label: 'Drawer',
         path: '/components/drawer',
         icon: 'dock_to_right',
+      },
+      {
+        label: 'Tooltip',
+        path: '/components/tooltip',
+        icon: 'quicktooltip',
+      },
+      {
+        label: 'Modal',
+        path: '/components/modal',
+        icon: 'dialog',
       },
     ],
   },

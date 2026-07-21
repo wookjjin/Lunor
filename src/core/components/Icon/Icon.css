@@ -1,0 +1,67 @@
+/* =============================================================================
+   Icon — Material Symbols 래퍼
+   size·variant 토큰 기반 색상/크기 제어
+   ============================================================================= */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+
+  line-height: 1;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* ── Size ── */
+.icon--sm {
+  font-size: var(--font-size-md);
+}
+
+.icon--md {
+  font-size: var(--font-size-lg);
+}
+
+.icon--lg {
+  font-size: var(--font-size-xl);
+}
+
+.icon--xl {
+  font-size: var(--font-size-2xl);
+}
+
+/* ── Variant ── */
+.icon--default {
+  color: var(--color-text-primary);
+}
+
+.icon--primary {
+  color: var(--color-interactive-default);
+}
+
+.icon--secondary {
+  color: var(--color-text-secondary);
+}
+
+.icon--muted {
+  color: var(--color-text-tertiary);
+}
+
+/* ── 접근성: 포커스 가능한 경우(버튼 등에 래핑) 대비 ── */
+.icon:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon {
+    transition: none;
+  }
+}

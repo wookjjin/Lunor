@@ -90,13 +90,6 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: 'select',
-        lazy: async () => {
-          const { default: Component } = await import('@/core/pages/Select')
-          return { Component }
-        },
-      },
-      {
         path: 'textarea',
         lazy: async () => {
           const { default: Component } = await import('@/core/pages/Textarea')
@@ -303,6 +296,34 @@ const router = createBrowserRouter([
         path: 'datatable',
         lazy: async () => {
           const { default: Component } = await import('@/core/pages/DataTable')
+          return { Component }
+        },
+      },
+      {
+        path: 'icon',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Icon')
+          return { Component }
+        },
+      },
+      {
+        path: 'link',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Link')
+          return { Component }
+        },
+      },
+      {
+        path: 'tooltip',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Tooltip')
+          return { Component }
+        },
+      },
+      {
+        path: 'modal',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Modal')
           return { Component }
         },
       },
