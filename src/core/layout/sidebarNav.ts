@@ -268,12 +268,12 @@ export const sidebarNavGroups: NavGroup[] = [
       {
         label: 'Tooltip',
         path: '/components/tooltip',
-        icon: 'quicktooltip',
+        icon: 'help',
       },
       {
         label: 'Modal',
         path: '/components/modal',
-        icon: 'dialog',
+        icon: 'web_stories',
       },
     ],
   },
