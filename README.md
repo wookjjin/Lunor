@@ -1,7 +1,7 @@
 # Lunor
 
 React 19 + Vite 8 기반의 **컴포넌트 플레이그라운드 & 디자인 시스템**(Glacier) 프로젝트.
-40개의 UI 컴포넌트를 독립 페이지에서 테스트하고, 디자인 토큰과 스타일 아키텍처를 실험하기 위한 작업 공간입니다.
+41개의 UI 컴포넌트를 독립 페이지에서 테스트하고, 디자인 토큰과 스타일 아키텍처를 실험하기 위한 작업 공간입니다.
 
 ---
 
@@ -76,9 +76,9 @@ src/
 │   │   └── guards.ts             # 라우트 가드
 │   └── store/                    # Zustand 스토어 (auth, theme)
 ├── core/                         # 코어 UI 라이브러리
-│   ├── components/                # 재사용 컴포넌트 (40개, Component.tsx/.css/.types.ts/index.ts 패턴)
+│   ├── components/                # 재사용 컴포넌트 (41개, Component.tsx/.css/.types.ts/index.ts 패턴)
 │   │   ├── Foundation      → Icon, Stack, Divider, Spacer, Container
-│   │   ├── Inputs          → Button, Input, InputGroup, Checkbox, Radio, Switch,
+│   │   ├── Inputs          → Button, Input, InputGroup, Checkbox, Radio, Switch, Select,
 │   │   │                     Textarea, Slider, FileInput
 │   │   ├── Data Display    → Card, Avatar, Badge, Chip, List, Accordion, Tabs,
 │   │   │                     Table, DataTable, NoData
@@ -167,18 +167,20 @@ pages/        → 페이지 CSS
 - **breakpoints** — 반응형 브레이크포인트
 - **font-face** — Pretendard self-hosted 폰트
 
-### Components (40)
+### Components (41)
 
 | 그룹 | 컴포넌트 |
 |------|----------|
 | Foundation | Icon, Stack, Divider, Spacer, Container |
-| Inputs | Button, Input, InputGroup, Checkbox, Radio, Switch, Textarea, Slider, FileInput |
+| Inputs | Button, Input, InputGroup, Checkbox, Radio, Switch, Select, Textarea, Slider, FileInput |
 | Data Display | Card, Avatar, Badge, Chip, List, Accordion, Tabs, Table, DataTable, NoData |
 | Navigation | Dropdown, Pagination, Breadcrumb, MenuItem, Link |
 | Feedback | Toast, Spinner, ProgressBar, Skeleton, Alert |
 | Overlay | Dialog, ConfirmDialog, Popover, Drawer, Tooltip, Modal |
 
 각 컴포넌트는 `Component.tsx` / `Component.css` / `Component.types.ts` / `index.ts` 4파일 구조로 통일되어 있으며, `@/core` 배럴에서 named export 됩니다.
+
+> **Select는 네이티브 `<select>`를 사용하지 않습니다.** 옵션 팝업이 브라우저 렌더링이라 스타일 커스텀이 불가능한 문제가 있어, Dropdown과 동일하게 팝업을 완전히 커스텀 DOM(`role="listbox"` / `role="option"`)으로 직접 그리고 `options` / `value` / `onChange` API로 폼 값을 관리합니다.
 
 ---
 
@@ -190,7 +192,7 @@ pages/        → 페이지 CSS
 |------|------|
 | Overview | `/components` (Home) |
 | Foundation | `colors`, `typography`, `shadows`, `hooks`, `icon`, `stack`, `divider`, `spacer`, `container` |
-| Components | `button`, `input`, `card`, `avatar`, `checkbox`, `radio`, `switch`, `textarea`, `slider`, `file-input`, `input-group`, `badge`, `chip`, `list`, `accordion`, `tabs`, `table`, `datatable`, `no-data`, `dropdown`, `pagination` |
+| Components | `button`, `input`, `card`, `avatar`, `checkbox`, `radio`, `switch`, `select`, `textarea`, `slider`, `file-input`, `input-group`, `badge`, `chip`, `list`, `accordion`, `tabs`, `table`, `datatable`, `no-data`, `dropdown`, `pagination` |
 | Feedback | `toast`, `spinner`, `progress-bar`, `skeleton`, `alert` |
 | Navigation | `breadcrumb`, `menu-item`, `link` |
 | Overlays | `dialog`, `confirm-dialog`, `popover`, `drawer`, `tooltip`, `modal` |
@@ -233,20 +235,26 @@ pages/        → 페이지 CSS
 `@/core` 배럴에서 주요 API를 익스포트합니다:
 
 ```ts
-// Components
-import { Button, Dropdown, Input, Modal, Table } from '@/core'
-
-// Hooks
-import { useDebounce, useDisclosure } from '@/core'
-
-// Request
-import { createRequest, HttpError } from '@/core'
-
-// Utils
-import { cn, omitNil, sleep } from '@/core'
-
-// Types
 import type { ApiResponse, PaginatedResponse, PaginationParams } from '@/core'
+
+import {
+  // Components
+  Button,
+  // Utils
+  cn,
+  // Request
+  createRequest,
+  Dropdown,
+  HttpError,
+  Input,
+  Modal,
+  omitNil,
+  sleep,
+  Table,
+  // Hooks
+  useDebounce,
+  useDisclosure,
+} from '@/core'
 ```
 
 ---

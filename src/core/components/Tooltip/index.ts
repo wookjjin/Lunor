@@ -1,6 +1,6 @@
 export { Tooltip } from '@/core/components/Tooltip/Tooltip'
 
 export type {
-  TooltipProps,
   TooltipPlacement,
+  TooltipProps,
 } from '@/core/components/Tooltip/Tooltip.types'

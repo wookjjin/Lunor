@@ -1,9 +1,9 @@
 import { Badge } from '@/core/components/Badge/Badge'
 import { Button } from '@/core/components/Button/Button'
 import { Card } from '@/core/components/Card/Card'
-import { Stack } from '@/core/components/Stack/Stack'
 import { Showcase } from '@/core/components/Showcase/Showcase'
 import { ShowcaseItem } from '@/core/components/ShowcaseItem/ShowcaseItem'
+import { Stack } from '@/core/components/Stack/Stack'
 import { usePlaygroundContext } from '@/core/layout/ComponentPlaygroundContext'
 
 /* =============================================================================
