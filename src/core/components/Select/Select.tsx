@@ -53,35 +53,37 @@ export function Select({
       listRef.current.querySelectorAll<HTMLDivElement>('[role="option"]:not([aria-disabled="true"])'),
     )
     const activeIndex = items.findIndex(el => el.dataset.value === value)
-
-    const handleKeyDown = (event: globalThis.KeyboardEvent) => {
-      const index = items.findIndex(el => el === document.activeElement)
-
-      switch (event.key) {
-        case 'ArrowDown':
-          event.preventDefault()
-          items[(index + 1) % items.length]?.focus()
-          break
-        case 'ArrowUp':
-          event.preventDefault()
-          items[(index - 1 + items.length) % items.length]?.focus()
-          break
-        case 'Home':
-          event.preventDefault()
-          items[0]?.focus()
-          break
-        case 'End':
-          event.preventDefault()
-          items[items.length - 1]?.focus()
-          break
-      }
-    }
-
-    document.addEventListener('keydown', handleKeyDown)
     ;(items[activeIndex] ?? items[0])?.focus()
-
-    return () => document.removeEventListener('keydown', handleKeyDown)
   }, [open, value])
+
+  const handleListKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (!listRef.current)
+      return
+
+    const items = Array.from(
+      listRef.current.querySelectorAll<HTMLDivElement>('[role="option"]:not([aria-disabled="true"])'),
+    )
+    const index = items.findIndex(el => el === document.activeElement)
+
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault()
+        items[index === -1 ? 0 : (index + 1) % items.length]?.focus()
+        break
+      case 'ArrowUp':
+        event.preventDefault()
+        items[index === -1 ? items.length - 1 : (index - 1 + items.length) % items.length]?.focus()
+        break
+      case 'Home':
+        event.preventDefault()
+        items[0]?.focus()
+        break
+      case 'End':
+        event.preventDefault()
+        items[items.length - 1]?.focus()
+        break
+    }
+  }
 
   const handleSelect = (option: SelectOption) => {
     if (option.disabled)
@@ -124,7 +126,7 @@ export function Select({
       ref={rootRef}
       className={['select', fullWidth && 'select--full-width', className].filter(Boolean).join(' ')}
     >
-      {name && <input type="hidden" name={name} value={value} />}
+      {name && <input type="hidden" name={name} value={value} readOnly />}
 
       <div
         ref={triggerRef}
@@ -156,7 +158,7 @@ export function Select({
       </div>
 
       {open && (
-        <div ref={listRef} role="listbox" aria-labelledby={selectId} className="select__content">
+        <div ref={listRef} role="listbox" aria-labelledby={selectId} className="select__content" onKeyDown={handleListKeyDown}>
           {options.map(option => (
             <div
               key={option.value}
