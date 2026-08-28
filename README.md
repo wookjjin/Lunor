@@ -1,7 +1,7 @@
 # Lunor
 
-React 19 + Vite 8 기반의 **컴포넌트 플레이그라운드 & 디자인 시스템** 프로젝트.
-개별 UI 컴포넌트를 독립 페이지에서 테스트하고, 디자인 토큰과 스타일 아키텍처를 실험하기 위한 작업 공간입니다.
+React 19 + Vite 8 기반의 **컴포넌트 플레이그라운드 & 디자인 시스템**(Glacier) 프로젝트.
+40개의 UI 컴포넌트를 독립 페이지에서 테스트하고, 디자인 토큰과 스타일 아키텍처를 실험하기 위한 작업 공간입니다.
 
 ---
 
@@ -21,6 +21,7 @@ React 19 + Vite 8 기반의 **컴포넌트 플레이그라운드 & 디자인 시
 | Icons | Material Symbols |
 | Font | Pretendard (woff2 self-hosted) |
 | 3D | Three.js |
+| E2E Test | Playwright |
 | Linting | ESLint Flat Config (`@antfu/eslint-config`) |
 | Package Manager | pnpm |
 
@@ -53,6 +54,12 @@ pnpm preview      # 빌드 결과물 로컬 확인
 pnpm lint
 ```
 
+### E2E Test
+```bash
+pnpm test:e2e     # Playwright 테스트 실행
+pnpm test:e2e:ui  # Playwright UI 모드
+```
+
 ---
 
 ## 📂 Project Structure
@@ -65,44 +72,39 @@ src/
 │   ├── error/                    # GlobalErrorBoundary
 │   ├── providers/                # QueryProvider, RouterProvider, ThemeProvider, ToastProvider
 │   ├── router/
-│   │   ├── routes.tsx            # 라우트 정의 (lazy import)
+│   │   ├── routes.tsx            # 라우트 정의 (lazy import, 40+ 페이지)
 │   │   └── guards.ts             # 라우트 가드
 │   └── store/                    # Zustand 스토어 (auth, theme)
 ├── core/                         # 코어 UI 라이브러리
-│   ├── components/               # 재사용 컴포넌트
-│   │   ├── Button/               # Button
-│   │   ├── Card/                 # Card
-│   │   ├── DataTable/            # DataTable
-│   │   ├── Dialog/               # Dialog
-│   │   ├── Dropdown/             # Dropdown (Root, Trigger, Content, Item, Separator)
-│   │   ├── Input/                # Input
-│   │   ├── Modal/                # Modal
-│   │   ├── Pagination/           # Pagination
-│   │   ├── Table/                # Table
-│   │   ├── Showcase/             # Showcase (컴포넌트 데모 컨테이너)
-│   │   └── ShowcaseItem/         # ShowcaseItem
+│   ├── components/                # 재사용 컴포넌트 (40개, Component.tsx/.css/.types.ts/index.ts 패턴)
+│   │   ├── Foundation      → Icon, Stack, Divider, Spacer, Container
+│   │   ├── Inputs          → Button, Input, InputGroup, Checkbox, Radio, Switch,
+│   │   │                     Textarea, Slider, FileInput
+│   │   ├── Data Display    → Card, Avatar, Badge, Chip, List, Accordion, Tabs,
+│   │   │                     Table, DataTable, NoData
+│   │   ├── Navigation      → Dropdown, Pagination, Breadcrumb, MenuItem, Link
+│   │   ├── Feedback        → Toast, Spinner, ProgressBar, Skeleton, Alert
+│   │   ├── Overlay         → Dialog, ConfirmDialog, Popover, Drawer, Tooltip, Modal
+│   │   └── Showcase / ShowcaseItem  → 컴포넌트 데모 컨테이너 (플레이그라운드 전용)
 │   ├── layout/                   # 플레이그라운드 레이아웃
 │   │   ├── ComponentsShell.tsx   # 사이드바 + 컨텐츠 셸
 │   │   ├── ComponentPlaygroundContext.tsx
 │   │   ├── PropertiesPanel.tsx
 │   │   ├── PropsControls.tsx
-│   │   └── sidebarNav.ts         # 사이드바 네비게이션 설정
-│   ├── pages/                    # 컴포넌트별 플레이그라운드 페이지
-│   │   ├── Home.tsx
-│   │   ├── Button.tsx
-│   │   ├── Card.tsx
-│   │   ├── Input.tsx
-│   │   ├── Dialog.tsx
-│   │   ├── Dropdown.tsx
-│   │   ├── Pagination.tsx
-│   │   ├── Table.tsx
-│   │   └── DataTable.tsx
+│   │   └── sidebarNav.ts         # 사이드바 네비게이션 설정 (그룹 구조, 새 컴포넌트 추가 시 갱신)
+│   ├── pages/                    # 컴포넌트/파운데이션별 플레이그라운드 페이지 (40+ 페이지)
+│   │   ├── Home.tsx, HomeHeroScene.tsx   # 홈 대시보드 + Three.js 히어로
+│   │   ├── Colors.tsx, Typography.tsx, Shadows.tsx, Hooks.tsx  # 파운데이션 쇼케이스
+│   │   └── <ComponentName>.tsx           # 컴포넌트별 플레이그라운드 (Button, Card, Dialog, ... 등 40개)
 │   ├── request/                  # HTTP 요청 인프라 (ofetch 기반)
 │   │   ├── createRequest.ts
 │   │   ├── HttpError.ts
 │   │   ├── interceptors/         # auth, error, logger 인터셉터
 │   │   └── utils/executeInterceptor.ts
-│   ├── hooks/                    # useDebounce, useDisclosure, useMediaQuery, useThreeScene
+│   ├── hooks/                    # 커스텀 훅 (10개)
+│   │   ├── useClickOutside, useClipboard, useDebounce, useDisclosure
+│   │   ├── useEscapeKey, useFocusTrap, useIntersection
+│   │   └── useMediaQuery, usePrevious, useThreeScene
 │   ├── styles/                   # 디자인 시스템 스타일
 │   │   ├── tokens/               # Design Tokens (CSS Custom Properties)
 │   │   │   ├── color.css
@@ -115,17 +117,25 @@ src/
 │   │   │   ├── breakpoints.css
 │   │   │   └── font-face.css
 │   │   ├── foundation/           # reset, normalize, base, accessibility
-│   │   ├── layout/               # appbar, sidebar, workspace, glass, scrollbar 등
-│   │   ├── pages/
-│   │   └── index.css             # 로드 순서 관리 (tokens → foundation → components → layouts → pages)
-│   ├── constants/                # APP_NAME, API_BASE_URL, DEFAULT_PAGE_SIZE 등
-│   ├── types/                    # ApiResponse, PaginatedResponse, PaginationParams 등
+│   │   ├── layout/                # appbar, sidebar, workspace, glass, scrollbar, canvas, icon 등
+│   │   └── pages/                 # Home 등 페이지 전용 CSS
+│   ├── constants/                # APP_NAME, API_BASE_URL, DEFAULT_PAGE_SIZE, MAX_RETRY_COUNT
+│   ├── types/                    # ApiResponse, PaginatedResponse, PaginationParams, ID
 │   ├── utils/                    # cn, omitNil, sleep
 │   ├── shared/assets/            # Pretendard 폰트, 이미지
 │   └── index.ts                  # 공개 API 배럴 익스포트
-├── features/                     # 도메인 기능 (현재 common/ 만 존재)
+├── features/                     # 도메인 기능 (현재 common/ 만 존재, 골격 단계)
+│   └── common/
+│       ├── components/           # (placeholder)
+│       ├── hooks/                # (placeholder)
+│       └── utils/                # formatCurrency, formatDate, mapStatusLabel
 └── vite-env.d.ts
+
+tests/
+└── home.spec.ts                  # Playwright E2E — Home 페이지 (23개 테스트)
 ```
+
+> ⚠️ 개별 컴포넌트(Button, Dialog 등)에 대한 E2E/유닛 테스트는 아직 작성되지 않았습니다. Home 페이지만 테스트되어 있습니다.
 
 ---
 
@@ -157,25 +167,35 @@ pages/        → 페이지 CSS
 - **breakpoints** — 반응형 브레이크포인트
 - **font-face** — Pretendard self-hosted 폰트
 
+### Components (40)
+
+| 그룹 | 컴포넌트 |
+|------|----------|
+| Foundation | Icon, Stack, Divider, Spacer, Container |
+| Inputs | Button, Input, InputGroup, Checkbox, Radio, Switch, Textarea, Slider, FileInput |
+| Data Display | Card, Avatar, Badge, Chip, List, Accordion, Tabs, Table, DataTable, NoData |
+| Navigation | Dropdown, Pagination, Breadcrumb, MenuItem, Link |
+| Feedback | Toast, Spinner, ProgressBar, Skeleton, Alert |
+| Overlay | Dialog, ConfirmDialog, Popover, Drawer, Tooltip, Modal |
+
+각 컴포넌트는 `Component.tsx` / `Component.css` / `Component.types.ts` / `index.ts` 4파일 구조로 통일되어 있으며, `@/core` 배럴에서 named export 됩니다.
+
 ---
 
 ## 🧭 Routing
 
-| 경로 | 설명 |
-|------|------|
-| `/` | 루트 |
-| `/components` | 플레이그라운드 셸 (ComponentsShell) |
-| `/components` (index) | Home |
-| `/components/button` | Button 플레이그라운드 |
-| `/components/card` | Card 플레이그라운드 |
-| `/components/input` | Input 플레이그라운드 |
-| `/components/dialog` | Dialog 플레이그라운드 |
-| `/components/dropdown` | Dropdown 플레이그라운드 |
-| `/components/pagination` | Pagination 플레이그라운드 |
-| `/components/table` | Table 플레이그라운드 |
-| `/components/datatable` | DataTable 플레이그라운드 |
+모든 페이지는 `/components` 하위에서 lazy import로 코드 스플리팅됩니다.
 
-모든 페이지는 lazy import로 코드 스플리팅됩니다.
+| 그룹 | 경로 |
+|------|------|
+| Overview | `/components` (Home) |
+| Foundation | `colors`, `typography`, `shadows`, `hooks`, `icon`, `stack`, `divider`, `spacer`, `container` |
+| Components | `button`, `input`, `card`, `avatar`, `checkbox`, `radio`, `switch`, `textarea`, `slider`, `file-input`, `input-group`, `badge`, `chip`, `list`, `accordion`, `tabs`, `table`, `datatable`, `no-data`, `dropdown`, `pagination` |
+| Feedback | `toast`, `spinner`, `progress-bar`, `skeleton`, `alert` |
+| Navigation | `breadcrumb`, `menu-item`, `link` |
+| Overlays | `dialog`, `confirm-dialog`, `popover`, `drawer`, `tooltip`, `modal` |
+
+(전체 경로는 `/components/<path>` 형태이며, 사이드바 그룹 구조는 `core/layout/sidebarNav.ts` 참고)
 
 ---
 
@@ -186,6 +206,25 @@ pages/        → 페이지 CSS
 - `createRequest()` — 인터셉터 체인이 적용된 ofetch 인스턴스 팩토리
 - **인터셉터**: `auth` (토큰 주입), `error` (에러 정규화 → HttpError), `logger` (요청/응답 로깅)
 - `HttpError` — 표준화된 에러 타입
+
+---
+
+## 🪝 Custom Hooks
+
+`core/hooks/` 에 정의된 재사용 훅:
+
+| 훅 | 설명 |
+|------|------|
+| `useClickOutside` | 특정 엘리먼트 바깥 클릭 감지 |
+| `useClipboard` | 클립보드 복사 |
+| `useDebounce` | 값 디바운싱 |
+| `useDisclosure` | open/close 상태 관리 (Modal, Dialog 등) |
+| `useEscapeKey` | ESC 키 입력 감지 |
+| `useFocusTrap` | 포커스 트랩 (접근성) |
+| `useIntersection` | IntersectionObserver 래핑 |
+| `useMediaQuery` | 반응형 미디어 쿼리 |
+| `usePrevious` | 이전 렌더링 값 추적 |
+| `useThreeScene` | Three.js 인터랙티브 3D 배경 (Home 히어로) |
 
 ---
 
@@ -250,3 +289,5 @@ Vite의 CSS 트랜스파일러와 미니파이어로 Lightning CSS를 사용합�
 | `pnpm build` | 타입 체크 + 프로덕션 빌드 |
 | `pnpm preview` | 빌드 결과물 미리보기 |
 | `pnpm lint` | ESLint 실행 |
+| `pnpm test:e2e` | Playwright E2E 테스트 실행 |
+| `pnpm test:e2e:ui` | Playwright UI 모드 실행 |
