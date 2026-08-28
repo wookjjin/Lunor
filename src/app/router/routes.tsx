@@ -90,6 +90,13 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: 'select',
+        lazy: async () => {
+          const { default: Component } = await import('@/core/pages/Select')
+          return { Component }
+        },
+      },
+      {
         path: 'textarea',
         lazy: async () => {
           const { default: Component } = await import('@/core/pages/Textarea')

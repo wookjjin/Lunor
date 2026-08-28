@@ -16,7 +16,7 @@ export function Tooltip({
     if (timerRef.current) {
       clearTimeout(timerRef.current)
     }
-    timerRef.current = setTimeout(() => setOpen(true), delay)
+    timerRef.current = setTimeout(setOpen, delay, true)
   }, [delay])
 
   const hide = useCallback(() => {

@@ -121,6 +121,11 @@ export const sidebarNavGroups: NavGroup[] = [
         icon: 'toggle_on',
       },
       {
+        label: 'Select',
+        path: '/components/select',
+        icon: 'unfold_more',
+      },
+      {
         label: 'Textarea',
         path: '/components/textarea',
         icon: 'edit_note',
