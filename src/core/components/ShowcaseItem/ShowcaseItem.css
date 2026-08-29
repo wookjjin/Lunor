@@ -3,24 +3,29 @@
    Showcase.css에서 showcase__item / header / label / badge / body 관련 스타일을 이전
    ============================================================================= */
 
-/* ── 카드 아이템 (flex + 비주얼 통합) ── */
+/* ── 카드 아이템 (flex + 비주얼 통합) ──
+   컬럼 수(flex-basis)는 부모 .showcase__flex의 실제 인라인 크기 기준(@container)으로 결정된다.
+   카드 자신도 container-type을 선언해 .showcase__row 등 내부 콘텐츠가
+   "이 카드의 실제 렌더 폭"을 기준으로 반응하게 한다 (자기 자신의 규칙은 자동으로
+   상위 컨테이너인 .showcase__flex를 기준으로 계속 해석됨 — self-query 예외) */
 .showcase__item {
   flex: 1 1 100%;
   min-width: 0;
   border-radius: var(--radius-xl);
   padding: var(--space-4);
   transition: var(--transition-base);
+  container-type: inline-size;
 }
 
-/* 태블릿: 2열 */
-@media (min-width: 768px) {
+/* 2열: .showcase__flex 폭이 충분할 때 */
+@container (min-width: 768px) {
   .showcase__item {
     flex: 1 1 calc(50% - var(--space-6) / 2);
   }
 }
 
-/* 와이드 데스크톱: 4열 */
-@media (min-width: 1280px) {
+/* 4열: .showcase__flex 폭이 넉넉할 때 */
+@container (min-width: 1280px) {
   .showcase__item {
     flex: 1 1 calc(25% - var(--space-6) * 3 / 4);
   }
@@ -104,8 +109,8 @@
 
 /* showcase__row 내부의 버튼은 stretch 후 flex로 균등 분배되므로 그대로 둠 */
 
-/* ── 반응형: 태블릿 이상 기본 패딩 ── */
-@media (min-width: 640px) {
+/* ── 반응형: .showcase__flex 폭이 충분할 때 기본 패딩 ── */
+@container (min-width: 640px) {
   .showcase__item {
     padding: var(--space-6);
   }

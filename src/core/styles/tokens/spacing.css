@@ -101,13 +101,6 @@
   --layout-panel-gap: var(--space-4);
 
   /* ===========================================================================
-      Layout — Showcase Container Max Widths
-      =========================================================================== */
-  --layout-showcase-max-width-sm: 64rem; /* 1024px */
-  --layout-showcase-max-width-md: 72rem; /* 1152px */
-  --layout-showcase-max-width-lg: 80rem; /* 1280px */
-
-  /* ===========================================================================
      Layout — Dialog Max Widths
      =========================================================================== */
   --layout-dialog-sm: 25rem; /* 400px */
