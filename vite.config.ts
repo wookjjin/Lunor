@@ -27,8 +27,9 @@ export default defineConfig({
         chrome: (100 << 16),
         firefox: (100 << 16),
       },
-      // CSS Modules 기능을 사용하고 싶다면 설정 (선택)
-      cssModules: true,
+      // cssModules는 *.module.css 파일에만 적용되는데 이 프로젝트는 전역 CSS +
+      // 수동 BEM 네이밍으로 클래스 충돌을 막고 있어 *.module.css가 하나도 없다.
+      // 켜져 있어도 아무 효과가 없어 오해를 유발하므로 제거함.
     },
   },
   build: {

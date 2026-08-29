@@ -1,0 +1,251 @@
+/* =============================================================================
+   Layout — Properties Panel Internal Styles
+   PropertiesPanel.tsx / PropsControls.tsx 전용 (플레이그라운드 속성 패널 내부 콘텐츠)
+   워크스페이스 셸 구조(workspace.css)와는 별개 관심사라 분리
+   ============================================================================= */
+
+/* Tabs */
+.props-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border-hairline);
+}
+
+.props-tab {
+  flex: 1;
+  padding: var(--space-3) 0;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-tertiary);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  transition: color var(--duration-150) var(--ease-out);
+}
+
+.props-tab:hover {
+  color: var(--color-text-primary);
+}
+
+.props-tab--active {
+  color: var(--color-interactive-default);
+  border-bottom-color: var(--color-interactive-default);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Content area */
+.props-content {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── 반응형: 모바일에서 패딩 축소 ── */
+@media (max-width: 639px) {
+  .props-content {
+    padding: var(--space-4);
+  }
+}
+
+/* Section */
+.props-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.props-section-heading {
+  font-size: var(--font-size-2xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-widest);
+  color: var(--color-text-muted-alpha);
+  margin: 0;
+}
+
+.props-section-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Row (label + toggle) */
+.props-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.props-label {
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* Toggle Group — CSS grid로 모든 버튼 동일 너비, 빈 여백 없음 */
+.props-toggle-group {
+  display: grid;
+  gap: var(--space-0-5);
+  padding: var(--space-0-5);
+  background: var(--color-surface-toggle-group);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-hairline);
+  max-width: 100%;
+}
+
+.props-toggle-btn {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: var(--space-6);
+  padding: 0 var(--space-2);
+  font-size: var(--font-size-2xs);
+  color: var(--color-text-tertiary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-color);
+}
+
+.props-toggle-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.props-toggle-btn--active {
+  background: var(--color-border-strong-alpha);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  box-shadow: 0 1px 2px var(--color-shadow-subtle);
+}
+
+/* Token Card */
+.props-token-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-card-rest);
+  border: 1px solid var(--color-border-hairline);
+  transition: background-color var(--duration-150) var(--ease-out);
+  cursor: default;
+}
+
+.props-token-card:hover {
+  background: var(--color-surface-card-hover);
+}
+
+.props-token-swatch-wrapper {
+  flex-shrink: 0;
+}
+
+.props-token-swatch {
+  width: var(--space-8);
+  height: var(--space-8);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 6px var(--color-primary-glow-emphasis);
+}
+
+.props-token-swatch--radius {
+  width: var(--space-8);
+  height: var(--space-8);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border-strong-alpha);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.props-token-swatch--radius-inner {
+  width: var(--space-4);
+  height: var(--space-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-primary-glow-intense);
+}
+
+.props-token-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0-5);
+}
+
+.props-token-name {
+  font-size: 0.6875rem; /* 11px — 중간 스케일 토큰이 없으므로 임시 하드코딩 */
+  font-family: var(--font-family-mono, monospace);
+  color: var(--color-text-primary);
+  transition: color var(--duration-150) var(--ease-out);
+}
+
+.props-token-card:hover .props-token-name {
+  color: var(--color-interactive-default);
+}
+
+.props-token-value {
+  font-size: var(--font-size-2xs);
+  font-family: var(--font-family-mono, monospace);
+  color: var(--color-text-tertiary);
+}
+
+/* Pro Tip */
+.props-protip {
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  margin-top: var(--space-4);
+  border-color: var(--color-primary-glow-emphasis) !important;
+}
+
+.props-protip-heading {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-interactive-default);
+  margin: 0 0 var(--space-2);
+}
+
+.props-protip-text {
+  font-size: 0.6875rem; /* 11px — 중간 스케일 토큰이 없으므로 임시 하드코딩 */
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.props-text-input {
+  width: 100%;
+  background: var(--color-surface-input);
+  border: 1px solid var(--color-border-subtle-alpha);
+  border-radius: var(--radius-md);
+  padding: var(--space-1-5) var(--space-2-5);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-primary);
+  outline: none;
+  transition:
+    border-color var(--duration-150) var(--ease-out),
+    box-shadow var(--duration-150) var(--ease-out);
+}
+
+.props-text-input::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.props-text-input:focus-visible {
+  border-color: var(--color-primary-glow-focus);
+  box-shadow: 0 0 0 1px var(--color-primary-glow-strong);
+}
+
+.props-protip-code {
+  background: var(--color-bg-overlay-strong);
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-mono, monospace);
+  font-size: var(--font-size-2xs);
+}
