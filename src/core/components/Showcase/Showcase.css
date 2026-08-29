@@ -1,7 +1,8 @@
 /* =============================================================================
    Showcase — Component Showcase 공통 스타일
-   Glacier UI 스타일 카드 + 반응형 flex 레이아웃
-   모바일 1열 → 태블릿 2열 → 와이드 4열
+   Glacier UI 스타일 카드 + intrinsic flex 레이아웃
+   컬럼 수는 뷰포트가 아니라 .showcase__flex의 실제 컨테이너 폭(@container)에 반응한다
+   (사이드바/속성패널이 캔버스 폭을 잡아먹어도 실제 가용 폭 기준으로 정확히 반응)
    카드 아이템 스타일은 ShowcaseItem/ShowcaseItem.css로 이전됨
    ============================================================================= */
 
@@ -11,7 +12,8 @@
   flex-direction: column;
   gap: var(--space-6);
   width: 100%;
-  max-width: var(--layout-showcase-max-width-sm); /* 1024px — 쇼케이스 최대 너비 */
+  /* 뷰포트 단계별로 스냅하지 않고 가용 폭에 맞춰 연속적으로 커진다 */
+  max-width: clamp(64rem, 90vw, 80rem); /* 1024px → 1280px */
 }
 
 /* ── 페이지 헤더 ── */
@@ -34,31 +36,19 @@
   margin: 0;
 }
 
-/* ── 반응형 flex 컨테이너 ── */
+/* ── 반응형 flex 컨테이너 ──
+   .showcase__item의 컬럼 수/패딩이 이 요소의 실제 인라인 크기를 기준으로 반응한다 */
 .showcase__flex {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-6);
+  container-type: inline-size;
 }
 
-/* ── 3열 배치 모드 — 와이드 데스크톱에서 3열 유지 ── */
-@media (min-width: 1280px) {
+/* ── 3열 배치 모드 — .showcase__flex가 충분히 넓을 때만 3열 유지 ── */
+@container (min-width: 1280px) {
   .showcase--cols-3 .showcase__item {
     flex: 1 1 calc(33.333% - var(--space-6) * 2 / 3);
-  }
-}
-
-/* 태블릿: 2열 */
-@media (min-width: 768px) {
-  .showcase {
-    max-width: var(--layout-showcase-max-width-md); /* 1152px */
-  }
-}
-
-/* 데스크톱: 4열 */
-@media (min-width: 1024px) {
-  .showcase {
-    max-width: var(--layout-showcase-max-width-lg); /* 1280px */
   }
 }
 
@@ -117,8 +107,10 @@
   margin: var(--space-1) 0 0;
 }
 
-/* ── 반응형: 태블릿 이상 가로 정렬 ── */
-@media (min-width: 640px) {
+/* ── 반응형: 카드(.showcase__item) 자체 폭이 충분할 때만 가로 정렬 ──
+   같은 뷰포트라도 4열 카드(좁음)와 1열 카드(넓음)의 실제 폭이 다르므로
+   뷰포트가 아니라 카드 폭 기준으로 판단해야 좁은 카드에서 잘리지 않는다 */
+@container (min-width: 640px) {
   .showcase__row {
     flex-direction: row;
     gap: var(--space-4);

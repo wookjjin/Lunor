@@ -9,19 +9,21 @@ export function Container({
   ...props
 }: ContainerProps) {
   return (
-    <div
-      className={[
-        'container',
-        `container--${size}`,
-        `container--padding-${padding}`,
-        centered && 'container--centered',
-        className,
-      ]
-        .filter(Boolean)
-        .join(' ')}
-      {...props}
-    >
-      {children}
+    <div className="container-query-root">
+      <div
+        className={[
+          'container',
+          `container--${size}`,
+          `container--padding-${padding}`,
+          centered && 'container--centered',
+          className,
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        {...props}
+      >
+        {children}
+      </div>
     </div>
   )
 }

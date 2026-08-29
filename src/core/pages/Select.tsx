@@ -106,6 +106,11 @@ export default function SelectPage() {
       <ShowcaseItem label="Full Width" variant="ghost" className="glacier-glass">
         <Select variant={variant} size={size} fullWidth placeholder="Full width select" options={WIDE_OPTIONS} />
       </ShowcaseItem>
+
+      {/* Empty Options */}
+      <ShowcaseItem label="Empty" variant="ghost" className="glacier-glass">
+        <Select variant={variant} size={size} placeholder="No options available" options={[]} />
+      </ShowcaseItem>
     </Showcase>
   )
 }

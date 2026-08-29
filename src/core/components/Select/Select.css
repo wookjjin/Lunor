@@ -21,6 +21,7 @@
 .select__trigger[aria-disabled='true'] {
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.5;
 }
 
 .select__value {
@@ -59,6 +60,12 @@
   border-radius: var(--radius-md);
   background: var(--color-surface-default);
   box-shadow: var(--shadow-md);
+}
+
+/* 트리거 아래 공간이 부족하면 위로 뒤집는다 (JS에서 계산 후 부여) */
+.select__content--top {
+  top: auto;
+  bottom: calc(100% + var(--space-1));
 }
 
 .select__option {
