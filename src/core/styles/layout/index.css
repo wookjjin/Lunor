@@ -22,8 +22,11 @@
 /* 6. 워크스페이스 2단 분할 레이아웃 */
 @import './workspace.css';
 
-/* 7. 아이콘 폰트 바인딩 */
+/* 7. 속성 패널 내부 콘텐츠 (PropertiesPanel/PropsControls 전용) */
+@import './properties-panel.css';
+
+/* 8. 아이콘 폰트 바인딩 */
 @import './icon.css';
 
-/* 8. 커스텀 스크롤바 */
+/* 9. 커스텀 스크롤바 */
 @import './scrollbar.css';
