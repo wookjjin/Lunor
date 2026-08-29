@@ -10,6 +10,10 @@ import { useEscapeKey } from '@/core/hooks/useEscapeKey'
    네이티브 <select>의 옵션 팝업은 브라우저가 렌더링해 스타일 커스텀이 불가능하므로,
    Dropdown과 동일하게 팝업을 직접 그려 디자인 시스템 룩앤필을 유지한다.
 
+   auto-flip 기준 컨테이너: 뷰포트가 아니라 가장 가까운 "경계" 조상을 찾아 그 안쪽 공간을 기준으로 뒤집는다.
+   Showcase 카드(.showcase__item)처럼 container-type을 선언한 요소가 있으면 그걸 경계로 삼고,
+   없으면(일반 페이지) 뷰포트로 폴백한다.
+
    TODO (확장 범위 — 필요해지면 별도 작업으로 진행):
    - 다중 선택(멀티 셀렉트) 미지원. 현재는 단일 value 전용 설계.
    - Dropdown에 있는 onOpenChange 콜백이 없어 부모가 열림 상태를 관찰할 수 없음.
@@ -17,6 +21,17 @@ import { useEscapeKey } from '@/core/hooks/useEscapeKey'
      연동하기 어려움 (div 기반 커스텀 위젯이라 네이티브 ref 포워딩이 자연스럽지 않음).
    - optgroup(옵션 그룹핑) 미지원 — 카테고리별로 옵션을 묶을 방법이 없음.
    ============================================================================= */
+
+/** container-type을 선언한 가장 가까운 조상(카드 등 시각적 경계)을 찾는다. 없으면 null. */
+function findBoundaryElement(start: HTMLElement | null): HTMLElement | null {
+  let el = start?.parentElement ?? null
+  while (el && el !== document.body) {
+    if (getComputedStyle(el).containerType !== 'normal')
+      return el
+    el = el.parentElement
+  }
+  return null
+}
 
 export function Select({
   options,
@@ -74,13 +89,19 @@ export function Select({
     ;(items[activeIndex] ?? items[0])?.focus()
   }, [open, value])
 
-  // 열릴 때마다 트리거 기준 아래쪽 공간이 팝업 높이보다 부족하면 위로 뒤집는다.
+  // 열릴 때마다 "경계" 기준 아래쪽 공간이 팝업 높이보다 부족하면 위로 뒤집는다.
+  // 경계 = 가장 가까운 container-type 조상(예: Showcase 카드)이 있으면 그 하단, 없으면 뷰포트 하단.
+  // 뷰포트보다 경계가 아래로 더 내려가 있는 경우까지 고려해 둘 중 더 타이트한 쪽을 쓴다.
   // offsetHeight는 top/bottom 배치와 무관하게 실제 렌더된 박스 높이를 주므로 측정이 배치에 영향받지 않는다.
   useLayoutEffect(() => {
     if (!open || !listRef.current || !triggerRef.current)
       return
 
-    const spaceBelow = window.innerHeight - triggerRef.current.getBoundingClientRect().bottom
+    const boundary = findBoundaryElement(triggerRef.current)
+    const boundaryBottom = boundary
+      ? Math.min(boundary.getBoundingClientRect().bottom, window.innerHeight)
+      : window.innerHeight
+    const spaceBelow = boundaryBottom - triggerRef.current.getBoundingClientRect().bottom
     const contentHeight = listRef.current.offsetHeight
     // eslint-disable-next-line react/set-state-in-effect -- DOM 레이아웃 측정 후 배치를 정하는 패턴이라 렌더 중 계산 불가
     setPlacement(contentHeight > spaceBelow ? 'top' : 'bottom')
