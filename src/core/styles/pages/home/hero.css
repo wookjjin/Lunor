@@ -74,7 +74,7 @@
 }
 
 .home-hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: var(--text-display-2xl-size);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
@@ -91,7 +91,7 @@
 }
 
 .home-hero-subtitle {
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: var(--text-body-xl-size);
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
   max-width: 36rem;

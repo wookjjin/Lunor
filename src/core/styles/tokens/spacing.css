@@ -63,12 +63,13 @@
 
   /* ===========================================================================
     Semantic — Section / Block Spacing (섹션간 여백)
+    뷰포트 단계(mobile/tablet/desktop)별로 값을 스냅하지 않고 clamp()로 연속 스케일링.
     =========================================================================== */
-  --spacing-section-xs: var(--space-8); /* 32px */
-  --spacing-section-sm: var(--space-12); /* 48px */
-  --spacing-section-md: var(--space-16); /* 64px */
-  --spacing-section-lg: var(--space-24); /* 96px */
-  --spacing-section-xl: var(--space-32); /* 128px */
+  --spacing-section-xs: clamp(1.25rem, 3vw, 2rem); /* 20px → 32px */
+  --spacing-section-sm: clamp(1.75rem, 4.5vw, 3rem); /* 28px → 48px */
+  --spacing-section-md: clamp(2.25rem, 6vw, 4rem); /* 36px → 64px */
+  --spacing-section-lg: clamp(3rem, 9vw, 6rem); /* 48px → 96px */
+  --spacing-section-xl: clamp(4rem, 12vw, 8rem); /* 64px → 128px */
 
   /* ===========================================================================
     Semantic — Stack / Inline Gap (Flex/Grid gap)
@@ -84,9 +85,8 @@
   /* ===========================================================================
     Layout — Container & Page
     =========================================================================== */
-  --layout-page-gutter-mobile: var(--space-4); /* 16px */
-  --layout-page-gutter-tablet: var(--space-6); /* 24px */
-  --layout-page-gutter-desktop: var(--space-8); /* 32px */
+  /* 뷰포트가 넓어질수록 연속적으로 늘어나는 페이지 여백 (기존 mobile/tablet/desktop 3단 토큰 통합) */
+  --layout-page-gutter: clamp(1rem, 4vw, 2rem); /* 16px → 32px */
 
   --layout-content-max-width: 80rem; /* 1280px */
   --layout-prose-max-width: 65ch;

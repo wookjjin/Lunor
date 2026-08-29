@@ -5,7 +5,7 @@
 
 /* ── 컴포넌트 쇼케이스 그리드 ── */
 .home-showcase {
-  padding: var(--spacing-section-lg) var(--layout-page-gutter-mobile);
+  padding: var(--spacing-section-lg) var(--layout-page-gutter);
   max-width: var(--layout-content-max-width);
   margin: 0 auto;
 }
@@ -174,7 +174,7 @@
    ============================================================================= */
 
 .home-section {
-  padding: var(--spacing-section-lg) var(--layout-page-gutter-mobile);
+  padding: var(--spacing-section-lg) var(--layout-page-gutter);
   max-width: var(--layout-content-max-width);
   margin: 0 auto;
 }

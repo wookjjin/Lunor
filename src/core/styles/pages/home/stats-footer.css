@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-gap-md);
-  padding: var(--spacing-section-md) var(--layout-page-gutter-mobile);
+  padding: var(--spacing-section-md) var(--layout-page-gutter);
   max-width: var(--layout-content-max-width);
   margin: 0 auto;
 }
@@ -47,7 +47,7 @@
 
 /* ── Footer ── */
 .home-footer {
-  padding: var(--spacing-section-sm) var(--layout-page-gutter-mobile);
+  padding: var(--spacing-section-sm) var(--layout-page-gutter);
   text-align: center;
   border-top: 1px solid var(--color-border-muted-alpha);
   color: var(--color-text-tertiary);

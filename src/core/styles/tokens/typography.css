@@ -68,18 +68,21 @@
 
   /* ===========================================================================
     Semantic Text Styles — Display
+    뷰포트 구간(breakpoint)별로 값을 스냅하는 대신 clamp()로 연속 스케일링한다.
+    화면이 넓어질수록 부드럽게 커지고, 최소/최대값에서 멈춘다.
+    (홈 히어로처럼 화면을 지배하는 대형 텍스트 전용 — 본문/라벨 스케일은 고정값 유지)
     =========================================================================== */
-  --text-display-2xl-size: var(--font-size-6xl);
+  --text-display-2xl-size: clamp(2.5rem, 5vw, 4rem); /* 40px → 64px */
   --text-display-2xl-weight: var(--font-weight-bold);
   --text-display-2xl-leading: var(--line-height-tight);
   --text-display-2xl-tracking: var(--letter-spacing-tight);
 
-  --text-display-xl-size: var(--font-size-5xl);
+  --text-display-xl-size: clamp(2rem, 4vw, 3rem); /* 32px → 48px */
   --text-display-xl-weight: var(--font-weight-bold);
   --text-display-xl-leading: var(--line-height-tight);
   --text-display-xl-tracking: var(--letter-spacing-tight);
 
-  --text-display-lg-size: var(--font-size-4xl);
+  --text-display-lg-size: clamp(1.75rem, 3vw, 2.25rem); /* 28px → 36px */
   --text-display-lg-weight: var(--font-weight-bold);
   --text-display-lg-leading: var(--line-height-tight);
   --text-display-lg-tracking: var(--letter-spacing-tight);
@@ -110,7 +113,8 @@
   /* ===========================================================================
     Semantic Text Styles — Body
     =========================================================================== */
-  --text-body-xl-size: var(--font-size-lg);
+  /* body-xl은 히어로 서브타이틀처럼 강조된 리드 텍스트용이라 fluid 처리 */
+  --text-body-xl-size: clamp(1rem, 2vw, 1.25rem); /* 16px → 20px */
   --text-body-xl-weight: var(--font-weight-regular);
   --text-body-xl-leading: var(--line-height-relaxed);
 

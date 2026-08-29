@@ -5,7 +5,7 @@
 
 /* ── Quick Start 섹션 ── */
 .home-quickstart {
-  padding: var(--spacing-section-lg) var(--layout-page-gutter-mobile);
+  padding: var(--spacing-section-lg) var(--layout-page-gutter);
   max-width: var(--layout-content-max-width);
   margin: 0 auto;
 }
