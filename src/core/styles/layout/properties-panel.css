@@ -202,7 +202,7 @@
   padding: var(--space-4);
   border-radius: var(--radius-xl);
   margin-top: var(--space-4);
-  border-color: var(--color-primary-glow-emphasis) !important;
+  border-color: var(--color-primary-glow-emphasis);
 }
 
 .props-protip-heading {
